@@ -1,11 +1,41 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class postuler extends Model
+/**
+ * Class Postuler
+ * 
+ * @property string $Cin
+ * @property int $Id_offre
+ * @property Carbon|null $Date_post
+ * @property string|null $Etat
+ *
+ * @package App\Models
+ */
+class Postuler extends Model
 {
-    use HasFactory;
+	protected $table = 'postulers';
+	public $incrementing = false;
+	public $timestamps = false;
+
+	protected $casts = [
+		'Id_offre' => 'int',
+		'Etat' => 'binary'
+	];
+
+	protected $dates = [
+		'Date_post'
+	];
+
+	protected $fillable = [
+		'Date_post',
+		'Etat'
+	];
 }

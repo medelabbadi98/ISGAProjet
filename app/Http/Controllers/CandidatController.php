@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\candidat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CandidatController extends Controller
 {
@@ -14,7 +15,8 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        //
+        
+        
     }
 
     /**
@@ -22,9 +24,8 @@ class CandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+
     }
 
     /**
@@ -57,7 +58,7 @@ class CandidatController extends Controller
      */
     public function edit(candidat $candidat)
     {
-        //
+        
     }
 
     /**
@@ -69,17 +70,8 @@ class CandidatController extends Controller
      */
     public function update(Request $request, candidat $candidat)
     {
-        //
+      
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\candidat  $candidat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(candidat $candidat)
-    {
-        //
-    }
+   
 }
