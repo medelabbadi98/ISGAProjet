@@ -35,7 +35,7 @@ class OffreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Offre = new offre();
     }
 
     /**

@@ -35,7 +35,7 @@ class PostulerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postuler=new postuler();
     }
 
     /**

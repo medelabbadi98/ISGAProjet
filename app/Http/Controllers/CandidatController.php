@@ -15,8 +15,12 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        
-        
+        return view('Candidat.index',['Candidat'=>Candidat::All()]);   
+    }
+
+    public function connection(Request $request){
+        $candidat = DB::table('candidats')->where('email', $request->email)->first();
+        return view('Home');
     }
 
     /**
@@ -24,9 +28,9 @@ class CandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        
+        return View::make('Candidat.SignUp');
     }
 
     /**
@@ -37,19 +41,16 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-        $candidat = new candidat();
-
-        $candidat -> CIN =$request->input('CIN');
-        $candidat -> Email =$request->input('Email');
-        $candidat -> Mot_de_passe =$request->input('Mot_De_Passe');
-		$candidat -> Photo_C =$request->input('Photo_C');
-		$candidat -> Nom =$request->input('Nom');
-		$candidat -> Prenom =$request->input('Prenom');
-		$candidat -> Adresse =$request->input('Adresse');
-		$candidat -> Tel_C =$request->input('Tel_C');
-
+        $candidat =new candidat();   
+         
+        $candidat -> CIN =$request->cin;          
+        $candidat -> Adresse =$request->Adresse;
+		$candidat -> Nom =$request->nom;
+		$candidat -> Prenom =$request->prenom;
+		$candidat -> Tel_C =$request->tel;
+     
         $candidat->save();
-        return redirect()->route('welcome');
+        return redirect()->route('/resources/views/SignIn.blade.php');
     }
 
     /**

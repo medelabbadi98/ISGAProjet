@@ -35,7 +35,7 @@ class MaitriserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $maitriser=new maitriser();
     }
 
     /**

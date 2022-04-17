@@ -13,14 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * Class Candidat
  * 
  * @property string $CIN
- * @property string|null $Email
- * @property string|null $Mot_De_Passe
  * @property string|null $Photo_C
  * @property string|null $Nom
  * @property string|null $Prenom
  * @property string|null $Adresse
  * @property string|null $Tel_C
+ * @property int $IDuser
  * 
+ * @property User $user
  * @property Collection|Competence[] $competences
  * @property Collection|Diplome[] $diplomes
  * @property Collection|Experience[] $experiences
@@ -34,15 +34,23 @@ class Candidat extends Model
 	public $incrementing = false;
 	public $timestamps = false;
 
+	protected $casts = [
+		'IDuser' => 'int'
+	];
+
 	protected $fillable = [
-		'Email',
-		'Mot_De_Passe',
 		'Photo_C',
 		'Nom',
 		'Prenom',
 		'Adresse',
-		'Tel_C'
+		'Tel_C',
+		'IDuser'
 	];
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'IDuser');
+	}
 
 	public function competences()
 	{

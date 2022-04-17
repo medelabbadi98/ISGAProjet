@@ -35,7 +35,7 @@ class RecruteurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recruteur=new recruteur();
     }
 
     /**

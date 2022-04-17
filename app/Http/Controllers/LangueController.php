@@ -35,7 +35,7 @@ class LangueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $langue= new langue();
     }
 
     /**

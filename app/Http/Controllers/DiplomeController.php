@@ -24,7 +24,7 @@ class DiplomeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,7 @@ class DiplomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $diplome=new diplome();
     }
 
     /**
