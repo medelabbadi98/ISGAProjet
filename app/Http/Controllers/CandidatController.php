@@ -15,7 +15,7 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        return view('Candidat.index',['Candidat'=>Candidat::All()]);   
+        return view('Candidatprofile.page_candidat'); 
     }
 
     public function connection(Request $request){

@@ -16,7 +16,10 @@ class OffreController extends Controller
     {
         //
     }
-
+    public function ajouteroffre()
+    {
+        return view('Recruteurprofile.ajouter_offre');
+    }
     /**
      * Show the form for creating a new resource.
      *

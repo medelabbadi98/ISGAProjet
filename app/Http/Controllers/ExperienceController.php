@@ -17,7 +17,12 @@ class ExperienceController extends Controller
         //
     }
 
-    /**
+   
+    public function ajouterexperience()
+    {
+        return view('Candidatprofile.ajouterexperience');
+    }
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +31,6 @@ class ExperienceController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *

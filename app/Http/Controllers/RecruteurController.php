@@ -14,7 +14,7 @@ class RecruteurController extends Controller
      */
     public function index()
     {
-        //
+        return view('Recruteurprofile.page_recruteur');
     }
 
     /**
