@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="csssigneup.css">
 	<link href="font-awesome/css/all.min.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css"/>
 	<style type="text/css">
 	
       
