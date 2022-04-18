@@ -15,7 +15,7 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        return view('Candidatprofile.page_candidat'); 
+        return view('Candidatprofile.pagecandidat'); 
     }
 
     public function connection(Request $request){

@@ -19,7 +19,11 @@ class LangueController extends Controller
 
     public function ajouterlangue()
     {
-        return view('Candidatprofile.ajouter_langue');
+        return view('Candidatprofile.ajouterlangue');
+    }
+    public function editlangue()
+    {
+        return view('Candidatprofile.editlangue');
     }
     /**
      * Show the form for creating a new resource.

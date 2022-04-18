@@ -23,6 +23,10 @@ class DiplomeController extends Controller
     {
         return view('Candidatprofile.ajouterdiplome');
     }
+    public function editdiplome()
+    {
+        return view('Candidatprofile.editdiplome');
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -23,7 +23,10 @@ class CompetenceController extends Controller
     {
         return view('Candidatprofile.ajoutercompetence');
     }
-
+    public function editcompetence()
+    {
+        return view('Candidatprofile.editcompetence');
+    }
     /**
      * Store a newly created resource in storage.
      *

@@ -22,6 +22,10 @@ class ExperienceController extends Controller
     {
         return view('Candidatprofile.ajouterexperience');
     }
+    public function editexperience()
+    {
+        return view('Candidatprofile.editexperience');
+    }
      /**
      * Show the form for creating a new resource.
      *
