@@ -2,7 +2,6 @@
   
 @section('content')
 <div class="main-w3layouts wrapper">
-		
 		<div class="main-agileinfo">
 			<h1>Connexion</h1>
 			<div class="agileits-top">
