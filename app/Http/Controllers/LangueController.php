@@ -21,6 +21,7 @@ class LangueController extends Controller
     {
         return view('Candidatprofile.ajouterlangue');
     }
+
     public function editlangue()
     {
         return view('Candidatprofile.editlangue');
@@ -32,7 +33,9 @@ class LangueController extends Controller
      */
     public function create()
     {
-        //
+        return Langue::create([
+            'Nom_Lg' => $data['Nom_Lg'],
+          ]);
     }
 
     /**
@@ -42,8 +45,13 @@ class LangueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $langue= new langue();
+    {  
+        $langue=new langue();
+        $langue -> Nom_Lg=$request->Nom_Lg;    
+        $langue->save();
+
+        return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
+ 
     }
 
     /**
@@ -63,9 +71,10 @@ class LangueController extends Controller
      * @param  \App\Models\langue  $langue
      * @return \Illuminate\Http\Response
      */
-    public function edit(langue $langue)
+    public function edit($id)
     {
-        //
+        // $langue = Langue::find($id);
+        // return view('');
     }
 
     /**
@@ -75,9 +84,12 @@ class LangueController extends Controller
      * @param  \App\Models\langue  $langue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, langue $langue)
+    public function update(Request $request, $id)
     {
-        //
+        $langue = Langue::find($id);
+        $langue->Nom_Lg=$request->Nom_Lg;   
+        $langue->update();
+        return redirect()->back()->with('status','Langue modifier avec Success');
     }
 
     /**

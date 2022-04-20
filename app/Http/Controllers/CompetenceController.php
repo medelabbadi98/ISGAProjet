@@ -36,6 +36,12 @@ class CompetenceController extends Controller
     public function store(Request $request)
     {
         $competences = new Competence();
+        
+        $competences -> Cin=$request->Cin;  
+        $competences -> Description=$request->Description;
+        $competences->save();
+        return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
+    
     }
 
     /**
@@ -69,7 +75,12 @@ class CompetenceController extends Controller
      */
     public function update(Request $request, competence $competence)
     {
-        //
+        $competence = competence::find($id);
+        $competences -> Cin=$request->Cin;  
+        $competences -> Description=$request->Description;
+        $competences->update();
+        return redirect()->back()->with('status','Competence modifier avec Success');
+    
     }
 
     /**

@@ -43,6 +43,17 @@ class OffreController extends Controller
     public function store(Request $request)
     {
         $Offre = new offre();
+        
+        $Offre -> Id_CT=$request->Id_CT;  
+        $Offre -> ID_Sec=$request->ID_Sec;  
+        $Offre -> Id_rec=$request->Id_rec;  
+        $Offre -> Intitule=$request->Intitule;  
+        $Offre -> Date_Exp=$request->Date_Exp;
+        $Offre -> Description_offre=$request->Description_offre;  
+        $Offre -> Date_pub=$request->Date_pub;  
+        $Offre->save();
+        return redirect("Recruteurprofile.pagerecruteur")->withSuccess('Langue ajouter avec succes');
+    
     }
 
     /**
@@ -62,7 +73,7 @@ class OffreController extends Controller
      * @param  \App\Models\offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function edit(offre $offre)
+    public function edit(offre $offre,Request $request)
     {
         //
     }
@@ -74,9 +85,19 @@ class OffreController extends Controller
      * @param  \App\Models\offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, offre $offre)
+    public function update(Request $request,$id)
     {
-        //
+        $Offre = offre::find($id);
+        $Offre -> Id_CT=$request->Id_CT;  
+        $Offre -> ID_Sec=$request->ID_Sec;  
+        $Offre -> Id_rec=$request->Id_rec;  
+        $Offre -> Intitule=$request->Intitule;  
+        $Offre -> Date_Exp=$request->Date_Exp;
+        $Offre -> Description_offre=$request->Description_offre;  
+        $Offre -> Date_pub=$request->Date_pub;  
+        $Offre->update();
+        return redirect()->back()->with('status','Offre modifier avec Success');
+    
     }
 
     /**

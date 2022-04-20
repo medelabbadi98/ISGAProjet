@@ -59,39 +59,25 @@
 						<div class="pb-3">
 		                    <h1 class="title title--h1 first-title title__separate">CV</h1>
 					    </div>
-						
-						<!-- Experience -->
+						    <!-- Experience -->
 						<div class="pb-0">
 							<div class="row">
 							    <div class="col-12 col-lg-6">
 								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-education.svg" alt="" /> Diplômes et Formations <a href="./ajouter_diplome.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									
-									<div class="timeline">
-										
+									<div class="timeline">		
 									    <!-- Item -->
 									    <article class="timeline__item">
-											<div class="btn-edit-del">
-												<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-												<a href="edit_diplome.html" role="button"><i class="font-icon icon-tool"></i></a>
-											</div>
-									        <h5 class="title title--h5 timeline__title">Diplôme x </h5>
-											<span class="timeline__school"> ISGA RABAT
-												<span class="timeline__period">2016</span>
-											</span>
-										</article>
-
-										<!--Item-->
-										<article class="timeline__item">
-											<div class="btn-edit-del">
-												<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-												<a href="edit_diplome.html" role="button"><i class="font-icon icon-tool"></i></a>
-											</div>
-									        <h5 class="title title--h5 timeline__title">Diplôme X </h5>
-											<span class="timeline__school"> ISGA RABAT
-												<span class="timeline__period">2016</span>
-											</span>
-										</article>
-										
+											@foreach ($diplome as $item)
+												<div class="btn-edit-del">
+													<a href="{{ route('editdiplome'/.$item->id) }}" role="button"><i class="font-icon icon-tool"></i></a>
+												</div>
+												<h5 class="title title--h5 timeline__title">{{ $item->Type_Dip }} </h5>
+												<span class="timeline__school"> {{ $item->Etablissement }}
+													<span class="timeline__period">{{ $item->Annee_obtention }}</span>
+												</span>	
+											@endforeach				
+										</article>			
 									</div>	
 
 									
