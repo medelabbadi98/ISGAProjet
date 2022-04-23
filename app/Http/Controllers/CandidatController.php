@@ -16,7 +16,7 @@ class CandidatController extends Controller
     public function index()
     {
         $candidat = candidat::all();
-        return view('Candidatprofile.pagecandidat',compact('candidat')); 
+        return view('Candidatprofile.pagecandidat'); 
     }
 
     public function connection(Request $request){

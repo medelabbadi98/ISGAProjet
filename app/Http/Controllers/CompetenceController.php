@@ -35,10 +35,12 @@ class CompetenceController extends Controller
      */
     public function store(Request $request)
     {
+        
         $competences = new Competence();
         
         $competences -> Cin=$request->Cin;  
-        $competences -> Description=$request->Description;
+        $competences -> Libelle=$request->Libelle;
+        $competences -> Description=$request->Desc_competence;
         $competences->save();
         return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
     

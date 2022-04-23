@@ -42,10 +42,11 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+        
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            //
+            return redirect()->intended('.pagecandidat')
                         ->withSuccess('You have Successfully loggedin');
         }
   
@@ -95,7 +96,7 @@ class AuthController extends Controller
       return User::create([
         'name' => $data['name'],
         'email' => $data['email'],
-        'password' => Hash::make($data['password'])
+        'password' => $data['password']
       ]);
     }
     

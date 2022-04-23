@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Cin
  * @property string|null $Description
  * @property int $ID_Cmp
+ * @property string $libelle
  * 
  * @property Candidat|null $candidat
  *
@@ -27,7 +28,8 @@ class Competence extends Model
 
 	protected $fillable = [
 		'Cin',
-		'Description'
+		'Description',
+		'libelle'
 	];
 
 	public function candidat()

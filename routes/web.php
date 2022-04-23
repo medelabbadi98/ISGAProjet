@@ -35,7 +35,7 @@ Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajou
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');
 //competence
 Route::get('ajoutercompetence', [CompetenceController::class, 'index'])->name('ajoutercompetence');
-Route::post('addcompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');
+Route::post('ajoutercompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');
 //diplome
 Route::get('ajouterdiplome', [DiplomeController::class, 'index'])->name('ajouterdiplome');
 Route::post('adddiplome', [DiplomeController::class, 'store'])->name('ajouterdiplome.post');
