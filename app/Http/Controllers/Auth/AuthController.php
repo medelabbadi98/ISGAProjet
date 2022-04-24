@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Session;
 use App\Models\User;
 use Hash;
@@ -42,13 +43,18 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        
         $email =$request->email;          
         $password =$request->password;
+        $users = DB::table('users')->select('id')->where('email','=',$email)->get();
+        $candidat = DB::table('candidats')->select('cin')->where('IDuser','=',((Array)$users[0])['id'])->get();
+     
+       
         //$credentials = $request->only('email', 'password');
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
-            return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
-
+            $request->session()->put('cin', ((Array)$candidat[0])['cin']);
+            //session::set('business_id', $business->id);
+            //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+            return session::get('cin');
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
