@@ -43,11 +43,12 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            //
-            return redirect()->intended('.pagecandidat')
-                        ->withSuccess('You have Successfully loggedin');
+        $email =$request->email;          
+        $password =$request->password;
+        //$credentials = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
+            return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
@@ -79,9 +80,9 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        if(Auth::check()){
+        
             return view('dashboard');
-        }
+        
   
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
@@ -96,7 +97,7 @@ class AuthController extends Controller
       return User::create([
         'name' => $data['name'],
         'email' => $data['email'],
-        'password' => $data['password']
+        'password' => Hash::make($data['password'])
       ]);
     }
     
