@@ -46,15 +46,21 @@ class AuthController extends Controller
         $email =$request->email;          
         $password =$request->password;
         $users = DB::table('users')->select('id')->where('email','=',$email)->get();
-        $candidat = DB::table('candidats')->select('cin')->where('IDuser','=',((Array)$users[0])['id'])->get();
-     
+        $candidat = DB::table('candidats')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
+        $recruteur = DB::table('recruteurs')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
        
         //$credentials = $request->only('email', 'password');
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
-            $request->session()->put('cin', ((Array)$candidat[0])['cin']);
+            if($candidat->count()!=0){
+                $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
+            }
+            else{
+                $request->session()->put('ID_REC', ((Array)$recruteur[0])['ID_REC']);
+            }
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
-            return session::get('cin');
+            //return session::get('cin');
+            return $recruteur->count();
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
