@@ -84,11 +84,12 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-           
+        $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
+        $request->session()->put('id', ((Array)$candidat[0])['id']);
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("pagesettings")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**
@@ -124,7 +125,7 @@ class AuthController extends Controller
      */
     public function logout() {
         Session::flush();
-        $request->session()->flush();
+       
         Auth::logout();
   
         return Redirect('login');

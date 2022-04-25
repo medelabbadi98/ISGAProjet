@@ -18,6 +18,11 @@ class CandidatController extends Controller
         $candidat = candidat::all();
         return view('Candidatprofile.pagecandidat'); 
     }
+    public function setting()
+    {
+        $candidat = candidat::all();
+        return view('Candidatprofile.pagesettings'); 
+    }
 
     public function connection(Request $request){
         $candidat = DB::table('candidats')->where('email', $request->email)->first();
@@ -43,15 +48,16 @@ class CandidatController extends Controller
     public function store(Request $request)
     {
         $candidat =new candidat();   
-         
-        $candidat -> CIN =$request->cin;          
+        
+        $candidat -> CIN =$request->cin;     
+        $candidat -> IDuser =session()->get('id');      
         $candidat -> Adresse =$request->Adresse;
 		$candidat -> Nom =$request->nom;
 		$candidat -> Prenom =$request->prenom;
 		$candidat -> Tel_C =$request->tel;
-     
         $candidat->save();
-        return redirect()->route('/resources/views/SignIn.blade.php');
+        
+        return view('Candidatprofile.pagecandidat'); 
     }
 
     /**

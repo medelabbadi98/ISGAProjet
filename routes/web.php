@@ -20,7 +20,7 @@ use App\Http\Controllers\SecteurController;
 ///////////////////////////pages
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');
-//Route::get('page_settings', [AboutController::class, 'index'])->name('pagesettings');
+Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -30,21 +30,24 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
+//ajouter candidat
+Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat');
 //offre
 Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');
+
 //competence
 Route::get('ajoutercompetence', [CompetenceController::class, 'index'])->name('ajoutercompetence');
 Route::post('ajoutercompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');
 //diplome
 Route::get('ajouterdiplome', [DiplomeController::class, 'index'])->name('ajouterdiplome');
-Route::post('adddiplome', [DiplomeController::class, 'store'])->name('ajouterdiplome.post');
+Route::post('ajouterdiplome', [DiplomeController::class, 'store'])->name('ajouterdiplome.post');
 //experience
 Route::get('ajouterexperience', [ExperienceController::class, 'ajouterexperience'])->name('ajouterexperience');
-Route::post('addexperience', [ExperienceController::class, 'store'])->name('ajouterexperience.post');
+Route::post('ajouterexperience', [ExperienceController::class, 'store'])->name('ajouterexperience.post');
 //langue
 Route::get('ajouterlangue', [LangueController::class, 'ajouterlangue'])->name('ajouterlangue');
-Route::post('addlangue', [LangueController::class, 'store'])->name('ajouterlangue.post');
+Route::post('ajouterlangue', [LangueController::class, 'store'])->name('ajouterlangue.post');
 
 
 ///////////////////////////Edit routes
