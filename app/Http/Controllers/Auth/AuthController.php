@@ -94,8 +94,6 @@ class AuthController extends Controller
     {
         
             return view('dashboard');
-        
-  
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
     
