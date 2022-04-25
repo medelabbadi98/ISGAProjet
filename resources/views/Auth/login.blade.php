@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutAuth')
   
 @section('content')
 <div class="main-w3layouts wrapper">
@@ -31,7 +31,7 @@
                               <div class="">
                                   <div class="checkbox">
                                       <label>
-                                          <input type="checkbox" name="remember"> Remember Me
+                                          <!-- <input type="checkbox" name="remember"> Remember Me -->
                                       </label>
                                   </div>
                               </div>
