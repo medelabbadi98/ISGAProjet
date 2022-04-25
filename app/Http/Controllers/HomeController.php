@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\langue;
 use Illuminate\Http\Request;
 
-class LangueController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +16,6 @@ class LangueController extends Controller
         //
     }
 
-    public function ajouterlangue()
-    {
-        return view('Candidatprofile.ajouterlangue');
-    }
-
-    public function editlangue()
-    {
-        return view('Candidatprofile.editlangue');
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -33,9 +23,7 @@ class LangueController extends Controller
      */
     public function create()
     {
-        return Langue::create([
-            'Nom_Lg' => $data['Nom_Lg'],
-          ]);
+        //
     }
 
     /**
@@ -45,22 +33,17 @@ class LangueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
-        $langue=new langue();
-        $langue -> Nom_Lg=$request->Nom_Lg;    
-        $langue->save();
-
-        return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
- 
+    {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\langue  $langue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(langue $langue)
+    public function show($id)
     {
         //
     }
@@ -68,37 +51,33 @@ class LangueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\langue  $langue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // $langue = Langue::find($id);
-        // return view('');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\langue  $langue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $langue = Langue::find($id);
-        $langue->Nom_Lg=$request->Nom_Lg;   
-        $langue->update();
-        return redirect()->back()->with('status','Langue modifier avec Success');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\langue  $langue
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(langue $langue)
+    public function destroy($id)
     {
         //
     }

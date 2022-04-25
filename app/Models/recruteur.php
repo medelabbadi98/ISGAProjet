@@ -14,10 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $ID_Rec
  * @property string|null $Pseudo
  * @property string|null $photo_rec
- * @property string|null $Email_rec
- * @property string|null $Mot_de_pass_rec
  * @property string|null $telephone_rec
  * @property string|null $Adress
+ * @property int $IDuser
+ * 
+ * @property User $user
  *
  * @package App\Models
  */
@@ -29,15 +30,20 @@ class Recruteur extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'ID_Rec' => 'int'
+		'ID_Rec' => 'int',
+		'IDuser' => 'int'
 	];
 
 	protected $fillable = [
 		'Pseudo',
 		'photo_rec',
-		'Email_rec',
-		'Mot_de_pass_rec',
 		'telephone_rec',
-		'Adress'
+		'Adress',
+		'IDuser'
 	];
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'IDuser');
+	}
 }

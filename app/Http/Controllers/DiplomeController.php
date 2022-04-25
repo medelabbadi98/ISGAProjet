@@ -12,19 +12,20 @@ class DiplomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+  
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        //
+        return view('Candidatprofile.ajouterdiplome');
+    }
+    public function editdiplome()
+    {
+        return view('Candidatprofile.editdiplome');
     }
 
     /**
@@ -35,7 +36,17 @@ class DiplomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $diplome=new diplome();
+        $diplome -> Cin=$request->Cin;  
+        $diplome -> Type_Dip=$request->Type_Dip;  
+        $diplome -> Etablissement=$request->Etablissement;  
+        $diplome -> Specialites=$request->Specialites;  
+        $diplome -> _Option=$request->_Option;
+        $diplome -> Annee_obtention=$request->Annee_obtention;    
+        $diplome->save();
+         return redirect("pagecandidat");
+        
+    
     }
 
     /**
@@ -55,7 +66,7 @@ class DiplomeController extends Controller
      * @param  \App\Models\diplome  $diplome
      * @return \Illuminate\Http\Response
      */
-    public function edit(diplome $diplome)
+    public function edit(diplome $diplome,Request $request)
     {
         //
     }
@@ -67,9 +78,18 @@ class DiplomeController extends Controller
      * @param  \App\Models\diplome  $diplome
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, diplome $diplome)
+    public function update(Request $request, $id)
     {
-        //
+        $diplome  = diplome::find($id);
+        $diplome -> Cin=$request->Cin;  
+        $diplome -> Type_Dip=$request->Type_Dip;  
+        $diplome -> Etablissement=$request->Etablissement;  
+        $diplome -> Specialites=$request->Specialites;  
+        $diplome -> _Option=$request->_Option;
+        $diplome -> Annee_obtention=$request->Annee_obtention;    
+        $diplome->update();
+        return redirect()->back()->with('status','Diplome modifier avec Success');
+    
     }
 
     /**

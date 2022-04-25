@@ -12,21 +12,21 @@ class CompetenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        //
+        return view('Candidatprofile.ajoutercompetence');
     }
-
+    public function editcompetence()
+    {
+        return view('Candidatprofile.editcompetence');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +35,15 @@ class CompetenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $competences = new Competence();
+        
+        $competences -> Cin=$request->Cin;  
+        $competences -> Libelle=$request->Libelle;
+        $competences -> Description=$request->Desc_competence;
+        $competences->save();
+        return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
+    
     }
 
     /**
@@ -69,7 +77,12 @@ class CompetenceController extends Controller
      */
     public function update(Request $request, competence $competence)
     {
-        //
+        $competence = competence::find($id);
+        $competences -> Cin=$request->Cin;  
+        $competences -> Description=$request->Description;
+        $competences->update();
+        return redirect()->back()->with('status','Competence modifier avec Success');
+    
     }
 
     /**
