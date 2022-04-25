@@ -24,20 +24,19 @@
                             </g>
                         </svg>
 						<div class="text-center">
-						    <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">Nom</span> Prenom</h3>
-							<div class="badge badge--gray">{{{ session()->get('CIN') }}}</div>
-						</div>
-						
+						    <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{{ session()->get('Nom') }}}</span> {{{ session()->get('Prenom') }}}</h3>
+							<div class="badge badge--gray">{{{ session()->get('Cin') }}}</div>
+						</div>						
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
-							        <i class="font-icon icon-location"></i>Rabat, Maroc
+							        <i class="font-icon icon-location"></i>{{{ session()->get('Adresse') }}}
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>example@mail.com</a>
+							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{{ session()->get('Email') }}}</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
-							        <i class="font-icon icon-phone"></i>+212 64470xxxxxx
+							        <i class="font-icon icon-phone"></i>{{{ session()->get('Tel_C') }}}
 							    </li>
 					        </ul>
 						</div>
