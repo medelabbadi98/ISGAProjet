@@ -35,7 +35,7 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Contrat=new Contrat();
     }
 
     /**

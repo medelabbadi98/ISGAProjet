@@ -14,7 +14,7 @@ class RecruteurController extends Controller
      */
     public function index()
     {
-        //
+        return view('Recruteurprofile.pagerecruteur');
     }
 
     /**
@@ -35,7 +35,7 @@ class RecruteurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recruteur=new recruteur();
     }
 
     /**
