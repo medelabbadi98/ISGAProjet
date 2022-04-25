@@ -48,14 +48,14 @@ class AuthController extends Controller
         $users = DB::table('users')->select('id')->where('email','=',$email)->get();
         $candidat = DB::table('candidats')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
         $recruteur = DB::table('recruteurs')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
-       
         //$credentials = $request->only('email', 'password');
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
             if($candidat->count()!=0){
-                $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
+               // $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
+               $request->session()->put('candidat', $candidat);
             }
             else{
-                $request->session()->put('ID_REC', ((Array)$recruteur[0])['ID_REC']);
+                $request->session()->put('recruteur', $recruteur);
             }
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
