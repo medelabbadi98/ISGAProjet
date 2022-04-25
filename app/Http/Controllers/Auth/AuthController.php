@@ -60,7 +60,7 @@ class AuthController extends Controller
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
             //return session::get('cin');
-            return $recruteur->count();
+            return redirect("pagecandidat")->withSuccess('Oppes! You have entered invalid credentials');
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');

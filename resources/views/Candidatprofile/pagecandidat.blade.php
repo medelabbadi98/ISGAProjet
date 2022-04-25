@@ -12,6 +12,7 @@
 	</div>
 
     <main class="main">
+		@csrf
 	    <div class="container gutter-top">
 		    <div class="row sticky-parent">
 			    <!-- Sidebar -->
@@ -24,7 +25,7 @@
                         </svg>
 						<div class="text-center">
 						    <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">Nom</span> Prenom</h3>
-							<div class="badge badge--gray">Ingenieur</div>
+							<div class="badge badge--gray">{{{ session()->get('CIN') }}}</div>
 						</div>
 						
 						<div class="sidebar__info box-inner box-inner--rounded">
@@ -50,8 +51,8 @@
 						<div class="pb-0 pb-sm-2 position-relative">
 		                    <h1 class="title title--h1 first-title title__separate">À propos de moi</h1>
 							<div class="btn-edit-del ">
-								<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-								<a href="edit_about.html" role="button"><i class="font-icon icon-tool"></i></a>
+								
+								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
 						    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem porro excepturi veniam laboriosam, odit repellendus <br>
 								 consequatur reiciendis exercitationem quaerat enim ex quos nam quam perspiciatis dolor rem minus eveniet modi?</p>
@@ -63,20 +64,18 @@
 						<div class="pb-0">
 							<div class="row">
 							    <div class="col-12 col-lg-6">
-								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-education.svg" alt="" /> Diplômes et Formations <a href="./ajouter_diplome.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
+								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-education.svg" alt="" /> Diplômes et Formations <a href="ajouterdiplome" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									
 									<div class="timeline">		
 									    <!-- Item -->
-									    <article class="timeline__item">
-										
-										</article>			
+									    		
 									</div>	
 
 									
 								</div>
 								
 							    <div class="col-12 col-lg-6">
-								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-experience.svg" alt="" />Expériences professionnelles <a href="./ajouter_experience.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
+								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-experience.svg" alt="" />Expériences professionnelles <a href="ajouterexperience" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="timeline">
 									    <!-- Item -->
 									    <article class="timeline__item">
@@ -100,7 +99,7 @@
 						<div class="box-inner box-inner--rounded">
 						    <div class="row">
 							    <div class="col-12 col-lg-6">
-						            <h2 class="title title--h3" style="width: fit-content;">Competances <a href="./ajouter_competence.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
+						            <h2 class="title title--h3" style="width: fit-content;">Competances <a href="ajoutercompetence" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
 											<!-- Item -->
@@ -128,7 +127,7 @@
                                 </div>
 								
 							    <div class="col-12 col-lg-6 mt-4 mt-lg-0">
-						            <h2 class="title title--h3">Langues <a href="./ajouter_langue.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
+						            <h2 class="title title--h3">Langues <a href="ajouterlangue" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
 											<!-- Item -->
