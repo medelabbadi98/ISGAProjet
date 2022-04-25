@@ -68,15 +68,7 @@
 									<div class="timeline">		
 									    <!-- Item -->
 									    <article class="timeline__item">
-											@foreach ($diplome as $item)
-												<div class="btn-edit-del">
-													<a href="{{ route('editdiplome'/.$item->id) }}" role="button"><i class="font-icon icon-tool"></i></a>
-												</div>
-												<h5 class="title title--h5 timeline__title">{{ $item->Type_Dip }} </h5>
-												<span class="timeline__school"> {{ $item->Etablissement }}
-													<span class="timeline__period">{{ $item->Annee_obtention }}</span>
-												</span>	
-											@endforeach				
+										
 										</article>			
 									</div>	
 
