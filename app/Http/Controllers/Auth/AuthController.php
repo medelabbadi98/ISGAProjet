@@ -87,16 +87,14 @@ class AuthController extends Controller
 
         $data = $request->all();
         $check = $this->create($data);
-        
         $email =$request->email;  
         $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
         $request->session()->put('id', ((Array)$users[0])['id']);
         $request->session()->put('Email',$email);
-
-        if($val==0 ) return redirect("pagesettings");//candidat setting
-        else return $val;
-         
+        $request->session()->put('Type',$val);
         
+         
+        return redirect("pagesettings");
     }
     
     /**
