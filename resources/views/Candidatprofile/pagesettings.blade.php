@@ -22,8 +22,8 @@
 		                    <h1 class="title title--h1 first-title title__separate">paramètres</h1>
 					    </div>
 							
-						<form id="contact-form" class="contact-form"   method="POST" data-toggle="validator" novalidate="true">
-                        @csrf 
+						<form id="contact-form" action="{{ route('ajoutercandidat.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+                        @csrf
 							<div class="row">
 								<div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control"  name="cin" placeholder="CIN" required="required" autocomplete="on" >

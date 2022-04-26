@@ -51,25 +51,24 @@ class AuthController extends Controller
         //$credentials = $request->only('email', 'password');
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
             if($candidat->count()!=0){
-               // $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
-               $request->session()->put('Email', $email);
+               $request->session()->put('email', $email); 
                $request->session()->put('Cin', ((Array)$candidat[0])['CIN']);
                $request->session()->put('Nom', ((Array)$candidat[0])['Nom']);
                $request->session()->put('Prenom', ((Array)$candidat[0])['Prenom']);
                $request->session()->put('Tel_C', ((Array)$candidat[0])['Tel_C']);
                $request->session()->put('Adresse', ((Array)$candidat[0])['Adresse']);
-
+               return redirect("pagecandidat");
             }
             else{
                 $request->session()->put('recruteur', $recruteur);
+                return redirect("pagecandidat");
             }
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
             //return ((Array)$candidat[0])['Nom'];
-            return redirect("pagecandidat")->withSuccess('Oppes! You have entered invalid credentials');
         }
   
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("login");
     }
       
     /**
@@ -84,12 +83,20 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-        $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
-        $request->session()->put('id', ((Array)$candidat[0])['id']);
+        $val=$request->select;
+
         $data = $request->all();
         $check = $this->create($data);
+        
+        $email =$request->email;  
+        $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
+        $request->session()->put('id', ((Array)$users[0])['id']);
+        $request->session()->put('Email',$email);
+
+        if($val==0 ) return redirect("pagesettings");//candidat setting
+        else return $val;
          
-        return redirect("pagesettings")->withSuccess('Great! You have Successfully loggedin');
+        
     }
     
     /**

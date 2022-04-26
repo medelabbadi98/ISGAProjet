@@ -31,11 +31,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
 //ajouter candidat
-Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat');
+Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat.post');
 //offre
 Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');
-
 //competence
 Route::get('ajoutercompetence', [CompetenceController::class, 'index'])->name('ajoutercompetence');
 Route::post('ajoutercompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');
