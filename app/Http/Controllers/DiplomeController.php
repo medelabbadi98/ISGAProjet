@@ -44,8 +44,7 @@ class DiplomeController extends Controller
         $diplome -> _Option=$request->_Option;
         $diplome -> Annee_obtention=$request->Annee_obtention;    
         $diplome->save();
-        return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
-    
+        return redirect("Candidatprofile.pagecandidat");
     }
 
     /**
