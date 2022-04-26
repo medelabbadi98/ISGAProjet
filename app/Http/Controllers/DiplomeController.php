@@ -37,7 +37,7 @@ class DiplomeController extends Controller
     public function store(Request $request)
     {
         $diplome=new diplome();
-        $diplome -> Cin=$request->Cin;  
+        $diplome -> Cin=$request->session()->get('Cin');  
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  

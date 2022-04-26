@@ -44,7 +44,7 @@ class ExperienceController extends Controller
     public function store(Request $request)
     {
        $experience = new experience();
-       $experience -> Cin=$request->Cin;  
+       $experience -> Cin=$request->session()->get('Cin');  
        $experience -> Nom_Etp=$request->Nom_Etp;  
        $experience -> Intitule_Poste=$request->Intitule_Poste;  
        $experience -> Date_Debut=$request->Date_Debut;  
@@ -86,7 +86,7 @@ class ExperienceController extends Controller
     public function update(Request $request, $id)
     {
         $experience = experience::find($id);
-        $experience -> Cin=$request->Cin;  
+          
         $experience -> Nom_Etp=$request->Nom_Etp;  
         $experience -> Intitule_Poste=$request->Intitule_Poste;  
         $experience -> Date_Debut=$request->Date_Debut;  
