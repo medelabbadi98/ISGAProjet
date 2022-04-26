@@ -38,7 +38,7 @@ class CompetenceController extends Controller
         
         $competences = new Competence();
         
-        $competences -> Cin=$request->Cin;  
+        $competences -> Cin=$request->session()->get('Cin');  
         $competences -> Libelle=$request->Libelle;
         $competences -> Description=$request->Desc_competence;
         $competences->save();
