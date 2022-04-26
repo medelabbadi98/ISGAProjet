@@ -52,7 +52,7 @@ class OffreController extends Controller
         $Offre -> Description_offre=$request->Description_offre;  
         $Offre -> Date_pub=$request->Date_pub;  
         $Offre->save();
-        return redirect("Recruteurprofile.pagerecruteur")->withSuccess('Langue ajouter avec succes');
+        return redirect("Recruteurprofile.pagerecruteur");
     
     }
 

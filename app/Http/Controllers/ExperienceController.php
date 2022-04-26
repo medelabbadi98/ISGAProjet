@@ -51,7 +51,7 @@ class ExperienceController extends Controller
        $experience -> Date_Fin=$request->Date_Fin;
        $experience -> Description_Ex=$request->Description_Ex;    
        $experience->save();
-       return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
+       return redirect("Candidatprofile.pagecandidat");
     }
 
     /**
@@ -85,8 +85,7 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $experience = experience::find($id);
-          
+        $experience = experience::find($id);         
         $experience -> Nom_Etp=$request->Nom_Etp;  
         $experience -> Intitule_Poste=$request->Intitule_Poste;  
         $experience -> Date_Debut=$request->Date_Debut;  
@@ -94,7 +93,6 @@ class ExperienceController extends Controller
         $experience -> Description_Ex=$request->Description_Ex;    
         $experience->update();
         return redirect()->back()->with('status',' experience modifier avec Success');
-    
     }
 
     /**
