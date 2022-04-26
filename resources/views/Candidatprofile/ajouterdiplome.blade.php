@@ -22,8 +22,9 @@
                             <h1 class="title title--h1 first-title title__separate">Ajouter Diplôme</h1>
                         </div>
             
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
-                            <div class="row">
+                        <form id="contact-form" action="{{ route('ajouterdiplome') }}" class="contact-form" method="POST" data-toggle="validator" novalidate="true">
+                        @csrf
+                        <div class="row">
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" autocomplete="on" name="type_d" placeholder="Diplome" required="required" >
                                     <div class="help-block with-errors"></div>

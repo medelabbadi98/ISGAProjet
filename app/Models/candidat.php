@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Adresse
  * @property string|null $Tel_C
  * @property int $IDuser
+ * @property string|null $About
  * 
  * @property User $user
  * @property Collection|Competence[] $competences
@@ -44,7 +45,8 @@ class Candidat extends Model
 		'Prenom',
 		'Adresse',
 		'Tel_C',
-		'IDuser'
+		'IDuser',
+		'About'
 	];
 
 	public function user()

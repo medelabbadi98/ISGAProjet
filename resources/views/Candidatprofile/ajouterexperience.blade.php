@@ -22,7 +22,8 @@
                             <h1 class="title title--h1 first-title title__separate">Ajouter experience</h1>
                         </div>
             
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
+                        <form id="contact-form" class="contact-form" action="{{ route('ajouterexperience') }}" method="POST" data-toggle="validator" novalidate="true">
+                        @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" name="poste" autocomplete="on" placeholder="Poste" required="required" >

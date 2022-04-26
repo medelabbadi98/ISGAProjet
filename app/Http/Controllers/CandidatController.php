@@ -16,7 +16,14 @@ class CandidatController extends Controller
     public function index()
     {
         $candidat = candidat::all();
+       
+        
         return view('Candidatprofile.pagecandidat'); 
+    }
+    public function setting()
+    {
+        $candidat = candidat::all();
+        return view('Candidatprofile.pagesettings'); 
     }
 
     public function connection(Request $request){
@@ -42,16 +49,20 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-        $candidat =new candidat();   
-         
-        $candidat -> CIN =$request->cin;          
-        $candidat -> Adresse =$request->Adresse;
+        $candidat =new candidat();     
+        $candidat -> CIN =$request->cin;     
+        $candidat -> IDuser =session()->get('id');            
+        $candidat -> Adresse =$request->adresse;
 		$candidat -> Nom =$request->nom;
 		$candidat -> Prenom =$request->prenom;
-		$candidat -> Tel_C =$request->tel;
-     
+		$candidat -> Tel_C =$request->telephone;
         $candidat->save();
-        return redirect()->route('/resources/views/SignIn.blade.php');
+        $request->session()->put('Cin', $request->cin);
+        $request->session()->put('Nom', $request->nom);
+        $request->session()->put('Prenom', $request->prenom);
+        $request->session()->put('Tel_C', $request->telephone);
+        $request->session()->put('Adresse', $request->adresse);
+        return view('Candidatprofile.pagecandidat'); 
     }
 
     /**
