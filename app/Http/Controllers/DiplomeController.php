@@ -79,7 +79,7 @@ class DiplomeController extends Controller
     public function update(Request $request, $id)
     {
         $diplome  = diplome::find($id);
-        $diplome -> Cin=$request->Cin;  
+        $diplome -> Cin=$request->session->get('Cin');  
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  

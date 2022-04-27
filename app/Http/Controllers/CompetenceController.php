@@ -78,11 +78,10 @@ class CompetenceController extends Controller
     public function update(Request $request, competence $competence)
     {
         $competence = competence::find($id);
-        $competences -> Cin=$request->Cin;  
+        $competences -> Cin=$request->session()->get('Cin');  
         $competences -> Description=$request->Description;
         $competences->update();
         return redirect()->back()->with('status','Competence modifier avec Success');
-    
     }
 
     /**
