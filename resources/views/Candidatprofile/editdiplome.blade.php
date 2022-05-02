@@ -49,7 +49,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
-                                    <a href="page_candidat.html" class="btn btn-secondary ">Annuler</a>
+                                    <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
                                 </div>
                             </div>
                         </form>
