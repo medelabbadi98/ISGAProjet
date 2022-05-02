@@ -146,7 +146,7 @@
 														<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
 														<a href="editcompetence" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
-													<h5 class="title title--h5 timeline__title">{{ $cp->Libelle }}</h5>
+													<h5 class="title title--h5 timeline__title">{{ $cp->libelle }}</h5>
 													<p class="timeline__description">{{ $cp->Description }}</p>
 												</article>
 											@endforeach
