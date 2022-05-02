@@ -46,11 +46,11 @@ Route::get('ajouterexperience', [ExperienceController::class, 'ajouterexperience
 Route::post('ajouterexperience', [ExperienceController::class, 'store'])->name('ajouterexperience.post');
 //langue
 Route::get('ajouterlangue', [LangueController::class, 'ajouterlangue'])->name('ajouterlangue');
-Route::post('ajouterlangue', [LangueController::class, 'store'])->name('ajouterlangue.post');
+Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajouterlangue.post');
 
 
 ///////////////////////////Edit routes
-//Route::get('editabout', [AboutController::class, 'editabout'])->name('editabout');
+Route::post('editabout', [CandidatController::class, 'editabout'])->name('editabout.post');
 Route::get('editcompetence', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
 Route::post('Modifiercompetence', [CompetenceController::class, 'update'])->name('editcompetence.post');
 //diplome

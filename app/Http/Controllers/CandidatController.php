@@ -16,9 +16,13 @@ class CandidatController extends Controller
     public function index()
     {
         $candidat = candidat::all();
-       
+        $diplome=DB::table('diplomes')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+        $experience=DB::table('experiences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+        $competence=DB::table('competences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+        $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',session()->get('Cin'))->get();
         
-        return view('Candidatprofile.pagecandidat'); 
+        
+        return view('Candidatprofile.pagecandidat',compact('diplome','langue','competence','experience')); 
     }
     public function setting()
     {
@@ -99,5 +103,8 @@ class CandidatController extends Controller
       
     }
 
+    // public function editabout(Request $request){
+    //     return view("editabout");
+    // }
    
 }

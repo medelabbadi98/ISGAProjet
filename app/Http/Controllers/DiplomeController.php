@@ -44,7 +44,7 @@ class DiplomeController extends Controller
         $diplome -> _Option=$request->_Option;
         $diplome -> Annee_obtention=$request->Annee_obtention;    
         $diplome->save();
-        return redirect("Candidatprofile.pagecandidat");
+        return redirect("pagecandidat");
     }
 
     /**
@@ -55,7 +55,8 @@ class DiplomeController extends Controller
      */
     public function show(diplome $diplome)
     {
-        //
+        $diplome = DB::table('diplomes')->where('Cin', '=',session()->get('Cin'));
+        return $diplome;
     }
 
     /**
@@ -79,7 +80,7 @@ class DiplomeController extends Controller
     public function update(Request $request, $id)
     {
         $diplome  = diplome::find($id);
-        $diplome -> Cin=$request->Cin;  
+        $diplome -> Cin=$request->session->get('Cin');  
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  
