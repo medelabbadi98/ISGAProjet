@@ -23,7 +23,8 @@
                         </div>
             
                         <!-- Contact -->
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
+                        <form id="contact-form" action="{{ route('editabout.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+                        @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-12">
                                     <textarea class="textarea form-control" placeholder="About" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;"></textarea>

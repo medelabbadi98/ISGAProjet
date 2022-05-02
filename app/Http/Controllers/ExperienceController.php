@@ -51,7 +51,7 @@ class ExperienceController extends Controller
        $experience -> Date_Fin=$request->Date_Fin;
        $experience -> Description_Ex=$request->Description_Ex;    
        $experience->save();
-       return redirect("Candidatprofile.pagecandidat");
+       return redirect("pagecandidat");
     }
 
     /**

@@ -42,7 +42,7 @@ class CompetenceController extends Controller
         $competences -> Libelle=$request->Libelle;
         $competences -> Description=$request->Desc_competence;
         $competences->save();
-        return redirect("Candidatprofile.pagecandidat");
+        return redirect("pagecandidat");
     
     }
 
