@@ -19,11 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Adresse
  * @property string|null $Tel_C
  * @property int $IDuser
-<<<<<<< HEAD
- * @property int|null $about
-=======
  * @property string|null $About
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
  * 
  * @property User $user
  * @property Collection|Competence[] $competences
@@ -40,12 +36,7 @@ class Candidat extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-<<<<<<< HEAD
-		'IDuser' => 'int',
-		'about' => 'int'
-=======
 		'IDuser' => 'int'
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 	];
 
 	protected $fillable = [
@@ -55,11 +46,7 @@ class Candidat extends Model
 		'Adresse',
 		'Tel_C',
 		'IDuser',
-<<<<<<< HEAD
-		'about'
-=======
 		'About'
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 	];
 
 	public function user()

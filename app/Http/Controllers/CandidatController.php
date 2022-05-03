@@ -16,9 +16,6 @@ class CandidatController extends Controller
     public function index()
     {
         $candidat = candidat::all();
-<<<<<<< HEAD
-        return view('Candidatprofile.pagecandidat'); 
-=======
         $diplome=DB::table('diplomes')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $experience=DB::table('experiences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $competence=DB::table('competences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
@@ -31,7 +28,6 @@ class CandidatController extends Controller
     {
         $candidat = candidat::all();
         return view('Candidatprofile.pagesettings'); 
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     public function connection(Request $request){
@@ -57,18 +53,6 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        $candidat =new candidat();   
-         
-        $candidat -> CIN =$request->cin;          
-        $candidat -> Adresse =$request->Adresse;
-		$candidat -> Nom =$request->nom;
-		$candidat -> Prenom =$request->prenom;
-		$candidat -> Tel_C =$request->tel;
-     
-        $candidat->save();
-        return redirect()->route('/resources/views/SignIn.blade.php');
-=======
         $candidat =new candidat();     
         $candidat -> CIN =$request->cin;     
         $candidat -> IDuser =session()->get('id');            
@@ -83,7 +67,6 @@ class CandidatController extends Controller
         $request->session()->put('Tel_C', $request->telephone);
         $request->session()->put('Adresse', $request->adresse);
         return view('Candidatprofile.pagecandidat'); 
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**
@@ -121,14 +104,8 @@ class CandidatController extends Controller
       
     }
 
-<<<<<<< HEAD
-    public function editabout(Request $request){
-        
-    }
-=======
     // public function editabout(Request $request){
     //     return view("editabout");
     // }
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
    
 }

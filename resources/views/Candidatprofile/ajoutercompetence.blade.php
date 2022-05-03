@@ -26,14 +26,7 @@
                         @csrf
 
                         <div class="row">
-<<<<<<< HEAD
-                            <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="Cin" autocomplete="on" placeholder="Competance" required="required" >
-                                    <div class="help-block with-errors"></div>
-                                </div>
-=======
                             
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" name="Libelle" autocomplete="on" placeholder="Competance" required="required" >
                                     <div class="help-block with-errors"></div>

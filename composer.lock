@@ -223,7 +223,6 @@
         },
         {
             "name": "doctrine/dbal",
-<<<<<<< HEAD
             "version": "3.3.6",
             "source": {
                 "type": "git",
@@ -234,18 +233,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/dbal/zipball/9e7f76dd1cde81c62574fdffa5a9c655c847ad21",
                 "reference": "9e7f76dd1cde81c62574fdffa5a9c655c847ad21",
-=======
-            "version": "3.3.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/dbal.git",
-                "reference": "719663b15983278227669c8595151586a2ff3327"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/719663b15983278227669c8595151586a2ff3327",
-                "reference": "719663b15983278227669c8595151586a2ff3327",
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                 "shasum": ""
             },
             "require": {
@@ -259,17 +246,10 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "9.0.0",
-<<<<<<< HEAD
                 "jetbrains/phpstorm-stubs": "2022.1",
                 "phpstan/phpstan": "1.6.3",
                 "phpstan/phpstan-strict-rules": "^1.2",
                 "phpunit/phpunit": "9.5.20",
-=======
-                "jetbrains/phpstorm-stubs": "2021.1",
-                "phpstan/phpstan": "1.5.3",
-                "phpstan/phpstan-strict-rules": "^1.1",
-                "phpunit/phpunit": "9.5.16",
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                 "psalm/plugin-phpunit": "0.16.1",
                 "squizlabs/php_codesniffer": "3.6.2",
                 "symfony/cache": "^5.2|^6.0",
@@ -334,11 +314,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/doctrine/dbal/tree/3.3.6"
-=======
-                "source": "https://github.com/doctrine/dbal/tree/3.3.5"
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
             },
             "funding": [
                 {
@@ -354,11 +330,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-02T17:21:01+00:00"
-=======
-            "time": "2022-04-05T09:50:18+00:00"
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         },
         {
             "name": "doctrine/deprecations",
@@ -1259,7 +1231,6 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< HEAD
             "version": "v8.83.10",
             "source": {
                 "type": "git",
@@ -1270,18 +1241,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/148ae59b7da6c3db6736374d357c5aaef9506fb7",
                 "reference": "148ae59b7da6c3db6736374d357c5aaef9506fb7",
-=======
-            "version": "v8.83.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "ac6e16bb56510eda2e373c6365d5c92da3fd559d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ac6e16bb56510eda2e373c6365d5c92da3fd559d",
-                "reference": "ac6e16bb56510eda2e373c6365d5c92da3fd559d",
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                 "shasum": ""
             },
             "require": {
@@ -1441,11 +1400,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-<<<<<<< HEAD
             "time": "2022-04-27T14:07:37+00:00"
-=======
-            "time": "2022-04-19T15:01:38+00:00"
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         },
         {
             "name": "laravel/sanctum",
@@ -2076,11 +2031,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-04-25T19:31:17+00:00"
-=======
-            "time": "2022-02-13T18:13:33+00:00"
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         },
         {
             "name": "nikic/php-parser",
@@ -6044,7 +5995,6 @@
         },
         {
             "name": "laravel/sail",
-<<<<<<< HEAD
             "version": "v1.14.0",
             "source": {
                 "type": "git",
@@ -6055,18 +6005,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/453c66fde4109eb49e12299ffe3bf0d667983447",
                 "reference": "453c66fde4109eb49e12299ffe3bf0d667983447",
-=======
-            "version": "v1.13.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/sail.git",
-                "reference": "cbf55e1a392724313f7726c38578b5e008df6a0f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/cbf55e1a392724313f7726c38578b5e008df6a0f",
-                "reference": "cbf55e1a392724313f7726c38578b5e008df6a0f",
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                 "shasum": ""
             },
             "require": {
@@ -6113,11 +6051,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-<<<<<<< HEAD
             "time": "2022-04-27T13:10:22+00:00"
-=======
-            "time": "2022-04-14T18:29:22+00:00"
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         },
         {
             "name": "mockery/mockery",

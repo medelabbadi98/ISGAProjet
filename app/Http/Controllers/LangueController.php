@@ -49,12 +49,7 @@ class LangueController extends Controller
         $langue=new langue();
         $langue -> Nom_Lg=$request->Nom_Lg;    
         $langue->save();
-<<<<<<< HEAD
-
-        return redirect("Candidatprofile.pagecandidat")->withSuccess('Langue ajouter avec succes');
-=======
         return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
  
     }
 

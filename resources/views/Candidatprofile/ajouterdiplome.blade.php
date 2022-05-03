@@ -22,19 +22,9 @@
                             <h1 class="title title--h1 first-title title__separate">Ajouter Diplôme</h1>
                         </div>
             
-<<<<<<< HEAD
-                        <form id="contact-form" action="{{ route('ajouterdiplome') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
-                        @csrf
-                            <div class="row">
-                            <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="Cin" placeholder="cin" required="required" >
-                                    <div class="help-block with-errors"></div>
-                                </div>
-=======
                         <form id="contact-form" action="{{ route('ajouterdiplome') }}" class="contact-form" method="POST" data-toggle="validator" novalidate="true">
                         @csrf
                         <div class="row">
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" autocomplete="on" name="Type_Dip" placeholder="Diplome" required="required" >
                                     <div class="help-block with-errors"></div>

@@ -85,11 +85,7 @@
 
                                 <h5 class="title title--h5 timeline__title">poste </h5>
                                 <span class="timeline__secteur"> Secteur</span>
-<<<<<<< HEAD
-                                <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">2016</span></h6>
-=======
                                 <h6 class="title title--h6">{{Date d'Experation}}  :<span class="timeline__period">2016</span></h6>
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 <p class="timeline__description">Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti.</p>
                                 
                             </article>

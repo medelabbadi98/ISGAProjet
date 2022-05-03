@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\DB;
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 use Session;
 use App\Models\User;
 use Hash;
@@ -46,17 +43,6 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-<<<<<<< HEAD
-        
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            //
-            return redirect()->intended('.pagecandidat')
-                        ->withSuccess('You have Successfully loggedin');
-        }
-  
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
-=======
         $email =$request->email;          
         $password =$request->password;
         $users = DB::table('users')->select('id')->where('email','=',$email)->get();
@@ -83,7 +69,6 @@ class AuthController extends Controller
         }
   
         return redirect("login");
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
       
     /**
@@ -98,13 +83,6 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-<<<<<<< HEAD
-           
-        $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
-=======
         $val=$request->select;
 
         $data = $request->all();
@@ -117,7 +95,6 @@ class AuthController extends Controller
         
          
         return redirect("pagesettings");
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
     
     /**
@@ -127,15 +104,8 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-<<<<<<< HEAD
-        if(Auth::check()){
-            return view('dashboard');
-        }
-  
-=======
         
             return view('dashboard');
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
     
@@ -149,11 +119,7 @@ class AuthController extends Controller
       return User::create([
         'name' => $data['name'],
         'email' => $data['email'],
-<<<<<<< HEAD
-        'password' => $data['password']
-=======
         'password' => Hash::make($data['password'])
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
       ]);
     }
     
@@ -164,10 +130,7 @@ class AuthController extends Controller
      */
     public function logout() {
         Session::flush();
-<<<<<<< HEAD
-=======
        
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         Auth::logout();
   
         return Redirect('login');

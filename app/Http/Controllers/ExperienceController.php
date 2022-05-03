@@ -44,22 +44,14 @@ class ExperienceController extends Controller
     public function store(Request $request)
     {
        $experience = new experience();
-<<<<<<< HEAD
-       $experience -> Cin=$request->Cin;  
-=======
        $experience -> Cin=$request->session()->get('Cin');  
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
        $experience -> Nom_Etp=$request->Nom_Etp;  
        $experience -> Intitule_Poste=$request->Intitule_Poste;  
        $experience -> Date_Debut=$request->Date_Debut;  
        $experience -> Date_Fin=$request->Date_Fin;
        $experience -> Description_Ex=$request->Description_Ex;    
        $experience->save();
-<<<<<<< HEAD
-       return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
-=======
        return redirect("pagecandidat");
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**
@@ -93,13 +85,8 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        $experience = experience::find($id);
-        $experience -> Cin=$request->Cin;  
-=======
         $experience = experience::find($id);    
         $experience -> Cin = $request->session->get('Cin');       
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         $experience -> Nom_Etp=$request->Nom_Etp;  
         $experience -> Intitule_Poste=$request->Intitule_Poste;  
         $experience -> Date_Debut=$request->Date_Debut;  
@@ -107,10 +94,6 @@ class ExperienceController extends Controller
         $experience -> Description_Ex=$request->Description_Ex;    
         $experience->update();
         return redirect()->back()->with('status',' experience modifier avec Success');
-<<<<<<< HEAD
-    
-=======
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**

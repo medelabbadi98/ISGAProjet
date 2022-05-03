@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@extends('layout')
-=======
 @extends('layoutAuth')
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
   
 @section('content')
 <div class="main-w3layouts wrapper">

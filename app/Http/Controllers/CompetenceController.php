@@ -38,19 +38,11 @@ class CompetenceController extends Controller
         
         $competences = new Competence();
         
-<<<<<<< HEAD
-        $competences -> Cin=$request->Cin;  
-        $competences -> Libelle=$request->Libelle;
-        $competences -> Description=$request->Desc_competence;
-        $competences->save();
-        return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
-=======
         $competences -> Cin=$request->session()->get('Cin');  
         $competences -> Libelle=$request->Libelle;
         $competences -> Description=$request->Desc_competence;
         $competences->save();
         return redirect("pagecandidat");
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     
     }
 
@@ -86,18 +78,10 @@ class CompetenceController extends Controller
     public function update(Request $request, competence $competence)
     {
         $competence = competence::find($id);
-<<<<<<< HEAD
-        $competences -> Cin=$request->Cin;  
-        $competences -> Description=$request->Description;
-        $competences->update();
-        return redirect()->back()->with('status','Competence modifier avec Success');
-    
-=======
         $competences -> Cin=$request->session()->get('Cin');  
         $competences -> Description=$request->Description;
         $competences->update();
         return redirect()->back()->with('status','Competence modifier avec Success');
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**

@@ -37,24 +37,14 @@ class DiplomeController extends Controller
     public function store(Request $request)
     {
         $diplome=new diplome();
-<<<<<<< HEAD
-        $diplome -> Cin=$request->Cin;  
-=======
         $diplome -> Cin=$request->session()->get('Cin');  
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  
         $diplome -> _Option=$request->_Option;
         $diplome -> Annee_obtention=$request->Annee_obtention;    
         $diplome->save();
-<<<<<<< HEAD
-         return redirect("pagecandidat");
-        
-    
-=======
         return redirect("pagecandidat");
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**
@@ -90,11 +80,7 @@ class DiplomeController extends Controller
     public function update(Request $request, $id)
     {
         $diplome  = diplome::find($id);
-<<<<<<< HEAD
-        $diplome -> Cin=$request->Cin;  
-=======
         $diplome -> Cin=$request->session->get('Cin');  
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  

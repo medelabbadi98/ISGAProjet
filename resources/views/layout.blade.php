@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="csssigneup.css">
-=======
     
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 	<link href="font-awesome/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css"/>
 	<style type="text/css">

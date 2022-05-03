@@ -22,28 +22,15 @@
 		                    <h1 class="title title--h1 first-title title__separate">paramètres</h1>
 					    </div>
 							
-<<<<<<< HEAD
-						<form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
-                            <div class="row">
-=======
 						<form id="contact-form" action="{{ route('ajoutercandidat.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
                         @csrf
 							<div class="row">
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 								<div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control"  name="cin" placeholder="CIN" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
-<<<<<<< HEAD
-								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="user" placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
-								    <div class="help-block with-errors"></div>
-				                </div>
-
-=======
 				
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 				                <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control"  name="nom" placeholder="Nom" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
@@ -54,20 +41,8 @@
 								    <div class="help-block with-errors"></div>
 				                </div>
 
-<<<<<<< HEAD
-								<div class="form-group col-12 col-md-6">
-                                    <input type="email" class="input form-control"  name="email" placeholder="Email" required="required">
-								    <div class="help-block with-errors"></div>
-				                </div>
-
-                                <div class="form-group col-12 col-md-6">
-                                    <input type="password" class="input form-control"  name="motdepasse" placeholder="Password" required="required">
-								    <div class="help-block with-errors"></div>
-				                </div>
-=======
 
                                
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 
 								<div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control"  name="adresse" placeholder="Adresse" required="required">
@@ -82,12 +57,7 @@
 						    </div>
 							<div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
-<<<<<<< HEAD
-                                    <button type="submit" class="btn disabled">Modifier</button>
-                                    <a href="page_candidat.html" class="btn btn-secondary ">Annuler</a>
-=======
                                     <button type="submit" class="btn disabled">Submit</button>  
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 </div>
                             </div>
 		                </form>
