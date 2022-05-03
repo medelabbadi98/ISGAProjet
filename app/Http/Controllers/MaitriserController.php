@@ -36,6 +36,14 @@ class MaitriserController extends Controller
     public function store(Request $request)
     {
         $maitriser=new maitriser();
+<<<<<<< HEAD
+=======
+        $maitriser -> Cin=$request->session()->get('Cin');  
+        $maitriser -> ID_Lg=$request->langue;  
+        $maitriser -> Niveau=$request->niveau;  
+        $maitriser->save();
+        return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
     }
 
     /**

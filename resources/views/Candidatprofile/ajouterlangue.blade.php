@@ -23,11 +23,29 @@
                         </div>
             
                         <form id="contact-form" action="{{ route('ajouterlangue') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+<<<<<<< HEAD
                         @csrf    
                             <div class="row">
                                 
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" name="Nom_Lg" autocomplete="on" placeholder="Langue" required="required" >
+=======
+                        @csrf
+                            <div class="row">
+                                <div class="form-group col-12 col-md-6">
+                                <select name="langue" id="">
+                                <?php
+                                use App\Models\langue;
+                                    $langues=langue::get();
+                                    foreach($langues as $key=>$value){                                    
+                                ?>
+                                    <option value="<?php echo ($langues[$key])['Id_LG'];?>"><?php echo ($langues[$key])['Nom_Lg'];?></option>
+                                <?php
+                                }
+                                ?>
+                                </select>
+                                    <!-- <input type="text" class="input form-control" name="langue" autocomplete="on" placeholder="Langue" required="required" > -->
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                     <div class="help-block with-errors"></div>
                                 </div>
             

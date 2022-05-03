@@ -22,6 +22,7 @@
                             <h1 class="title title--h1 first-title title__separate">Ajouter experience</h1>
                         </div>
             
+<<<<<<< HEAD
                         <form id="contact-form" action="{{ route('ajouterexperience') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
                         @csrf
                             <div class="row">
@@ -29,6 +30,11 @@
                                     <input type="text" class="input form-control" name="Cin" autocomplete="on" placeholder="cin" required="required" >
                                     <div class="help-block with-errors"></div>
                                 </div>
+=======
+                        <form id="contact-form" class="contact-form" action="{{ route('ajouterexperience') }}" method="POST" data-toggle="validator" novalidate="true">
+                        @csrf
+                            <div class="row">
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 <div class="form-group col-12 col-md-6">
                                     <input type="text" class="input form-control" name="Intitule_Poste" autocomplete="on" placeholder="Poste" required="required" >
                                     <div class="help-block with-errors"></div>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('layout')
+=======
+@extends('layoutAuth')
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
   
 @section('content')
     <div class="main-w3layouts wrapper">
@@ -36,8 +40,13 @@
                               </div>
                           </div>
                           <div class="wrapper1">
+<<<<<<< HEAD
                         <input type="radio" name="select" id="option-1" value="condidat" checked >
                         <input type="radio" name="select" id="option-2" value="recruteur">
+=======
+                        <input type="radio" name="select" id="option-1" value="0" checked >
+                        <input type="radio" name="select" id="option-2" value="1">
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                           <label for="option-1" class="option option-1">
                             <div class="dot"></div>
                              <span>Candidat</span>
@@ -51,7 +60,11 @@
                               <div class="">
                                   <div class="checkbox">
                                       <label>
+<<<<<<< HEAD
                                           <input type="checkbox" name="remember"> Remember Me
+=======
+                                          <!-- <input type="checkbox" name="remember"> Remember Me -->
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                       </label>
                                   </div>
                               </div>
@@ -67,7 +80,11 @@
                       </div>
 		</div>
 		
+<<<<<<< HEAD
 		<!-- <ul class="colorlib-bubbles">
+=======
+		<ul class="colorlib-bubbles">
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 			<li></li>
 			<li></li>
 			<li></li>
@@ -78,6 +95,10 @@
 			<li></li>
 			<li></li>
 			<li></li>
+<<<<<<< HEAD
 		</ul> -->
+=======
+		</ul>
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 	</div>
 @endsection

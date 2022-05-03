@@ -20,7 +20,11 @@ use App\Http\Controllers\SecteurController;
 ///////////////////////////pages
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');
+<<<<<<< HEAD
 //Route::get('page_settings', [AboutController::class, 'index'])->name('pagesettings');
+=======
+Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -30,6 +34,11 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
+<<<<<<< HEAD
+=======
+//ajouter candidat
+Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat.post');
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 //offre
 Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');
@@ -44,6 +53,7 @@ Route::get('ajouterexperience', [ExperienceController::class, 'ajouterexperience
 Route::post('ajouterexperience', [ExperienceController::class, 'store'])->name('ajouterexperience.post');
 //langue
 Route::get('ajouterlangue', [LangueController::class, 'ajouterlangue'])->name('ajouterlangue');
+<<<<<<< HEAD
 Route::post('ajouterlangue', [LangueController::class, 'store'])->name('ajouterlangue.post');
 //about
 //  Route::get('editabout', [CandidatController::class, 'about'])->name('editabout');
@@ -52,6 +62,13 @@ Route::post('editabout', [CandidatController::class, 'editabout'])->name('editab
 
 ///////////////////////////Edit routes
 //Route::get('editabout', [AboutController::class, 'editabout'])->name('editabout');
+=======
+Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajouterlangue.post');
+
+
+///////////////////////////Edit routes
+Route::post('editabout', [CandidatController::class, 'editabout'])->name('editabout.post');
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 Route::get('editcompetence', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
 Route::post('Modifiercompetence', [CompetenceController::class, 'update'])->name('editcompetence.post');
 //diplome

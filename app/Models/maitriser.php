@@ -30,4 +30,9 @@ class Maitriser extends Model
 	protected $fillable = [
 		'Niveau'
 	];
+
+	public function candidat()
+	{
+		return $this->belongsTo(Candidat::class, 'Cin');
+	}
 }

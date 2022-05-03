@@ -23,7 +23,11 @@
                         </div>
             
                         <!-- Contact -->
+<<<<<<< HEAD
                         <form id="contact-form" method="post" action="{{ route('editabout') }}"   class="contact-form" data-toggle="validator" novalidate="true">
+=======
+                        <form id="contact-form" action="{{ route('editabout.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                         @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-12">
@@ -34,7 +38,11 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
+<<<<<<< HEAD
                                     <a href="pagecandidat" class="btn btn-secondary ">Annuler</a>
+=======
+                                    <a href="page_candidat.html" class="btn btn-secondary ">Annuler</a>
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                 </div>
                             </div>
                         </form>

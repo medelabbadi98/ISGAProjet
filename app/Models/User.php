@@ -9,6 +9,10 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
+=======
+use Illuminate\Foundation\Auth\User as Authenticatable;
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 
 /**
  * Class User
@@ -27,7 +31,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
+<<<<<<< HEAD
 class User extends Model
+=======
+class User extends Authenticatable
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 {
 	protected $table = 'users';
 
@@ -47,7 +55,11 @@ class User extends Model
 		'password',
 		'remember_token'
 	];
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
 	public function candidats()
 	{
 		return $this->hasMany(Candidat::class, 'IDuser');
