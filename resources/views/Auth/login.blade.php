@@ -31,10 +31,6 @@
                               <div class="">
                                   <div class="checkbox">
                                       <label>
-<<<<<<< HEAD
-                                          <input type="checkbox" name="remember"> Remember Me
-=======
->>>>>>> 1ac13f426cbcf607cf35a45285835c619ed08e3b
                                       </label>
                                   </div>
                               </div>
