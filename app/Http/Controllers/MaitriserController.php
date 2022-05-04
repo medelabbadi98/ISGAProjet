@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\maitriser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MaitriserController extends Controller
 {
@@ -72,9 +73,10 @@ class MaitriserController extends Controller
      * @param  \App\Models\maitriser  $maitriser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, maitriser $maitriser)
+    public function update(Request $request)
     {
-        //
+        DB::table('maitrisers')->where([['Cin',session()->get('Cin')],['ID_Lg',$request->ID_Lg]])->update(['Niveau' => $request->niveau]);        
+        return redirect("pagecandidat");
     }
 
     /**

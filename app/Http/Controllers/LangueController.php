@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\langue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LangueController extends Controller
 {
@@ -22,9 +23,11 @@ class LangueController extends Controller
         return view('Candidatprofile.ajouterlangue');
     }
 
-    public function editlangue()
+    public function editlangue($ID_Lg)
     {
-        return view('Candidatprofile.editlangue');
+        $ID=$ID_Lg;
+        $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where([['Cin','=',session()->get('Cin')],['langues.Id_LG','=',$ID_Lg]])->first();
+        return view('Candidatprofile.editlangue',compact('langue','ID'));
     }
     /**
      * Show the form for creating a new resource.

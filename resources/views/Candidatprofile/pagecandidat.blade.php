@@ -139,7 +139,7 @@
 												<article class="timeline__item">
 													<div class="btn-edit-del">
 														<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-														<a href="editlangue" role="button"><i class="font-icon icon-tool"></i></a>
+														<a href="editlangue/{{$lg->ID_Lg}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
 
 													<h5 class="title title--h5 timeline__title">{{ $lg->Nom_Lg }}</h5>

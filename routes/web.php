@@ -63,8 +63,8 @@ Route::post('editdiplome/{ID_Dip?}', [DiplomeController::class, 'update'])->name
 Route::get('editexperience/{ID_Exp?}', [ExperienceController::class, 'editexperience']);
 Route::post('editexperience/{ID_Exp?}', [ExperienceController::class, 'update'])->name('editexperience.post');
 //langue
-Route::get('editlangue', [LangueController::class, 'editlangue'])->name('editlangue');
-Route::post('Modifierlangue', [LangueController::class, 'update'])->name('editlangue.post');
+Route::get('editlangue/{ID_Lg?}', [LangueController::class, 'editlangue'])->name('editlangue');
+Route::post('editlangue/{ID_Lg?}', [MaitriserController::class, 'update'])->name('editlangue.post');
   
 
 
