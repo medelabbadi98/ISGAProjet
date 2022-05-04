@@ -29,7 +29,7 @@ class Competence extends Model
 	protected $fillable = [
 		'Cin',
 		'Description',
-		'libelle'
+		'Libelle'
 	];
 
 	public function candidat()

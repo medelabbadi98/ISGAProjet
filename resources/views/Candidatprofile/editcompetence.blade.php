@@ -22,15 +22,16 @@
                             <h1 class="title title--h1 first-title title__separate">Modifier Compétance</h1>
                         </div>
             
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
+                        <form id="contact-form" method="POST" action="" class="contact-form" data-toggle="validator" novalidate="true">
+                        @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="competance" autocomplete="on" placeholder="Competance" required="required" >
+                                    <input type="text" class="input form-control" name="Libelle" autocomplete="on" placeholder="Competance" required="required" value="{{$cmp->Libelle}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
             
                                 <div class="form-group col-12 col-md-12">
-                                    <textarea class="textarea form-control" placeholder="Description" name="Desc_competence" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;"></textarea>
+                                    <textarea class="textarea form-control" placeholder="Description" name="Description" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;">{{$cmp->Description}}</textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 

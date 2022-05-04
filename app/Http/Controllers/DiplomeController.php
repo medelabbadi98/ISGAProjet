@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\diplome;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DiplomeController extends Controller
 {
     /**
@@ -23,9 +23,14 @@ class DiplomeController extends Controller
     {
         return view('Candidatprofile.ajouterdiplome');
     }
-    public function editdiplome()
+    public function editdiplome($ID_Dip)
     {
-        return view('Candidatprofile.editdiplome');
+        $typeDip=DB::table('diplomes')->where([['Cin',session()->get('Cin')],['ID_Dip',$ID_Dip]])->value('Type_Dip');
+        $etablissment=DB::table('diplomes')->where([['Cin',session()->get('Cin')],['ID_Dip',$ID_Dip]])->value('Etablissement');
+        $specialite=DB::table('diplomes')->where([['Cin',session()->get('Cin')],['ID_Dip',$ID_Dip]])->value('Specialites');
+        $option=DB::table('diplomes')->where([['Cin',session()->get('Cin')],['ID_Dip',$ID_Dip]])->value('_Option');
+        $anneeObtention=DB::table('diplomes')->where([['Cin',session()->get('Cin')],['ID_Dip',$ID_Dip]])->value('Annee_obtention');
+        return view('Candidatprofile.editdiplome',compact('typeDip','etablissment','specialite','option','anneeObtention'));
     }
 
     /**
@@ -77,17 +82,16 @@ class DiplomeController extends Controller
      * @param  \App\Models\diplome  $diplome
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ID_Dip)
     {
-        $diplome  = diplome::find($id);
-        $diplome -> Cin=$request->session->get('Cin');  
+        $diplome  = diplome::find($ID_Dip);
         $diplome -> Type_Dip=$request->Type_Dip;  
         $diplome -> Etablissement=$request->Etablissement;  
         $diplome -> Specialites=$request->Specialites;  
         $diplome -> _Option=$request->_Option;
         $diplome -> Annee_obtention=$request->Annee_obtention;    
         $diplome->update();
-        return redirect()->back()->with('status','Diplome modifier avec Success');
+        return redirect("pagecandidat");
     
     }
 

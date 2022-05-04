@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\competence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompetenceController extends Controller
 {
@@ -23,9 +24,10 @@ class CompetenceController extends Controller
     {
         return view('Candidatprofile.ajoutercompetence');
     }
-    public function editcompetence()
+    public function editcompetence($ID_Cmp)
     {
-        return view('Candidatprofile.editcompetence');
+        $cmp=DB::table('competences')->where([['Cin',session()->get('Cin')],['ID_Cmp',$ID_Cmp]])->first();
+        return view('Candidatprofile.editcompetence',compact('cmp'));
     }
     /**
      * Store a newly created resource in storage.
@@ -75,13 +77,10 @@ class CompetenceController extends Controller
      * @param  \App\Models\competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, competence $competence)
+    public function update(Request $request, $ID_Cmp)
     {
-        $competence = competence::find($id);
-        $competences -> Cin=$request->session()->get('Cin');  
-        $competences -> Description=$request->Description;
-        $competences->update();
-        return redirect()->back()->with('status','Competence modifier avec Success');
+        DB::table('competences')->where([['Cin',session()->get('Cin')],['ID_Cmp',$ID_Cmp]])->update(['Libelle' => $request->Libelle,'Description'=>$request->Description]);        
+        return redirect("pagecandidat");
     }
 
     /**

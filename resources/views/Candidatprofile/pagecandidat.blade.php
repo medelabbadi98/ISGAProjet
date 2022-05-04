@@ -53,8 +53,9 @@
 								
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
-						    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem porro excepturi veniam laboriosam, odit repellendus <br>
-								 consequatur reiciendis exercitationem quaerat enim ex quos nam quam perspiciatis dolor rem minus eveniet modi?</p>
+						    <p>
+								{{ $about }}
+							</p>
 					    </div>
 						<div class="pb-3">
 		                    <h1 class="title title--h1 first-title title__separate">CV</h1>
@@ -67,7 +68,7 @@
 									@foreach($diplome as $dip)
 									<div class="timeline">	
 										<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-										<a href="editdiplome" role="button"><i class="font-icon icon-tool"></i></a>	
+										<a href="editdiplome/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-tool"></i></a>	
 									    <p>
 											{{ $dip->Etablissement }} 
 
@@ -81,24 +82,12 @@
 							    <div class="col-12 col-lg-6">
 								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-experience.svg" alt="" />Expériences professionnelles <a href="ajouterexperience" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="timeline">
-									    <!-- Item -->
-									    <!-- <article class="timeline__item">
-											<div class="btn-edit-del">
-												<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-												<a href="edit_experience.html" role="button"><i class="font-icon icon-tool"></i></a>
-											</div>
-									        <h5 class="title title--h5 timeline__title">Formation X</h5>
-											<span class="timeline__etp">Etablissement
-												<span class="timeline__period">2015 — Present</span>
-											</span>
-										    
-										    <p class="timeline__description">Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti.</p>
-										</article> -->
+									   
 										@foreach($experience as $exp)
 											<article class="timeline__item">
 												<div class="btn-edit-del">
 													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-													<a href="editexperience" role="button"><i class="font-icon icon-tool"></i></a>
+													<a href="editexperience/{{$exp->ID_Exp}}" role="button"><i class="font-icon icon-tool"></i></a>
 												</div>
 												<h5 class="title title--h5 timeline__title">{{ $exp->Intitule_Poste }}</h5>
 												<span class="timeline__etp">{{ $exp->Nom_Etp }}<br>
@@ -121,32 +110,14 @@
 						            <h2 class="title title--h3" style="width: fit-content;">Competances <a href="ajoutercompetence" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
-											<!-- Item -->
-											<!-- <article class="timeline__item">
-												<div class="btn-edit-del">
-													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-													<a href="edit_competence.html" role="button"><i class="font-icon icon-tool"></i></a>
-												</div>
-												<h5 class="title title--h5 timeline__title">développement web </h5>
-												<p class="timeline__description">Html,CSS,JavaScript </p>
-											</article> -->
-
-											<!-- Item -->
-											<!-- <article class="timeline__item">
-												<div class="btn-edit-del">
-													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-													<a href="#" role="button"><i class="font-icon icon-tool"></i></a>
-												</div>
-												<h5 class="title title--h5 timeline__title">langage de programmation</h5>
-												<p class="timeline__description">Java,C#,phython,C</p>
-											</article> -->
+											
 											@foreach($competence as $cp)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
 														<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-														<a href="editcompetence" role="button"><i class="font-icon icon-tool"></i></a>
+														<a href="editcompetence/{{$cp->ID_Cmp}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
-													<h5 class="title title--h5 timeline__title">{{ $cp->libelle }}</h5>
+													<h5 class="title title--h5 timeline__title">{{ $cp->Libelle }}</h5>
 													<p class="timeline__description">{{ $cp->Description }}</p>
 												</article>
 											@endforeach
@@ -158,30 +129,11 @@
 						            <h2 class="title title--h3">Langues <a href="ajouterlangue" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
-											<!-- Item -->
-											<!-- <article class="timeline__item">
-												<div class="btn-edit-del">
-													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-													<a href="edit_langue.html" role="button"><i class="font-icon icon-tool"></i></a>
-												</div>
-
-												<h5 class="title title--h5 timeline__title">Arabe</h5>
-												<p class="timeline__description">langue maternelle</p>
-											</article> -->
+											
 
 
 
-											<!-- Item -->
-											<!-- <article class="timeline__item">
-												<div class="btn-edit-del">
-													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-													<a href="edit_langue.html" role="button"><i class="font-icon icon-tool"></i></a>
-												</div>
-
-												<h5 class="title title--h5 timeline__title">Français</h5>
-												<p class="timeline__description">courant</p>
-											</article> -->
-
+											
 											
 											@foreach($langue as $lg)
 												<article class="timeline__item">

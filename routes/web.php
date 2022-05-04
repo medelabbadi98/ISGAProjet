@@ -50,15 +50,18 @@ Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajout
 
 
 ///////////////////////////Edit routes
+//about
 Route::post('editabout', [CandidatController::class, 'editabout'])->name('editabout.post');
-Route::get('editcompetence', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
-Route::post('Modifiercompetence', [CompetenceController::class, 'update'])->name('editcompetence.post');
+Route::get('editabout', [CandidatController::class, 'about']);
+//competence
+Route::get('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
+Route::post('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'update'])->name('editcompetence.post');
 //diplome
-Route::get('editdiplome', [DiplomeController::class, 'editdiplome'])->name('editdiplome');
-Route::post('Modifierdiplome', [DiplomeController::class, 'update'])->name('editdiplome.post');
+Route::get('editdiplome/{ID_Dip?}', [DiplomeController::class, 'editdiplome']);
+Route::post('editdiplome/{ID_Dip?}', [DiplomeController::class, 'update'])->name('editdiplome.post');
 //experience
-Route::get('editexperience', [ExperienceController::class, 'editexperience'])->name('editexperience');
-Route::post('Modifierexperience', [ExperienceController::class, 'update'])->name('editexperience.post');
+Route::get('editexperience/{ID_Exp?}', [ExperienceController::class, 'editexperience']);
+Route::post('editexperience/{ID_Exp?}', [ExperienceController::class, 'update'])->name('editexperience.post');
 //langue
 Route::get('editlangue', [LangueController::class, 'editlangue'])->name('editlangue');
 Route::post('Modifierlangue', [LangueController::class, 'update'])->name('editlangue.post');
