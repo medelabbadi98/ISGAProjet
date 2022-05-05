@@ -42,10 +42,10 @@ class MaitriserController extends Controller
         $maitriser -> ID_Lg=$request->langue;  
         $maitriser -> Niveau=$request->niveau;  
         $maitriser->save();
-        return redirect("pagecandidat")->with('status','Langue ajouter avec succes');
+        return redirect("pagecandidat");
     }catch (\Illuminate\Database\QueryException $e){
        
-        return redirect()->back()->with('err','La Langue deja exister');
+        return redirect()->back()->with('err','La Langue existe deja !');
     }
 
     }

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Cin
  * @property string|null $Description
  * @property int $ID_Cmp
- * @property string $libelle
+ * @property string|null $Libelle
  * 
  * @property Candidat|null $candidat
  *
