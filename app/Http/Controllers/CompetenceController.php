@@ -89,8 +89,9 @@ class CompetenceController extends Controller
      * @param  \App\Models\competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function destroy(competence $competence)
+    public function destroy($ID)
     {
-        //
+        competence::find($ID)->delete();
+        return redirect("pagecandidat");
     }
 }

@@ -1,6 +1,7 @@
 @extends('layout')
   
 @section('content')
+
     <div class="preloader">
 	    <div class="preloader__wrap">
 		    <div class="circle-pulse">
@@ -67,7 +68,7 @@
 								    <h2 class="title title--h3"><img class="title-icon" src="assets/icons/icon-education.svg" alt="" /> Diplômes et Formations <a href="ajouterdiplome" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									@foreach($diplome as $dip)
 									<div class="timeline">	
-										<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+										<a href="delete/Dip/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-trashcan"></i></a>
 										<a href="editdiplome/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-tool"></i></a>	
 									    <p>
 											{{ $dip->Etablissement }} 
@@ -86,7 +87,7 @@
 										@foreach($experience as $exp)
 											<article class="timeline__item">
 												<div class="btn-edit-del">
-													<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+													<a href="delete/Exp/{{$exp->ID_Exp}}" role="button"><i class="font-icon icon-trashcan"></i></a>
 													<a href="editexperience/{{$exp->ID_Exp}}" role="button"><i class="font-icon icon-tool"></i></a>
 												</div>
 												<h5 class="title title--h5 timeline__title">{{ $exp->Intitule_Poste }}</h5>
@@ -114,7 +115,7 @@
 											@foreach($competence as $cp)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
-														<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+														<a href="delete/cmp/{{$cp->ID_Cmp}}" role="button"><i class="font-icon icon-trashcan"></i></a>
 														<a href="editcompetence/{{$cp->ID_Cmp}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
 													<h5 class="title title--h5 timeline__title">{{ $cp->Libelle }}</h5>
@@ -129,16 +130,10 @@
 						            <h2 class="title title--h3">Langues <a href="ajouterlangue" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
-											
-
-
-
-											
-											
 											@foreach($langue as $lg)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
-														<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+														<a href="delete/lang/{{$lg->ID_Lg}}" role="button"><i class="font-icon icon-trashcan"></i></a>
 														<a href="editlangue/{{$lg->ID_Lg}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
 
@@ -170,7 +165,5 @@
         </clipPath>		
     </svg>
 
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
+	
 @endsection

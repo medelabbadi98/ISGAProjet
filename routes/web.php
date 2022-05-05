@@ -61,13 +61,22 @@ Route::get('editdiplome/{ID_Dip?}', [DiplomeController::class, 'editdiplome']);
 Route::post('editdiplome/{ID_Dip?}', [DiplomeController::class, 'update'])->name('editdiplome.post');
 //experience
 Route::get('editexperience/{ID_Exp?}', [ExperienceController::class, 'editexperience']);
-Route::post('editexperience/{ID_Exp?}', [ExperienceController::class, 'update'])->name('editexperience.post');
+Route::post('editexperience/exp/{ID_Exp?}', [ExperienceController::class, 'update']);
 //langue
 Route::get('editlangue/{ID_Lg?}', [LangueController::class, 'editlangue'])->name('editlangue');
-Route::post('editlangue/{ID_Lg?}', [MaitriserController::class, 'update'])->name('editlangue.post');
+Route::post('editlangue/langue/{ID_Lg?}', [MaitriserController::class, 'update']);
   
 
 
+///////////////////////////Supprimer routes
+//experience
+Route::get('delete/Exp/{ID_Exp}',[ExperienceController::class, 'destroy']);
+//diplomes
+Route::get('delete/Dip/{ID_Dip}',[DiplomeController::class, 'destroy']);
+//langues
+Route::get('delete/lang/{Id_LG}',[MaitriserController::class, 'destroy']);
+//competence
+Route::get('delete/cmp/{Id_Cmp}',[CompetenceController::class, 'destroy']);
 
 
 

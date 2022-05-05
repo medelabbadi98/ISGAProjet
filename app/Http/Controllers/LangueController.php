@@ -25,9 +25,8 @@ class LangueController extends Controller
 
     public function editlangue($ID_Lg)
     {
-        $ID=$ID_Lg;
         $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where([['Cin','=',session()->get('Cin')],['langues.Id_LG','=',$ID_Lg]])->first();
-        return view('Candidatprofile.editlangue',compact('langue','ID'));
+        return view('Candidatprofile.editlangue',compact('langue'));
     }
     /**
      * Show the form for creating a new resource.
@@ -48,7 +47,7 @@ class LangueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
+    { 
         $langue=new langue();
         $langue -> Nom_Lg=$request->Nom_Lg;    
         $langue->save();

@@ -101,8 +101,9 @@ class DiplomeController extends Controller
      * @param  \App\Models\diplome  $diplome
      * @return \Illuminate\Http\Response
      */
-    public function destroy(diplome $diplome)
+    public function destroy($ID)
     {
-        //
+        diplome::find($ID)->delete();
+        return redirect("pagecandidat");
     }
 }

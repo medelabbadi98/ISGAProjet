@@ -36,12 +36,18 @@ class MaitriserController extends Controller
      */
     public function store(Request $request)
     {
-        $maitriser=new maitriser();
+        try{
+        $maitriser=new maitriser();               
         $maitriser -> Cin=$request->session()->get('Cin');  
         $maitriser -> ID_Lg=$request->langue;  
         $maitriser -> Niveau=$request->niveau;  
         $maitriser->save();
-        return redirect("pagecandidat")->withSuccess('Langue ajouter avec succes');
+        return redirect("pagecandidat")->with('status','Langue ajouter avec succes');
+    }catch (\Illuminate\Database\QueryException $e){
+       
+        return redirect()->back()->with('err','La Langue deja exister');
+    }
+
     }
 
     /**
@@ -73,9 +79,9 @@ class MaitriserController extends Controller
      * @param  \App\Models\maitriser  $maitriser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$ID_Lg)
     {
-        DB::table('maitrisers')->where([['Cin',session()->get('Cin')],['ID_Lg',$request->ID_Lg]])->update(['Niveau' => $request->niveau]);        
+        DB::table('maitrisers')->where([['Cin',session()->get('Cin')],['ID_Lg',$ID_Lg]])->update(['Niveau' => $request->niveau]);        
         return redirect("pagecandidat");
     }
 
@@ -85,8 +91,9 @@ class MaitriserController extends Controller
      * @param  \App\Models\maitriser  $maitriser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(maitriser $maitriser)
+    public function destroy($ID)
     {
-        //
+        DB::table('maitrisers')->where('ID_Lg',$ID)->delete();
+        return redirect("pagecandidat");
     }
 }

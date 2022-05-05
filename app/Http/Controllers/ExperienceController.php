@@ -91,9 +91,9 @@ class ExperienceController extends Controller
      * @param  \App\Models\experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$ID)
     {
-        $experience = experience::find($request->ID);          
+        $experience = experience::find($ID);          
         $experience -> Nom_Etp=$request->Nom_Etp;  
         $experience -> Intitule_Poste=$request->Intitule_Poste;  
         $experience -> Date_Debut=$request->Date_Debut;  
@@ -109,8 +109,9 @@ class ExperienceController extends Controller
      * @param  \App\Models\experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(experience $experience)
+    public function destroy($ID)
     {
-        //
+        experience::find($ID)->delete();
+        return redirect("pagecandidat");
     }
 }
