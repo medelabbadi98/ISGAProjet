@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $ID_Rec
  * @property string|null $Pseudo
+ * @property string $Nom
+ * @property string $Prenom
  * @property string|null $photo_rec
  * @property string|null $telephone_rec
  * @property string|null $Adress
@@ -36,6 +38,8 @@ class Recruteur extends Model
 
 	protected $fillable = [
 		'Pseudo',
+		'Nom',
+		'Prenom',
 		'photo_rec',
 		'telephone_rec',
 		'Adress',

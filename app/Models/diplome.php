@@ -43,8 +43,8 @@ class Diplome extends Model
 		'Annee_obtention'
 	];
 
-	// public function candidat()
-	// {
-	// 	return $this->belongsTo(Candidat::class, 'Cin');
-	// }
+	public function candidat()
+	{
+		return $this->belongsTo(Candidat::class, 'Cin');
+	}
 }
