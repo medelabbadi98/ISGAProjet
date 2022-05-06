@@ -11,7 +11,7 @@
                           @csrf
                           <div >
                               <div >
-                                  <input type="text" id="name" class="text" name="name" placeholder="&#xf007; Nom d'utilisateur" required autofocus>
+                                  <input type="text" id="name" class="text" name="name" placeholder="&#xf007; Nom d'utilisateur" required >
                                   @if ($errors->has('name'))
                                       <span class="text-danger">{{ $errors->first('name') }}</span>
                                   @endif
@@ -20,7 +20,7 @@
   
                           <div>
                               <div >
-                                  <input type="text" id="email_address" class="text email " placeholder="&#xf0e0; Email" name="email" required autofocus>
+                                  <input type="text" id="email_address" class="text email " placeholder="&#xf0e0; Email" name="email" required>
                                   @if ($errors->has('email'))
                                       <span class="text-danger">{{ $errors->first('email') }}</span>
                                   @endif
@@ -29,7 +29,7 @@
   
                           <div >
                               <div >
-                                  <input type="password" id="password"placeholder="&#xf084; Mot de passe"  class="text w3lpass" name="password" required>
+                                  <input type="password" id="password" placeholder="&#xf084; Mot de passe"  class="text w3lpass" name="password" required>
                                   @if ($errors->has('password'))
                                       <span class="text-danger">{{ $errors->first('password') }}</span>
                                   @endif

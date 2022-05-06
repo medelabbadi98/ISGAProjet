@@ -11,7 +11,7 @@
 
                           <div>
                               <div >
-                                  <input type="text" id="email_address" class="text email" name="email"  placeholder="&#xf0e0; Email"required autofocus>
+                                  <input type="text" id="email_address" class="text email" name="email"  placeholder="&#xf0e0; Email" required >
                                   @if ($errors->has('email'))
                                       <span class="text-danger">{{ $errors->first('email') }}</span>
                                   @endif
