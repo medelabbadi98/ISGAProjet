@@ -57,17 +57,16 @@
                               </div>
                           </div>
   
-                          <div class="">
-                              <button type="submit" class="btn btn-primary">
-                                  Register
-                              </button>
-                          </div>
+                          <div class="wthree-text">
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="VALIDER">
                       </form>
-                        
+                      <p>Avez-vous un compte? <a href="{{route('login')}}"> Connecte-vous maintenant!</a></p>
                       </div>
 		</div>
 		
-		<ul class="colorlib-bubbles">
+		<!-- <ul class="colorlib-bubbles">
 			<li></li>
 			<li></li>
 			<li></li>
@@ -78,6 +77,6 @@
 			<li></li>
 			<li></li>
 			<li></li>
-		</ul>
+		</ul> -->
 	</div>
 @endsection

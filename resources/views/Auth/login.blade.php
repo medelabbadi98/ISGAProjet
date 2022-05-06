@@ -27,25 +27,15 @@
                               </div>
                           </div>
   
-                          <div class="">
-                              <div class="">
-                                  <div class="checkbox">
-                                      <label>
-                                      </label>
-                                  </div>
-                              </div>
-                          </div>
+                          
   
-                          <div class="col-md-6 offset-md-4">
-                              <button type="submit" class="btn btn-primary">
-                                  Login
-                              </button>
-                          </div>
+                          <input type="submit" value="VALIDER">
                       </form>
+                      <p>Nouvel utilisateur? <a href="registration"> Créer un compte!</a></p>
                       </div>
 		</div>
 		
-		<ul class="colorlib-bubbles">
+		<!-- <ul class="colorlib-bubbles">
 			<li></li>
 			<li></li>
 			<li></li>
@@ -56,6 +46,6 @@
 			<li></li>
 			<li></li>
 			<li></li>
-		</ul>
+		</ul> -->
 	</div>
 @endsection
