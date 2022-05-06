@@ -61,7 +61,7 @@ class AuthController extends Controller
             }
             else{
                 $request->session()->put('recruteur', $recruteur);
-                return redirect("pagecandidat");
+                return redirect("pagerecruteur");
             }
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');

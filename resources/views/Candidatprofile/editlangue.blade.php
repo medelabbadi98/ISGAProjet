@@ -28,7 +28,9 @@
                         
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
+
                                     <input type="text" class="input form-control" name="langue" autocomplete="on" placeholder="Langue" required="required" value="{{$langue->Nom_Lg}}" readonly="readonly">
+
                                     <div class="help-block with-errors"></div>
                                 </div>
             
@@ -41,7 +43,9 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
-                                    <a href="{{route('pagecandidat')}}" class="btn btn-secondary ">Annuler</a>
+
+                                    <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+
                                 </div>
                             </div>
                         </form>
