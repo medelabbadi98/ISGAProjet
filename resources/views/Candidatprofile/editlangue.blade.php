@@ -25,7 +25,7 @@
                         <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="langue" autocomplete="on" placeholder="Langue" required="required" >
+                                    <input type="text" class="input form-control" name="langue" placeholder="Langue" required="required" >
                                     <div class="help-block with-errors"></div>
                                 </div>
             
