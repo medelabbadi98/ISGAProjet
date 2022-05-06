@@ -21,7 +21,9 @@ use App\Http\Controllers\SecteurController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');
-Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');
+//Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');
+Route::get('pagesettings', [CandidatController::class, 'getsettings']);
+Route::post('pagesettings', [CandidatController::class, 'update']);
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -33,6 +35,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
 //ajouter candidat
 Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat.post');
+
+Route::post('addsettings', [HomeController::class, 'store'])->name('ajoutersettings.post');
+Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajoutersettings');
+
 //offre
 Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');

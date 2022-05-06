@@ -59,15 +59,14 @@ class AuthController extends Controller
                $request->session()->put('Adresse', ((Array)$candidat[0])['Adresse']);
                return redirect("pagecandidat");
             }
-            else{
+            if($recruteur->count()!=0){
                 $request->session()->put('recruteur', $recruteur);
-                return redirect("pagecandidat");
+                return redirect("pagerecruteur");
             }
             //session::set('business_id', $business->id);
             //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
             //return ((Array)$candidat[0])['Nom'];
         }
-  
         return redirect("login");
     }
       
@@ -84,17 +83,14 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
         $val=$request->select;
-
         $data = $request->all();
         $check = $this->create($data);
         $email =$request->email;  
         $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
         $request->session()->put('id', ((Array)$users[0])['id']);
         $request->session()->put('Email',$email);
-        $request->session()->put('Type',$val);
-        
-         
-        return redirect("pagesettings");
+        $request->session()->put('Type',$val);     
+        return redirect("ajoutersettings");
     }
     
     /**

@@ -35,7 +35,18 @@ class RecruteurController extends Controller
      */
     public function store(Request $request)
     {
-        $recruteur=new recruteur();
+        $recruteur=new recruteur();    
+        // $recruteur -> CIN =$request->cin;     
+        // $recruteur -> IDuser =session()->get('id');            
+        // $recruteur -> Adresse =$request->adresse;
+		// $recruteur -> Nom =$request->nom;
+		// $recruteur -> Prenom =$request->prenom;
+		// $recruteur -> Tel_C =$request->telephone;
+        // $recruteur->save();
+        // $request->session()->put('Cin', $request->cin);
+        
+        
+        return view('Recruteurprofile.pagerecruteur'); 
     }
 
     /**
