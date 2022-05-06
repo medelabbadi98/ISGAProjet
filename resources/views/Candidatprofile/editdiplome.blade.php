@@ -22,26 +22,28 @@
                             <h1 class="title title--h1 first-title title__separate">Modifier Diplôme</h1>
                         </div>
             
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
+                        <form id="contact-form" acton="{{route('editdiplome.post')}}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+                        @csrf
+                      
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="type_d"  placeholder="Diplome" required="required" >
+                                    <input type="text" class="input form-control" autocomplete="on" name="Type_Dip"  placeholder="Diplome" required="required" value="{{$typeDip}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="specialite" placeholder="Spécialité" required="required" >
+                                    <input type="text" class="input form-control" autocomplete="on" name="Specialites" placeholder="Spécialité" required="required" value="{{$specialite}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="option" placeholder="Option" required="required" >
+                                    <input type="text" class="input form-control" autocomplete="on" name="_Option" placeholder="Option" required="required"value="{{$option}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="année-diplome" placeholder="Année" required="required">
+                                    <input type="date" class="input form-control" name="Annee_obtention" placeholder="Année" required="required" value="{{$anneeObtention}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="etablissement" placeholder="Etablissement" required="required">
+                                    <input type="text" class="input form-control" name="Etablissement" placeholder="Etablissement" required="required" value="{{$etablissment}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                
@@ -49,7 +51,9 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
+
                                     <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+
                                 </div>
                             </div>
                         </form>
@@ -68,7 +72,5 @@
 
 
     <!-- JavaScripts -->
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
+	
 @endsection

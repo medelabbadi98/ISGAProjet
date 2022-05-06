@@ -20,9 +20,9 @@ class CandidatController extends Controller
         $experience=DB::table('experiences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $competence=DB::table('competences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',session()->get('Cin'))->get();
+        $about=DB::table('candidats')->where('Cin',session()->get('Cin'))->value('About');
         
-        
-        return view('Candidatprofile.pagecandidat',compact('diplome','langue','competence','experience')); 
+        return view('Candidatprofile.pagecandidat',compact('diplome','langue','competence','experience','about')); 
     }
     public function setting()
     {
@@ -88,6 +88,7 @@ class CandidatController extends Controller
      */
     public function edit(candidat $candidat)
     {
+
         
     }
 
@@ -103,8 +104,14 @@ class CandidatController extends Controller
       
     }
 
-    // public function editabout(Request $request){
-    //     return view("editabout");
-    // }
+     public function about(){
+        $about=DB::table('candidats')->where('Cin',session()->get('Cin'))->value('About');
+        return view('Candidatprofile.editabout',compact('about'));
+     }
+
+     public function editabout(Request $request){
+        DB::table('candidats')->where('Cin',session()->get('Cin'))->update(['about' => $request->about]);
+        return redirect("pagecandidat");
+     }
    
 }

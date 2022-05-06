@@ -23,7 +23,7 @@
                             </g>
                         </svg>
 						<div class="text-center">
-						    <h3 class="title title--h3 sidebar__user-name"> Pseudo</h3>
+                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">Nom</span> Prenom</h3>
 							<div class="badge badge--gray">Exemple</div>
 						</div>
 						
@@ -33,7 +33,7 @@
 							        <i class="font-icon icon-location"></i>Location
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelope"></i>example@mail.com</a>
+							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>example@mail.com</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
 							        <i class="font-icon icon-phone"></i>+212 64470xxxxxx
@@ -47,49 +47,47 @@
 				    <div class="box shadow pb-0">
                         <div class="pb-0 pb-sm-2 position-relative">
 		                    <h1 class="title title--h1 first-title title__separate">À propos de Nous</h1>
-                            <div class="btn-edit-del">
-								<a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                            <div class="btn-edit-del">			
 								<a href="#" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
 						    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, dolores modi quos placeat et rem sequi ducimus dolore officiis nemo saepe illo minus. Omnis illum alias dolore quia porro atque.</p>
                         </div>
 
-                        <div class="pb-3">
+                        <div class="pb-0 box-inner">
 		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="./Ajouter_offre.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
+
+                            <div class="row">
+                                <!--case-item-->
+                                <div class="case-item box box__second">
+                                    
+                                    <div class="position-relative">
+                                        <div class="btn-edit-del">
+                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
+                                        </div>
+                                        <h3 class="title title--h5">Poste</h3>
+                                        <span class="case-item__secteur">Secteur</span>
+                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
+                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
+                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
+                                    </div>	
+                                </div>
+                                <!--case-item-->
+                                <div class="case-item box box__second">
+                                    <div class="position-relative">
+                                        <div class="btn-edit-del">
+                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
+                                        </div>
+                                        <h3 class="title title--h5">Poste</h3>
+                                        <span class="case-item__secteur">Secteur</span>
+                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
+                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
+                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
+                                    </div>	
+                                </div>
+                            </div>
 					    </div>
-
-                        <div class="timeline">
-                           
-                            <!-- Item -->
-                            <article class="timeline__item">
-                                <div class="btn-edit-del">
-                                    <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                    <a href="#" role="button"><i class="font-icon icon-tool"></i></a>
-                                </div>
-
-                                <h5 class="title title--h5 timeline__title">poste </h5>
-                                <span class="timeline__secteur"> Secteur</span>
-                                <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">2016</span></h6>
-                                <p class="timeline__description">Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti.</p>
-                            </article>
-
-
-
-                            <!-- Item -->
-                            <article class="timeline__item">
-
-                                <div class="btn-edit-del">
-                                    <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                    <a href="#" role="button"><i class="font-icon icon-tool"></i></a>
-                                </div>
-
-                                <h5 class="title title--h5 timeline__title">poste </h5>
-                                <span class="timeline__secteur"> Secteur</span>
-                                <h6 class="title title--h6">{{Date d'Experation}}  :<span class="timeline__period">2016</span></h6>
-                                <p class="timeline__description">Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti.</p>
-                                
-                            </article>
-                        </div> 
                     </div>
                 </div>    
             </div>
@@ -104,10 +102,5 @@
         <clipPath id="avatar-hexagon">
              <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"/>
         </clipPath>		
-    </svg>
-
-    <!-- JavaScripts -->
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
+    </svg>   
 @endsection

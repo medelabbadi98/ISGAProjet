@@ -1,6 +1,7 @@
 @extends('layout')
   
 @section('content')
+
     <div class="preloader">
 	    <div class="preloader__wrap">
 		    <div class="circle-pulse">
@@ -37,8 +38,14 @@
                                 }
                                 ?>
                                 </select>
-                                    <!-- <input type="text" class="input form-control" name="langue" autocomplete="on" placeholder="Langue" required="required" > -->
-                                    <div class="help-block with-errors"></div>
+                                    
+                                    <div class="help-block with-errors">
+                                    @if (session('err'))
+                                        
+                                        {{ session('err') }}
+                                        
+                                    @endif
+                                    </div>
                                 </div>
             
                                 <div class="form-group col-12 col-md-6">
@@ -50,7 +57,9 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Ajouter</button>
+
                                     <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+
                                 </div>
                             </div>
                         </form>
@@ -66,10 +75,4 @@
         </div>
     </div>
     
-    
-
-    <!-- JavaScripts -->
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
 @endsection

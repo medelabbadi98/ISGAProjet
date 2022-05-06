@@ -26,15 +26,18 @@
                         <form id="contact-form" action="{{ route('editabout.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
                         @csrf
                             <div class="row">
+                                
                                 <div class="form-group col-12 col-md-12">
-                                    <textarea class="textarea form-control" placeholder="About" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;"></textarea>
+                                    <textarea class="textarea form-control" placeholder="About" name="about" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;">{{$about}}</textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
+
                                     <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+
                                 </div>
                             </div>
                         </form>
@@ -48,7 +51,5 @@
     </div>
     
 
-    <script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
+    
 @endsection

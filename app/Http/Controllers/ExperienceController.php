@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\experience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExperienceController extends Controller
 {
@@ -22,9 +23,16 @@ class ExperienceController extends Controller
     {
         return view('Candidatprofile.ajouterexperience');
     }
-    public function editexperience()
+    public function editexperience($ID_Exp)
     {
-        return view('Candidatprofile.editexperience');
+        $ID=$ID_Exp;
+        $Intpost=DB::table('experiences')->where([['Cin',session()->get('Cin')],['ID_Exp',$ID_Exp]])->value('Intitule_Poste');
+        $nomEtp=DB::table('experiences')->where([['Cin',session()->get('Cin')],['ID_Exp',$ID_Exp]])->value('Nom_Etp');
+        $dateDeb=DB::table('experiences')->where([['Cin',session()->get('Cin')],['ID_Exp',$ID_Exp]])->value('Date_Debut');
+        $dateFin=DB::table('experiences')->where([['Cin',session()->get('Cin')],['ID_Exp',$ID_Exp]])->value('Date_Fin');
+        $Desc=DB::table('experiences')->where([['Cin',session()->get('Cin')],['ID_Exp',$ID_Exp]])->value('Description_Ex');
+
+        return view('Candidatprofile.editexperience',compact('Intpost','nomEtp','dateDeb','dateFin','Desc','ID'));
     }
      /**
      * Show the form for creating a new resource.
@@ -83,17 +91,16 @@ class ExperienceController extends Controller
      * @param  \App\Models\experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$ID)
     {
-        $experience = experience::find($id);    
-        $experience -> Cin = $request->session->get('Cin');       
+        $experience = experience::find($ID);          
         $experience -> Nom_Etp=$request->Nom_Etp;  
         $experience -> Intitule_Poste=$request->Intitule_Poste;  
         $experience -> Date_Debut=$request->Date_Debut;  
         $experience -> Date_Fin=$request->Date_Fin;
         $experience -> Description_Ex=$request->Description_Ex;    
         $experience->update();
-        return redirect()->back()->with('status',' experience modifier avec Success');
+        return redirect("pagecandidat");
     }
 
     /**
@@ -102,8 +109,9 @@ class ExperienceController extends Controller
      * @param  \App\Models\experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(experience $experience)
+    public function destroy($ID)
     {
-        //
+        experience::find($ID)->delete();
+        return redirect("pagecandidat");
     }
 }
