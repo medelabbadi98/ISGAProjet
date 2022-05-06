@@ -36,17 +36,16 @@ class MaitriserController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-        $maitriser=new maitriser();               
-        $maitriser -> Cin=$request->session()->get('Cin');  
-        $maitriser -> ID_Lg=$request->langue;  
-        $maitriser -> Niveau=$request->niveau;  
-        $maitriser->save();
-        return redirect("pagecandidat");
-    }catch (\Illuminate\Database\QueryException $e){
-       
-        return redirect()->back()->with('err','La Langue existe deja !');
-    }
+            try{
+                $maitriser=new maitriser();               
+                $maitriser -> Cin=$request->session()->get('Cin');  
+                $maitriser -> ID_Lg=$request->langue;  
+                $maitriser -> Niveau=$request->niveau;  
+                $maitriser->save();
+                return redirect("pagecandidat");
+            }catch (\Illuminate\Database\QueryException $e){
+                return redirect()->back()->with('err','La Langue existe deja !');
+            }
 
     }
 
