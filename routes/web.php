@@ -18,6 +18,7 @@ use App\Http\Controllers\SecteurController;
 
 
 ///////////////////////////pages
+Route::get('/', [HomeController::class, 'index']);
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');
 //Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');

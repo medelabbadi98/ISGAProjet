@@ -46,7 +46,8 @@ class Candidat extends Model
 		'Adresse',
 		'Tel_C',
 		'IDuser',
-		'about'
+		'about',
+		'ID_Sec'
 	];
 
 	public function user()
