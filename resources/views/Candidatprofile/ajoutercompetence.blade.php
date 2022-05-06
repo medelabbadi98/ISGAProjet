@@ -44,7 +44,7 @@
                                     <button type="submit" class="btn disabled">Ajouter</button>
                            <a href="{{route('pagecandidat')}}" class="btn btn-secondary ">Annuler</a>
 
-                                    <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+                                  
 
                                 </div>
                             </div>

@@ -22,42 +22,68 @@
 		                    <h1 class="title title--h1 first-title title__separate">paramètres</h1>
 					    </div>
 							
-						<form id="contact-form" action="{{ route('ajoutercandidat.post') }}" method="POST" class="contact-form" data-toggle="validator" novalidate="true">
+						<form id="contact-form" method="POST" enctype="multipart/form-data" action="pagesettings"  class="contact-form" data-toggle="validator" novalidate="true">
                         @csrf
+						
+			
 							<div class="row">
+							<div class="row justify-content-center">
+								<div class="form-group col-12 col-md-2"> 
+									<svg class="avatar avatar--180"  viewBox="0 0 188 188">
+										<g class="avatar__box">
+											<image id="profil_image" xlink:href="{{$candidat->Photo_C}}"  height="100%" width="100%" />
+										</g>
+									</svg>
+									<input type="file" hidden id="image_upload" name="Photo_C" class="input form-control" >
+				                </div>
+							</div>
+							</div>
+                            <div class="row">
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="cin" placeholder="CIN" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control" readonly   name="cin" value="{{session()->get('Cin')}}" placeholder="CIN" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
-				
+								<div class="form-group col-12 col-md-6">
+                                    <input type="text" class="input form-control"  name="user" value="{{$candidat->name}}" placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
+								    <div class="help-block with-errors"></div>
+				                </div>
+
 				                <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="nom" placeholder="Nom" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control"  name="nom" value="{{$candidat->Nom}}" placeholder="Nom" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="prenom" placeholder="Prénom" required="required" >
-								    <div class="help-block with-errors"></div>
-				                </div>
-
-
-                               
-
-								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="adresse" placeholder="Adresse" required="required">
+                                    <input type="text" class="input form-control"  name="prenom" value="{{$candidat->Prenom}}" placeholder="Prénom" required="required" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="tel" class="input form-control"  name="telephone" placeholder="Telphone" required="required">
+                                    <input type="email" class="input form-control"  name="email" value="{{$candidat->email}}" placeholder="Email" required="required">
+								    <div class="help-block with-errors"></div>
+				                </div>
+
+                                <div class="form-group col-12 col-md-6"> 
+                                    <input type="password" class="input form-control"  name="motdepasse"  placeholder="Password" >
+								    <div class="help-block with-errors"></div>
+				                </div>
+
+								<div class="form-group col-12 col-md-6">
+                                    <input type="text" class="input form-control"  name="adresse" value="{{$candidat->Adresse}}" placeholder="Adresse" required="required">
+								    <div class="help-block with-errors"></div>
+				                </div>
+
+								<div class="form-group col-12 col-md-6">
+                                    <input type="tel" class="input form-control"  name="telephone" value="{{$candidat->Tel_C}}" placeholder="Telphone" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 						    </div>
 							<div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
-                                    <button type="submit" class="btn disabled">Submit</button>  
+                                    <button type="submit" class="btn disabled">Modifier</button>
+                                    <a href="page_candidat.html" class="btn btn-secondary ">Annuler</a>
                                 </div>
                             </div>
 		                </form>
@@ -80,7 +106,24 @@
     </svg>
     
 	<!-- JavaScripts -->
+		
 	<script src="assets/js/jquery-3.4.1.js"></script>
 	<script src="assets/js/plugins.min.js"></script>
     <script src="assets/js/common.js"></script>
+
+	<script>
+		$('#profil_image').on('click', function() {
+    		$('#image_upload').click();
+		});
+		function fasterPreview( uploader ) {
+    		if ( uploader.files && uploader.files[0] ){
+          		$('#profil_image').attr('xlink:href', 
+            	 window.URL.createObjectURL(uploader.files[0]) );
+    		}
+		}
+		$("#image_upload").change(function(){
+    		fasterPreview( this );
+		});
+	</script>
+
 @endsection

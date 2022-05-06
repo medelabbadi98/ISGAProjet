@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\RecruteurController;
+use App\Http\Controllers\CandidatController;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        return view('ajoutersettings');
     }
 
     /**
@@ -34,7 +37,22 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $val = session()->get('Type');
+        if($val == 0){
+            $cand=new CandidatController();
+            $cand::store($request);
+            $diplome=DB::table('diplomes')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+            $experience=DB::table('experiences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+            $competence=DB::table('competences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
+            $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',session()->get('Cin'))->get();
+            $about=DB::table('candidats')->where('Cin',session()->get('Cin'))->value('About'); 
+            return view('Candidatprofile.pagecandidat',compact('diplome','langue','competence','experience','about'));     
+        }
+        else{
+            $rec=new RecruteurController();
+            $rec::store($request);
+           
+        }
     }
 
     /**
