@@ -17,27 +17,29 @@
 	    <div class="container gutter-top">
 		    <div class="row sticky-parent">
 			    <!-- Sidebar -->
-                <aside class="col-12 col-md-12 col-xl-3">
+				<aside class="col-12 col-md-12 col-xl-3">
 				    <div class="sidebar box shadow pb-0 sticky-column">
 						<svg class="avatar avatar--180" viewBox="0 0 188 188">
                             <g class="avatar__box">
-                                <image xlink:href="assets/img/profile-picture.jpg"  height="100%" width="100%" />
+                                <image xlink:href="{{$candidat->Photo_C}}"  height="100%" width="100%" />
                             </g>
                         </svg>
 						<div class="text-center">
-						    <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{{ session()->get('Nom') }}}</span> {{{ session()->get('Prenom') }}}</h3>
-							<div class="badge badge--gray">{{{ session()->get('Cin') }}}</div>
-						</div>						
+						    <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{$candidat->Nom }}</span> {{$candidat->Prenom}}</h3>
+							<div class="badge badge--gray">{{$candidat->Nom_Sec}}</div>
+						</div>
+						
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
-							        <i class="font-icon icon-location"></i>{{{ session()->get('Adresse') }}}
+							        <i class="font-icon icon-location"></i>{{$candidat->Adresse}}
+							    </li>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{{ session()->get('email') }}}</a>
+							        <a href="mailto:{{session()->get('Email')}}"><i class="font-icon icon-envelop"></i>{{$candidat->email}}</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
-							        <i class="font-icon icon-phone"></i>{{{ session()->get('Tel_C') }}}
+							        <i class="font-icon icon-phone"></i>{{$candidat->Tel_C}}
 							    </li>
 					        </ul>
 						</div>

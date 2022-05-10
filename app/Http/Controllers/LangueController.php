@@ -63,7 +63,7 @@ class LangueController extends Controller
      */
     public function show(langue $langue)
     {
-        //
+        
     }
 
     /**

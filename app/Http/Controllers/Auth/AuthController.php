@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use App\Models\User;
 use Hash;
+
   
 class AuthController extends Controller
 {
@@ -45,29 +46,43 @@ class AuthController extends Controller
         ]);
         $email =$request->email;          
         $password =$request->password;
-        $users = DB::table('users')->select('id')->where('email','=',$email)->get();
-        $candidat = DB::table('candidats')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
-        $recruteur = DB::table('recruteurs')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
-        //$credentials = $request->only('email', 'password');
+        //  $users = DB::table('users')->select('id')->where('email','=',$email)->get();
+        //  $candidat = DB::table('candidats')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
+        //  $recruteur = DB::table('recruteurs')->select('*')->where('IDuser','=',((Array)$users[0])['id'])->get();
+
+         
+
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], false, false))  {
-            if($candidat->count()!=0){
-               $request->session()->put('email', $email); 
-               $request->session()->put('Cin', ((Array)$candidat[0])['CIN']);
-               $request->session()->put('Nom', ((Array)$candidat[0])['Nom']);
-               $request->session()->put('Prenom', ((Array)$candidat[0])['Prenom']);
-               $request->session()->put('Tel_C', ((Array)$candidat[0])['Tel_C']);
-               $request->session()->put('Adresse', ((Array)$candidat[0])['Adresse']);
-               return redirect("pagecandidat");
+            if(candidat()){
+                $candidat = DB::table('candidats')->where('IDuser','=',candidat()->id)->get()->first();
+               session()->put('Cin',$candidat->CIN);
             }
-            if($recruteur->count()!=0){
-                $request->session()->put('recruteur', $recruteur);
-                return redirect("pagerecruteur");
+            else{
+                $recruteur = DB::table('recruteurs')->where('IDuser','=',recruteur()->id)->get()->first();
+                session()->put('Cin',$recruteur->CIN);
             }
+            // if($candidat->count()!=0){
+            //    // $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
+            //    $request->session()->put('Email', $email);
+            //    $request->session()->put('Cin', ((Array)$candidat[0])['CIN']);
+            //    $request->session()->put('Nom', ((Array)$candidat[0])['Nom']);
+            //    $request->session()->put('Prenom', ((Array)$candidat[0])['Prenom']);
+            //    $request->session()->put('Tel_C', ((Array)$candidat[0])['Tel_C']);
+            //    $request->session()->put('Adresse', ((Array)$candidat[0])['Adresse']);
+               
+            // }
+            // else{
+            //     $request->session()->put('recruteur', $recruteur);
+            // }
             //session::set('business_id', $business->id);
-            //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
-            //return ((Array)$candidat[0])['Nom'];
+            // return redirect("dashboard");
+            //return $request->session()->get('Cin') ;
+            //return redirect("pagecandidat")->withSuccess('Oppes! You have entered invalid credentials');
         }
-        return redirect("login");
+        else{
+            return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        }
+  
     }
       
     /**
@@ -82,15 +97,29 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-        $val=$request->select;
-        $data = $request->all();
-        $check = $this->create($data);
-        $email =$request->email;  
-        $users = DB::table('users')->select('id')->where('email','=',$email)->get();  
-        $request->session()->put('id', ((Array)$users[0])['id']);
-        $request->session()->put('Email',$email);
-        $request->session()->put('Type',$val);     
-        return redirect("ajoutersettings");
+           
+            $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'type' =>$request['select']
+          ]);
+
+          auth()->login($user);
+
+          $secteurs = DB::table('secteurs')->get();
+
+          return view('Ajoutertype',(['secteurs'=>$secteurs]));
+
+        //   if(candidat()){
+        //       return redirect()->route('ajouterCandidat.get');
+        //   }
+        //   else
+        //   {
+        //     return redirect()->route('ajouterRecruteur.get');
+        //   }
+          
+        //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**
@@ -100,8 +129,10 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        
-            return view('dashboard');
+        if(Auth::check()){
+           return redirect('dashboard');
+        }
+  
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
     
@@ -112,11 +143,7 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
+      
     }
     
     /**
@@ -124,9 +151,8 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function logout() {
+    public function logout(Request $request) {
         Session::flush();
-       
         Auth::logout();
   
         return Redirect('login');
