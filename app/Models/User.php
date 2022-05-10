@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  * Class User
  * 
@@ -21,6 +22,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string $type
  * 
  * @property Collection|Candidat[] $candidats
  * @property Collection|Recruteur[] $recruteurs
@@ -29,6 +31,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+	
+
+    protected $childTypes = [
+        'Candidat' => Candidat::class,
+        'Recruteur' => Recruteur::class,
+    ];
+
 	protected $table = 'users';
 
 	protected $dates = [
@@ -45,7 +54,8 @@ class User extends Authenticatable
 		'email',
 		'email_verified_at',
 		'password',
-		'remember_token'
+		'remember_token',
+		'type'
 	];
 
 	public function candidats()
@@ -57,4 +67,16 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Recruteur::class, 'IDuser');
 	}
+
+  
+    public function isCandidat(): bool
+    {
+        return $this->type === 'Candidat';
+    }
+
+    public function isRecruteur(): bool
+    {
+        return $this->type === 'Recruteur';
+    }
 }
+

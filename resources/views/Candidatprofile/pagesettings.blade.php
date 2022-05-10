@@ -21,17 +21,23 @@
 						<div class="pb-2">
 		                    <h1 class="title title--h1 first-title title__separate">paramètres</h1>
 					    </div>
-							
-						<form id="contact-form" method="POST" enctype="multipart/form-data" action="pagesettings"  class="contact-form" data-toggle="validator" novalidate="true">
+						@if(candidat())
+						<form id="contact-form" method="POST" enctype="multipart/form-data" action="{{route('editCandidat.post')}}"  class="contact-form" data-toggle="validator" novalidate="true">
+						@else
+						<form id="contact-form" method="POST" enctype="multipart/form-data" action="{{route('editRecruteur.post')}}"  class="contact-form" data-toggle="validator" novalidate="true">
+						@endif	
                         @csrf
-						
-			
 							<div class="row">
 							<div class="row justify-content-center">
+							@if (session('success'))
+                        	<div class="alert alert-success">
+                            {{ session('success') }}
+                        	</div>
+                   			 @endif
 								<div class="form-group col-12 col-md-2"> 
 									<svg class="avatar avatar--180"  viewBox="0 0 188 188">
 										<g class="avatar__box">
-											<image id="profil_image" xlink:href="{{$candidat->Photo_C}}"  height="100%" width="100%" />
+											<image id="profil_image" xlink:href="@if(isset($user->Photo_C) ) {{$user->Photo_C }} @else {{$user->photo_rec}}   @endif"  height="100%" width="100%" />
 										</g>
 									</svg>
 									<input type="file" hidden id="image_upload" name="Photo_C" class="input form-control" >
@@ -40,42 +46,73 @@
 							</div>
                             <div class="row">
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" readonly   name="cin" value="{{session()->get('Cin')}}" placeholder="CIN" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control" readonly   name="cin" value="{{session()->get('Cin')}}" placeholder="CIN" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="user" value="{{$candidat->name}}" placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control"  name="user" value="@if(isset($user->name)) {{$user->name  }} @endif " placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 				                <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="nom" value="{{$candidat->Nom}}" placeholder="Nom" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control"  name="nom" value="@if(isset($user->Nom)) {{$user->Nom}} @endif" placeholder="Nom" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="prenom" value="{{$candidat->Prenom}}" placeholder="Prénom" required="required" >
+                                    <input type="text" class="input form-control"  name="prenom" value="@if(isset($user->Prenom)) {{$user->Prenom}} @endif" placeholder="Prénom" required="required" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="email" class="input form-control"  name="email" value="{{$candidat->email}}" placeholder="Email" required="required">
+                                    <input type="email" class="input form-control"  name="email" value="@if(isset($user->email)) {{$user->email}} @endif" placeholder="Email" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
                                 <div class="form-group col-12 col-md-6"> 
-                                    <input type="password" class="input form-control"  name="motdepasse"  placeholder="Password" >
+									<div class="row">
+										<div class="form-group col-12 col-md-10">
+											<input type="password" class="input form-control @error('currentPass') is-invalid @enderror"  name="currentPass"  placeholder="Mot de passe" required >	
+											<div class="help-block with-errors"><strong>{{ session('error') }}</strong></div>
+											@if (session('error'))
+											<div class="help-block with-errors"><strong>{{ session('error') }}</strong></div>
+											@endif	
+											@if ($errors->has('newPass'))
+                                    		<span class="help-block with-errors"><strong>{{ $errors->first('newPass') }}</strong></span>
+                               				 @endif	
+										</div>	
+										<div class="form-group col-12 col-md-1">
+											<a id="changepass"  >Changer</a>
+										</div>
+										<div class="passContainer" style="display:none;">
+											<div class="form-group col-12 col-md-10">
+												<input type="password" class="input form-control "  name="newPass"  placeholder="Nouveau Mot de passe" >	
+											</div>	
+											<div class="form-group col-12 col-md-10">
+												<input type="password" class="input form-control "  name="newPass_confirmation"  placeholder="Confirmer Mot de passe" >	
+											</div>
+										</div>
+									</div>
+				                </div>
+
+								<div class="form-group col-12 col-md-6">
+                                    <input type="text" class="input form-control"  name="adresse" value="@if(isset($user->Adresse)) {{$user->Adresse}} @endif" placeholder="Adresse" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="adresse" value="{{$candidat->Adresse}}" placeholder="Adresse" required="required">
+                                    <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user->telephone_rec }} @endif" placeholder="Telphone" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="tel" class="input form-control"  name="telephone" value="{{$candidat->Tel_C}}" placeholder="Telphone" required="required">
+									<select class="input " name="secteur"  required="required">
+									<option value="{{$user->Id_Sec}}" selected>{{$user->Nom_Sec}}</option>
+									@foreach($secteurs as $sec)
+										<option value="{{$sec->Id_Sec}}">{{$sec->Nom_Sec}}</option>
+									@endforeach
+									</select>
 								    <div class="help-block with-errors"></div>
 				                </div>
 
@@ -83,7 +120,7 @@
 							<div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
-                                    <a href="page_candidat.html" class="btn btn-secondary ">Annuler</a>
+                                    <a href="{{route('pagecandidat')}}" class="btn btn-secondary ">Annuler</a>
                                 </div>
                             </div>
 		                </form>
@@ -104,17 +141,12 @@
              <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"/>
         </clipPath>		
     </svg>
-    
-	<!-- JavaScripts -->
-		
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
 
 	<script>
 		$('#profil_image').on('click', function() {
     		$('#image_upload').click();
 		});
+
 		function fasterPreview( uploader ) {
     		if ( uploader.files && uploader.files[0] ){
           		$('#profil_image').attr('xlink:href', 
@@ -124,6 +156,12 @@
 		$("#image_upload").change(function(){
     		fasterPreview( this );
 		});
+
+		$(document).ready(function(){
+  			$("#changepass").click(function(){
+    			$(".passContainer").toggle();
+  		});
+});
 	</script>
 
 @endsection

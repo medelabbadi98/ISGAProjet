@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\candidat;
+use App\Models\diplome;
+use App\models\User;
+use App\Models\experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AboutController;
+use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class CandidatController extends Controller
 {
@@ -13,25 +19,38 @@ class CandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     protected $AboutController;
+
+     public function  __construct(AboutController $AboutController){
+        $this->AboutController = $AboutController;
+     }
+   
     public function index()
     {
+        $secteurs = DB::table('secteurs')->get();
         
+        $candidat = $this->show();
         $diplome=DB::table('diplomes')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $experience=DB::table('experiences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $competence=DB::table('competences')->select('*')->where('Cin','=',session()->get('Cin'))->get();
         $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',session()->get('Cin'))->get();
         $about=DB::table('candidats')->where('Cin',session()->get('Cin'))->value('About');
-        
-        return view('Candidatprofile.pagecandidat',compact('diplome','langue','competence','experience','about')); 
-    }
-    public function getsettings(){
-        $candidat = $this->show();
-        
-           return view('Candidatprofile.pagesettings',(['candidat'=>$candidat]));
-       
+        return view('Candidatprofile.pagecandidat',compact('candidat','diplome','experience','langue','about','secteurs','competence')); 
+           
     }
 
-    
+    public function getsettings(){
+        $secteurs = DB::table('secteurs')->get();
+        $user = $this->show();
+        //dd(auth()->user());
+        return view('Candidatprofile.pagesettings',(['user'=>$user,'secteurs'=>$secteurs]));
+    }
+
+    // public function getajouter(){
+    //     return view('Candidatprofile.Ajoutertype');
+    // }
+
 
     public function connection(Request $request){
         $candidat = DB::table('candidats')->where('email', $request->email)->first();
@@ -43,10 +62,7 @@ class CandidatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return View::make('Candidat.SignUp');
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -56,22 +72,31 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-        $candidat =new candidat();     
-        $candidat -> CIN =$request->cin;     
-        $candidat -> IDuser =session()->get('id');            
+
+        $candidat =new candidat();   
+
+        $request->validate([
+            'Photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        if ($request->has('Photo')) {
+            $imageName = time().'.'.$request->Photo->extension();
+            $imageurl = "/assets/img" . "/" .$imageName;
+            $request->Photo->move(public_path('/assets/img'),$imageurl);
+            $candidat-> Photo_C = $imageurl;
+        }
+         
+        $candidat -> CIN =$request->cin;          
         $candidat -> Adresse =$request->adresse;
 		$candidat -> Nom =$request->nom;
 		$candidat -> Prenom =$request->prenom;
-		$candidat -> Tel_C =$request->telephone;
+		$candidat -> Tel_C =$request->tel;
+        $candidat -> IDuser = auth()->user()->id;
+        $candidat -> Id_sect = $request->secteur;
+        session()->put('Cin',$request->cin);
+     
         $candidat->save();
-        $request->session()->put('Cin', $request->cin);
-       
-        $request->session()->put('Cin', $request->cin);
-        $request->session()->put('Nom', $request->nom);
-        $request->session()->put('Prenom', $request->prenom);
-        $request->session()->put('Tel_C', $request->telephone);
-        $request->session()->put('Adresse', $request->adresse);
-        return view('Candidatprofile.pagecandidat'); 
+        return redirect('pagecandidat');
     }
 
     /**
@@ -82,9 +107,9 @@ class CandidatController extends Controller
      */
     public function show()
     {
-        $candidat = candidat::join('users','candidats.IDuser',"=",'users.id')->where('Cin',session()->get('Cin'))->first();
-        //$candidat = candidat::find(session()->get('Cin'));
-        return $candidat;
+        // $user = candidat::join('users','candidats.IDuser',"=",'users.id')->where('id',auth()->user()->id)->get()->first();
+        $user = candidat::join('users','candidats.IDuser',"=",'users.id')->join('secteurs','secteurs.Id_Sec','=','candidats.Id_sect')->where('id',candidat()->id)->get()->first();
+        return $user;
     }
 
     /**
@@ -95,7 +120,6 @@ class CandidatController extends Controller
      */
     public function edit(candidat $candidat)
     {
-
         
     }
 
@@ -109,16 +133,12 @@ class CandidatController extends Controller
     public function update(Request $request)
     {
 
+        
         $request->validate([
             'Photo_C' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'currentPass' => 'required',          
         ]);
     
-
-       // $imageName = time().'.'.$request->Photo_C->extension();
-        //$imageurl = "/assets/img" . "/" .$imageName;
-        // $image = $request->file('Photo_C');
-        // $image->move(public_path('/assets/img'),$image->getClientOriginalName());
-
         if ($request->has('Photo_C')) {
             $imageName = time().'.'.$request->Photo_C->extension();
             $imageurl = "/assets/img" . "/" .$imageName;
@@ -126,25 +146,43 @@ class CandidatController extends Controller
             $candidat-> Photo_C = $imageurl;
         }
 
-      $candidat = candidat::find($request->cin);
+         $candidat = candidat::find($request->cin);
+         $user = candidat();
+        if (!(Hash::check($request->get('currentPass'), Auth::user()->password))) {
+            return redirect()->back()->with("error","Mot de Passe Incorrect!!!!!");
+        }
 
-      $candidat -> CIN =$request->cin; 
-      $candidat -> Adresse =$request->adresse;
+        
+
+        if ($request->filled('newPass')){
+
+            $request->validate([
+                'newPass' => 'required|min:6|confirmed',
+            ]);
+
+            if(strcmp($request->get('currentPass'), $request->get('newPass')) == 0){
+                return redirect()->back()->with("error","Le nouveau mot de passe ne peut pas être le même que votre mot de passe actuel.");
+            }
+            else{
+                $user->password = Hash::make($request->newPass);
+            }
+        }
+      
+        
+
+      
+      $candidat -> Adresse = $request->adresse;
       $candidat -> Nom =$request->nom;
       $candidat -> Prenom =$request->prenom;
       $candidat -> Tel_C =$request->telephone;
+      $candidat -> Id_sect = $request->secteur;
+      $user->name = $request->user;
+      $user->email = $request->email;
+      $user->update();
       $candidat->update();
-      return redirect()->back();
+
+      return redirect()->back()->with("success","les changements a été effectuée avec succès!");
     }
 
-     public function about(){
-        $about=DB::table('candidats')->where('Cin',session()->get('Cin'))->value('About');
-        return view('Candidatprofile.editabout',compact('about'));
-     }
-
-     public function editabout(Request $request){
-        DB::table('candidats')->where('Cin',session()->get('Cin'))->update(['about' => $request->about]);
-        return redirect("pagecandidat");
-     }
    
 }

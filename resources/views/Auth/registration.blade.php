@@ -36,8 +36,8 @@
                               </div>
                           </div>
                           <div class="wrapper1">
-                        <input type="radio" name="select" id="option-1" value="0" checked >
-                        <input type="radio" name="select" id="option-2" value="1">
+                        <input type="radio" name="select" id="option-1" value="Candidat" checked >
+                        <input type="radio" name="select" id="option-2" value="Recruteur">
                           <label for="option-1" class="option option-1">
                             <div class="dot"></div>
                              <span>Candidat</span>

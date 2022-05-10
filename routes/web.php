@@ -15,14 +15,20 @@ use App\Http\Controllers\OffreController;
 use App\Http\Controllers\PostulerController;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\SecteurController;
+use App\Http\Controllers\AboutController;
+
 
 
 ///////////////////////////pages
+Route::get('candidatSettings', [CandidatController::class, 'getsettings'])->name('candidatSettings');
+Route::post('candidatSettings', [CandidatController::class, 'update'])->name('editCandidat.post');
+//Recruteur
+Route::get('recruteurSettings', [RecruteurController::class, 'getsettings'])->name('recruteurSettings');
+Route::post('recruteurSettings', [RecruteurController::class, 'update'])->name('editRecruteur.post');
+
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');
-//Route::get('pagesettings', [CandidatController::class, 'setting'])->name('pagesettings');
-Route::get('pagesettings', [CandidatController::class, 'getsettings']);
-Route::post('pagesettings', [CandidatController::class, 'update']);
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -33,7 +39,11 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
 //ajouter candidat
-Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat.post');
+Route::post('ajouter/candidat',[CandidatController::class, 'store'])->name('ajouterCandidat.post');
+//Recruteur
+Route::post('ajouter/recruteur',[RecruteurController::class, 'store'])->name('ajouterRecruteur.post');
+
+//Route::post('ajoutercandidat', [CandidatController::class, 'store'])->name('ajoutercandidat.post');
 
 Route::post('addsettings', [HomeController::class, 'store'])->name('ajoutersettings.post');
 Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajoutersettings');
@@ -57,8 +67,8 @@ Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajout
 
 ///////////////////////////Edit routes
 //about
-Route::post('editabout', [CandidatController::class, 'editabout'])->name('editabout.post');
-Route::get('editabout', [CandidatController::class, 'about']);
+Route::get('editabout', [AboutController::class, 'get']);
+Route::post('editabout', [AboutController::class, 'edit']);
 //competence
 Route::get('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
 Route::post('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'update'])->name('editcompetence.post');
