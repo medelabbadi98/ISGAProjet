@@ -19,12 +19,13 @@ use App\Http\Controllers\AboutController;
 
 
 
-///////////////////////////pages
+
 Route::get('candidatSettings', [CandidatController::class, 'getsettings'])->name('candidatSettings');
 Route::post('candidatSettings', [CandidatController::class, 'update'])->name('editCandidat.post');
 //Recruteur
 Route::get('recruteurSettings', [RecruteurController::class, 'getsettings'])->name('recruteurSettings');
 Route::post('recruteurSettings', [RecruteurController::class, 'update'])->name('editRecruteur.post');
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('pagecandidat', [CandidatController::class, 'index'])->name('pagecandidat');
 Route::get('pagerecruteur', [RecruteurController::class, 'index'])->name('pagerecruteur');

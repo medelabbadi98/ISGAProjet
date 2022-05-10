@@ -68,14 +68,17 @@
 							<div class="row">
 							    <div class="col-12 col-lg-6">
 								    <h2 class="title title--h3"> Diplômes et Formations <a href="ajouterdiplome" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
-									@foreach($diplome as $dip)				
+									@foreach($diplome as $dip)
+									<?php
+										$anneeObt= preg_split("/[-]/","$dip->Annee_obtention");										
+									?>				
 									<article class="timeline__item">
 											<div class="btn-edit-del">
-											<a href="delete/Dip/{{$dip->ID_Dip}}" onclick="return confirm('Are you sure?')" role="button"><i class="font-icon icon-trashcan"></i></a>
+											<a href="delete/Dip/{{$dip->ID_Dip}}" onclick="return confirm('Voulez vous le supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
 										<a href="editdiplome/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-tool"></i></a>	
 											</div>
 									        <h5 class="title title--h5 timeline__title">Type: {{$dip->Type_Dip}}</h5>
-											<h6 class="title title--h6">Annee d'obtention : <span class="timeline__period">{{$dip->Annee_obtention}}</span></h6>	
+											<h6 class="title title--h6">Annee d'obtention : <span class="timeline__period"><?php echo $anneeObt[0] ?></span></h6>	
 											<h6 class="title title--h6">Etablissement : <span >{{$dip->Etablissement}}</span></h6>
 											<h6 class="title title--h6">Spetialite : <span>{{$dip->Specialites}}</span></h6>
 											<h6 class="title title--h6">Option : <span>{{$dip->_Option}}</span></h6>											
@@ -89,13 +92,17 @@
 									<div class="timeline">
 									   
 										@foreach($experience as $exp)
+										<?php
+										$dateD= preg_split("/[-]/",$exp->Date_Debut);
+										$dateF= preg_split("/[-]/",$exp->Date_Fin);												
+										?>
 											<article class="timeline__item">
 												<div class="btn-edit-del">
-													<a href="delete/Exp/{{$exp->ID_Exp}}" onclick="return confirm('Are you sure?')" role="button"><i class="font-icon icon-trashcan"></i></a>
+													<a href="delete/Exp/{{$exp->ID_Exp}}" onclick="return confirm('Voulez vous la supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
 													<a href="editexperience/{{$exp->ID_Exp}}" role="button"><i class="font-icon icon-tool"></i></a>
 												</div>
 												<h5 class="title title--h5 timeline__title">{{ $exp->Intitule_Poste }}</h5>
-												<span class="timeline__period">{{ $exp->Date_Debut }} — {{ $exp->Date_Fin }}</span><br>													
+												<span class="timeline__period"><?php echo $dateD[0] ?> — <?php echo $dateF[0] ?></span><br>													
 												<span class="timeline__etp">{{ $exp->Nom_Etp }}<br>												
 												</span>
 												<p class="timeline__description">{{ $exp->Description_Ex }}</p>
@@ -117,7 +124,7 @@
 											@foreach($competence as $cp)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
-														<a href="delete/cmp/{{$cp->ID_Cmp}}" onclick="return confirm('Are you sure?')" role="button"><i class="font-icon icon-trashcan"></i></a>
+														<a href="delete/cmp/{{$cp->ID_Cmp}}" onclick="return confirm('Voulez vous la supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
 														<a href="editcompetence/{{$cp->ID_Cmp}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
 													<h5 class="title title--h5 timeline__title">{{ $cp->Libelle }}</h5>
@@ -135,7 +142,7 @@
 											@foreach($langue as $lg)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
-														<a href="delete/lang/{{$lg->ID_Lg}}" onclick="return confirm('Are you sure?')" role="button"><i class="font-icon icon-trashcan"></i></a>
+														<a href="delete/lang/{{$lg->ID_Lg}}" onclick="return confirm('Voulez vous la supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
 														<a href="editlangue/{{$lg->ID_Lg}}" role="button"><i class="font-icon icon-tool"></i></a>
 													</div>
 
