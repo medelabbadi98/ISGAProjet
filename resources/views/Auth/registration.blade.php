@@ -47,15 +47,6 @@
                              <span>Recruteur</span>
                           </label>
                        </div>
-                          <div class="">
-                              <div class="">
-                                  <div class="checkbox">
-                                      <label>
-                                          <!-- <input type="checkbox" name="remember"> Remember Me -->
-                                      </label>
-                                  </div>
-                              </div>
-                          </div>
   
                           <div class="wthree-text">
 						<div class="clear"> </div>

@@ -56,10 +56,12 @@ class AuthController extends Controller
             if(candidat()){
                 $candidat = DB::table('candidats')->where('IDuser','=',candidat()->id)->get()->first();
                session()->put('Cin',$candidat->CIN);
+               return redirect("pagecandidat");
             }
             else{
                 $recruteur = DB::table('recruteurs')->where('IDuser','=',recruteur()->id)->get()->first();
                 session()->put('Cin',$recruteur->CIN);
+                return redirect("pagecrecruteur");
             }
             // if($candidat->count()!=0){
             //    // $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);

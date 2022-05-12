@@ -122,7 +122,7 @@ class CandidatController extends Controller
     {
         
     }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -151,26 +151,7 @@ class CandidatController extends Controller
         if (!(Hash::check($request->get('currentPass'), Auth::user()->password))) {
             return redirect()->back()->with("error","Mot de Passe Incorrect!!!!!");
         }
-
-        
-
-        if ($request->filled('newPass')){
-
-            $request->validate([
-                'newPass' => 'required|min:6|confirmed',
-            ]);
-
-            if(strcmp($request->get('currentPass'), $request->get('newPass')) == 0){
-                return redirect()->back()->with("error","Le nouveau mot de passe ne peut pas être le même que votre mot de passe actuel.");
-            }
-            else{
-                $user->password = Hash::make($request->newPass);
-            }
-        }
-      
-        
-
-      
+       
       $candidat -> Adresse = $request->adresse;
       $candidat -> Nom =$request->nom;
       $candidat -> Prenom =$request->prenom;

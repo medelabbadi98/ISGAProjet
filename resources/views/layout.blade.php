@@ -9,6 +9,7 @@
     
 	<link href="font-awesome/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href=" {{URL::asset('assets/styles/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href=" {{URL::asset('assets/styles/popup.css')}}"/>
 	<style type="text/css">
 	
       

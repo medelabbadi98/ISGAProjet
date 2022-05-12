@@ -18,6 +18,7 @@ use App\Http\Controllers\SecteurController;
 use App\Http\Controllers\AboutController;
 
 
+Route::post('updatePassword', [HomeController::class, 'updatePassword'])->name('updatePassword.post');
 
 
 Route::get('candidatSettings', [CandidatController::class, 'getsettings'])->name('candidatSettings');
