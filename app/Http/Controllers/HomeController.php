@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\models\User; 
+use Hash;
 
 class HomeController extends Controller
 {
@@ -30,7 +33,23 @@ class HomeController extends Controller
     {
         //
     }
+    public function updatePassword(Request $request){
+        if ($request->filled('newPass')){
 
+            $request->validate([
+                'newPass' => 'required|min:6|confirmed',
+            ]);
+
+            if(strcmp($request->get('currentPass'), $request->get('newPass')) == 0){
+                return redirect()->back()->with("error","Le nouveau mot de passe ne peut pas être le même que votre mot de passe actuel.");
+            }
+            else{
+                $user->password = Hash::make($request->newPass);
+            }
+        }
+        return redirect();
+
+    }
     /**
      * Store a newly created resource in storage.
      *
