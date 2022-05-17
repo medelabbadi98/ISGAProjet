@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
+use App\Http\Controllers\AuthController;
+use App\Models\candidat;
+use App\models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\models\User; 
+
 use Hash;
 
 class HomeController extends Controller
@@ -33,7 +36,38 @@ class HomeController extends Controller
     {
         //
     }
-    public function updatePassword(Request $request){
+    public function updatePasswordCandidat(Request $request){
+
+        $candidat = candidat::find($request->cin);  
+        $Iduser = DB::table('candidats')->select('IDuser')->where('cin','=',$request->cin)->get();
+        $user =  User::find(((Array)$Iduser[0])['IDuser']);
+        
+        if ((Hash::check($request->get('currentPass'), Auth::user()->password))==0) {
+            return redirect()->back()->with("error","Mot de Passe Incorrect!!!!!");
+        }
+        if ($request->filled('newPass')){
+            if(strcmp($request->get('currentPass'), $request->get('newPass')) == 0){
+                //return ((Array)$Iduser[0])['IDuser'];
+                return redirect()->back()->with("error","Le nouveau mot de passe ne peut pas être le même que votre mot de passe actuel.");
+            }
+            else{
+                $user->password = Hash::make($request->newPass);
+                $user->update();
+                return $user;
+            }
+        }
+        
+
+    }
+    public function updatePasswordRecruteur(Request $request){
+
+        $recruteur = recruteur::find($request->cin);  
+        $Iduser = DB::table('recruteurs')->select('IDuser')->where('cin','=',$request->cin)->get();
+        $user =  User::find(((Array)$Iduser[0])['IDuser']);
+
+        if (!(Hash::check($request->get('currentPass'), Auth::user()->password))) {
+            return redirect()->back()->with("error","Mot de Passe Incorrect!!!!!");
+        }
         if ($request->filled('newPass')){
 
             $request->validate([
@@ -45,9 +79,10 @@ class HomeController extends Controller
             }
             else{
                 $user->password = Hash::make($request->newPass);
+                $user->update();
             }
         }
-        return redirect();
+        return redirect()->back()->with("success","les changements a été effectuée avec succès!");
 
     }
     /**

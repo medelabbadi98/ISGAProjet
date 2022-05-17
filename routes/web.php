@@ -18,8 +18,8 @@ use App\Http\Controllers\SecteurController;
 use App\Http\Controllers\AboutController;
 
 
-Route::post('updatePassword', [HomeController::class, 'updatePassword'])->name('updatePassword.post');
-
+Route::post('updateCandidat', [HomeController::class, 'updatePasswordCandidat'])->name('updatePasswordCandidat.post');
+Route::post('updateRecruteur', [HomeController::class, 'updatePasswordRecruteur'])->name('updatePasswordRecruteur.post');
 
 Route::get('candidatSettings', [CandidatController::class, 'getsettings'])->name('candidatSettings');
 Route::post('candidatSettings', [CandidatController::class, 'update'])->name('editCandidat.post');

@@ -27,11 +27,9 @@ class Offre extends Model
 {
 	protected $table = 'offres';
 	protected $primaryKey = 'Id_Offre';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Id_Offre' => 'int',
 		'Id_CT' => 'int',
 		'ID_Sec' => 'int',
 		'Id_rec' => 'int'

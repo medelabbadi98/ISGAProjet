@@ -136,13 +136,20 @@
     </svg>
 	
 	<div id="popup" class="modal">
-		<form class="modal-content animate" action="{{route('updatePassword.post')}}" method="post">  
-			<div class="pb-2">
+	@if(candidat())
+	    <form class="modal-content animate" action="{{route('updatePasswordCandidat.post')}}" method="POST">  
+	@else
+		<form class="modal-content animate" action="{{route('updatePasswordRecruteur.post')}}" method="POST">  
+	@endif 
+			@csrf
+		<div class="pb-2">
 				<h1 class="title title--h1 first-title title__separate">Changer le mot de passe</h1>
 			</div>
 			<div class="container">
 			<div class="row">
 					<div class="form-group col-3 col-md-3">
+					<input type="text" class="input form-control" hidden   name="cin" value="{{session()->get('Cin')}}" >
+
 					</div>
 					<div class="form-group col-6 col-md-6">
 					<input type="password" class="input form-control @error('currentPass') is-invalid @enderror" placeholder="l'ancien mot de passe" name="currentPass" required>
@@ -152,7 +159,7 @@
 					<div class="form-group col-3 col-md-3">
 					</div>
 					<div class="form-group col-6 col-md-6">
-					<input type="password" class="input form-control" placeholder="le nouveau mot de passe" name="NewPass" required>
+					<input type="password" class="input form-control" placeholder="le nouveau mot de passe" name="newPass" required>
 					</div>
 				</div>
 				<div class="row">
