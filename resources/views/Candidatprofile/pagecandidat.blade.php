@@ -175,7 +175,7 @@
         </clipPath>		
     </svg>
 	@isset($CIN)
-	@if(session()->get('Cin')!=$CIN) or session()->get('Cin')==null  )
+	@if(session()->get('Cin')!=$CIN)
 <script>
 		const btns = Array.from(
 			document.querySelectorAll('.btn-add, .btn-edit-del')

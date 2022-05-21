@@ -64,19 +64,6 @@
                       </form>
                       <p>Avez-vous un compte? <a href="{{route('login')}}"> Connecte-vous maintenant!</a></p>
                       </div>
-		</div>
-		
-		<!-- <ul class="colorlib-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul> -->
+		</div>		
 	</div>
 @endsection

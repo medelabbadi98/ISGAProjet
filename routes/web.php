@@ -36,12 +36,26 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 ///offres
 Route::get('offre-emploi', [OffreController::class, 'index'])->name('offre');
 Route::get('offre-emploi-page/{Id_Offre}', [OffreController::class, 'getOffrePage'])->name('offre-page');
+
 //ListeCandidats
 Route::get('lesCandidats', [CandidatController::class, 'list']);
 Route::get('candidat-page/{CIN}', [CandidatController::class, 'getcandidatPage']);
+
+//ListeRecruteurs
+Route::get('lesRecruteurs', [RecruteurController::class, 'list']);
+Route::get('recruteur-page/{CIN}', [RecruteurController::class, 'getrecruteurPage']);
+
+//Find Candidats
+Route::get('/findMot',[CandidatController::class, 'findM'])->name('findMot');
+Route::get('/findSec',[CandidatController::class, 'findS'])->name('findSec');
+
+//Find Recruteurs
+Route::get('/find',[RecruteurController::class, 'find'])->name('find');
+
 
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
