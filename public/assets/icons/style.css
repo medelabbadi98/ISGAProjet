@@ -46,6 +46,8 @@
   .icon-add::before{
     content: "\ea0a";
   }
-
+  .icon-search::before{
+    content: "\e986";
+  }
 
   

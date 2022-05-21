@@ -133,6 +133,8 @@ class CandidatController extends Controller
     public function update(Request $request)
     {
 
+        $candidat = candidat::find($request->cin);
+        $user = candidat();
         
         $request->validate([
             'Photo_C' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -142,12 +144,11 @@ class CandidatController extends Controller
         if ($request->has('Photo_C')) {
             $imageName = time().'.'.$request->Photo_C->extension();
             $imageurl = "/assets/img" . "/" .$imageName;
-            $image->move(public_path('/assets/img'),$imageurl);
+            $request->Photo_C->move(public_path('/assets/img'),$imageurl);        
             $candidat-> Photo_C = $imageurl;
         }
 
-         $candidat = candidat::find($request->cin);
-         $user = candidat();
+        
         if (!(Hash::check($request->get('currentPass'), Auth::user()->password))) {
             return redirect()->back()->with("error","Mot de Passe Incorrect!!!!!");
         }
@@ -184,5 +185,26 @@ class CandidatController extends Controller
       return redirect()->back()->with("success","les changements a été effectuée avec succès!");
     }
 
+
+    public function list(){
+        $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->get();
+        $secteurs = DB::table('secteurs')->get();
+        return view("candidatsListe",compact('secteurs','candidats'));
+    }
+
+    public function getcandidatPage($CIN){
+        $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->join('users','candidats.IDuser','=','users.id')->get();
+        foreach($candidats as $candidat){
+            if($candidat->CIN == $CIN){
+                
+                $diplome=DB::table('diplomes')->select('*')->where('Cin','=',$CIN)->get();
+                $experience=DB::table('experiences')->select('*')->where('Cin','=',$CIN)->get();
+                $competence=DB::table('competences')->select('*')->where('Cin','=',$CIN)->get();
+                $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',$CIN)->get();
+                $about=DB::table('candidats')->where('Cin',$CIN)->value('About');
+                return view('Candidatprofile.pagecandidat',compact('candidat','diplome','experience','langue','about','competence','CIN')); 
+            }
+       }
+    }
    
 }

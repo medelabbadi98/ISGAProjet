@@ -22,12 +22,23 @@
                             <h1 class="title title--h1 first-title title__separate">Ajouter Offre</h1>
                         </div>
             
-                        <form id="contact-form" class="contact-form" data-toggle="validator" novalidate="true">
+                        <form id="contact-form" method="POST" action="{{ route('ajouterOffre.post') }}" class="contact-form" data-toggle="validator" novalidate="true">
+                        @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="offre" placeholder="Offre" required="required" >
+                                    <label for="offre" class="form_label">Offre :</label>
+                                    <input type="text" class="input form-control" autocomplete="on" name="Intitule" placeholder="Offre" required="required" >
                                     <div class="help-block with-errors"></div>
                                 </div>
+                                <div class="form-group col-12 col-md-6">
+                                    <label for="secteur" class="form_label">Secteurs :</label>
+									<select class="input " name="secteur"  required="required">
+									@foreach($secteurs as $sec)
+										<option value="{{$sec->Id_Sec}}">{{$sec->Nom_Sec}}</option>
+									@endforeach
+									</select>
+								    <div class="help-block with-errors"></div>
+				                </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
@@ -42,8 +53,19 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
 
+                                <div class="form-group col-12 col-md-6">
+                                    <label for="contrat" class="form_label">Contrats :</label>
+									<select class="input " name="contrat"  required="required">
+									@foreach($contrats as $con)
+										<option value="{{$con->Id_CT}}">{{$con->Type_CT}}</option>
+									@endforeach
+									</select>
+								    <div class="help-block with-errors"></div>
+				                </div>
+
                                 <div class="form-group col-12 col-md-12">
-                                    <textarea class="textarea form-control" placeholder="About" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;"></textarea>
+                                    <label for="Description" class="form_label">Description :</label>
+                                    <textarea class="textarea form-control" id="editor" name="Description" placeholder="Description" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             
@@ -65,12 +87,9 @@
             </div>
         </div>
     </div>
-    
-    
-
-
-    <!-- JavaScripts -->
-	<script src="assets/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script>
+        CKEDITOR.replace('editor',{
+            width:1000
+        });
+    </script> 
 @endsection

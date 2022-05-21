@@ -105,7 +105,7 @@
                                     <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user->telephone_rec }} @endif" placeholder="Telphone" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
-
+								@if(candidat())
 								<div class="form-group col-12 col-md-6">
 									<select class="input " name="secteur"  required="required">
 									<option value="{{$user->Id_Sec}}" selected>{{$user->Nom_Sec}}</option>
@@ -115,12 +115,17 @@
 									</select>
 								    <div class="help-block with-errors"></div>
 				                </div>
-
+								@endif
 						    </div>
 							<div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
+									
+									@if(candidat())
                                     <a href="{{route('pagecandidat')}}" class="btn btn-secondary ">Annuler</a>
+                                    @else
+                                    <a href="{{route('pagerecruteur')}}" class="btn btn-secondary ">Annuler</a>
+                                    @endif
                                 </div>
                             </div>
 		                </form>

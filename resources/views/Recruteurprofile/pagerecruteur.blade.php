@@ -19,24 +19,24 @@
 				    <div class="sidebar box shadow pb-0 sticky-column">
 						<svg class="avatar avatar--180" viewBox="0 0 188 188">
                             <g class="avatar__box">
-                                <image xlink:href="assets/img/profile-picture.jpg"  height="100%" width="100%" />
+                                <image xlink:href="{{$recruteur->photo_rec}}"  height="100%" width="100%" />
                             </g>
                         </svg>
 						<div class="text-center">
-                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">Nom</span> Prenom</h3>
-							<div class="badge badge--gray">Exemple</div>
+                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{$recruteur->Nom}}</span> {{$recruteur->Prenom}}</h3>
+							<!-- <div class="badge badge--gray">Exemple</div> -->
 						</div>
 						
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
-							        <i class="font-icon icon-location"></i>Location
+							        <i class="font-icon icon-location"></i>{{$recruteur->Adresse}}
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>example@mail.com</a>
+							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{$recruteur->email}}</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
-							        <i class="font-icon icon-phone"></i>+212 64470xxxxxx
+							        <i class="font-icon icon-phone"></i>{{$recruteur->telephone_rec}}
 							    </li>
 					        </ul>
 						</div>
@@ -48,9 +48,9 @@
                         <div class="pb-0 pb-sm-2 position-relative">
 		                    <h1 class="title title--h1 first-title title__separate">À propos de Nous</h1>
                             <div class="btn-edit-del">			
-								<a href="#" role="button"><i class="font-icon icon-tool"></i></a>
+								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
-						    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, dolores modi quos placeat et rem sequi ducimus dolore officiis nemo saepe illo minus. Omnis illum alias dolore quia porro atque.</p>
+						    <p>{{$recruteur->About}}</p>
                         </div>
 
                         <div class="pb-0 box-inner">

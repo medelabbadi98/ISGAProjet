@@ -27,12 +27,11 @@ use Illuminate\Database\Eloquent\Model;
 class Recruteur extends Model
 {
 	protected $table = 'recruteurs';
-	protected $primaryKey = 'ID_Rec';
+	protected $primaryKey = 'CIN';
 	public $incrementing = false;
 	public $timestamps = false;
 
-	protected $casts = [
-		'ID_Rec' => 'int',
+	protected $casts = [		
 		'IDuser' => 'int'
 	];
 

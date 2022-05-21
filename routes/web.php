@@ -36,6 +36,12 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+///offres
+Route::get('offre-emploi', [OffreController::class, 'index'])->name('offre');
+Route::get('offre-emploi-page/{Id_Offre}', [OffreController::class, 'getOffrePage'])->name('offre-page');
+//ListeCandidats
+Route::get('lesCandidats', [CandidatController::class, 'list']);
+Route::get('candidat-page/{CIN}', [CandidatController::class, 'getcandidatPage']);
 
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
@@ -50,8 +56,8 @@ Route::post('addsettings', [HomeController::class, 'store'])->name('ajoutersetti
 Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajoutersettings');
 
 //offre
-Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
-Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');
+Route::get('Ajouter-offre', [OffreController::class, 'ajouterOffre']);
+Route::post('Ajouter-offre', [OffreController::class, 'store'])->name('ajouterOffre.post');
 //competence
 Route::get('ajoutercompetence', [CompetenceController::class, 'index'])->name('ajoutercompetence');
 Route::post('ajoutercompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');

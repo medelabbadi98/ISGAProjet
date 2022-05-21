@@ -73,7 +73,7 @@ class RecruteurController extends Controller
 
         $recruteur->save();
 
-
+        return redirect('pagerecruteur');
 
     }
 
@@ -109,19 +109,19 @@ class RecruteurController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'Photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-    
-        if ($request->has('Photo')) {
-            $imageName = time().'.'.$request->Photo->extension();
-            $imageurl = "/assets/img" . "/" .$imageName;
-            $request->Photo->move(public_path('/assets/img'),$imageurl);
-            $recruteur->photo_rec = $imageurl;
-        }
-
         $recruteur = recruteur::find($request->cin);
         $user = recruteur();
+        $request->validate([
+            'Photo_C' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'currentPass' => 'required',
+        ]);
+    
+        if ($request->has('Photo_C')) {
+            $imageName = time().'.'.$request->Photo_C->extension();
+            $imageurl = "/assets/img" . "/" .$imageName;
+            $request->Photo_C->move(public_path('/assets/img'),$imageurl);        
+            $recruteur->photo_rec = $imageurl;
+        }       
 
         if (!(Hash::check($request->get('currentPass'), Auth::user()->password))) {
             dd(Auth::user()->password);

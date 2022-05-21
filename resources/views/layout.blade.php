@@ -51,10 +51,11 @@
         </div>
     </div>
 </nav>
-  
-@yield('content')
 <script src="{{ URL::asset('assets/js/jquery-3.4.1.js')}} "></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/plugins.min.js')}}"></script>
 <script src="{{ URL::asset('assets/js/common.js')}}"></script>  
+<script src="{{ URL::asset('assets/js/ckeditor/ckeditor.js') }}"></script>
+@yield('content')
+
 </body>
 </html>
