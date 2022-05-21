@@ -66,7 +66,7 @@
                                     <input type="tel" class="input form-control"  name="tel"  placeholder="Telphone" >
 								    <div class="help-block with-errors"></div>
 				                </div>
-
+								@if(candidat())
 								<div class="form-group col-12 col-md-6">
 									<select class="input " name="secteur"  required="required">
 									@foreach($secteurs as $sec)
@@ -75,7 +75,7 @@
 									</select>
 								    <div class="help-block with-errors"></div>
 				                </div>
-
+								@endif
 						    </div>
 							<div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
