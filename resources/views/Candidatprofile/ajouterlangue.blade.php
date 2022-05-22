@@ -49,7 +49,7 @@
                                 </div>
             
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="niveau" placeholder="niveau" required="required">
+                                    <input type="text" class="input form-control" name="niveau" maxlength="20" placeholder="niveau" required="required">
                                     <div class="help-block with-errors"></div>
                                 </div>                    
                                

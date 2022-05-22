@@ -23,7 +23,7 @@
                                 <div class="input-group">
                                     
                                     
-                                    <input class="form-control" type="text" name="query" value="" placeholder="Nom,Prenom ou mot clé" value="{{ request()->input('query') }}">
+                                    <input class="form-control" type="text" name="query" placeholder="Nom,Prenom ou mot clé" value="{{ request()->input('query') }}">
                                         <button type="submit" class="btn-default"><i class="font-icon icon-search"></i></button>
                                         
                                 </div>
@@ -65,9 +65,9 @@
                                 </div>
                                 @endforeach
                                 @else
-                                <div style="text-align:center; padding-bottom:20px">
-                                <h3 class="title title--h2 first-title ">Oups !</h3>
-                                <h5 class="title title--h5">Aucun résultat n été trouve pour votre recherche <br> <span class="case-item__text"><a href="/lesCandidats"> veuillez essayer de nouveau </a></span></h5>
+                                    <div style="text-align:center; padding-bottom:20px">
+                                    <h3 class="title title--h2 first-title ">Oups !</h3>
+                                    <h5 class="title title--h5">Aucun résultat n été trouve pour votre recherche <br> <span class="case-item__text"><a href="/lesCandidats"> veuillez essayer de nouveau </a></span></h5>
                                 @endif
                                 <div class="pagination-block">
                                     {{$candidats->links('paginationLinks')}}

@@ -28,7 +28,7 @@
                         <div class="row">
                             
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="Libelle" autocomplete="on" placeholder="Competance" required="required" >
+                                    <input type="text" class="input form-control" name="Libelle" maxlength="99" autocomplete="on" placeholder="Competance" required="required" >
                                     <div class="help-block with-errors"></div>
                                 </div>
             

@@ -31,7 +31,7 @@
                         @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-12">
-                                    <textarea class="textarea form-control" name="About" placeholder="About" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;">{{$user->About}}</textarea>
+                                    <textarea class="textarea form-control"  maxlength="250" name="About" placeholder="About" rows="4" required="required" tabindex="1" style="overflow: hidden; overflow-wrap: break-word; height: 118px; outline: none;">{{$user->About}}</textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>

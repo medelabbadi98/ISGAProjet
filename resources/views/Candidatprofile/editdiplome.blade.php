@@ -27,15 +27,15 @@
                       
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="Type_Dip"  placeholder="Diplome" required="required" value="{{$typeDip}}" >
+                                    <input type="text" class="input form-control" autocomplete="on"  maxlength="20" name="Type_Dip"  placeholder="Diplome" required="required" value="{{$typeDip}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="Specialites" placeholder="Spécialité" required="required" value="{{$specialite}}" >
+                                    <input type="text" class="input form-control" autocomplete="on"  maxlength="30" name="Specialites" placeholder="Spécialité" required="required" value="{{$specialite}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" autocomplete="on" name="_Option" placeholder="Option" required="required"value="{{$option}}" >
+                                    <input type="text" class="input form-control" autocomplete="on"  maxlength="40" name="_Option" placeholder="Option" required="required"value="{{$option}}" >
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
@@ -43,7 +43,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="Etablissement" placeholder="Etablissement" required="required" value="{{$etablissment}}">
+                                    <input type="text" class="input form-control" name="Etablissement"  maxlength="50" placeholder="Etablissement" required="required" value="{{$etablissment}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                

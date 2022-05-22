@@ -32,7 +32,7 @@
                                 </div>
             
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="Nom_Etp" placeholder="Etablissement" required="required"  value="{{$nomEtp}}">
+                                    <input type="text" class="input form-control" name="Nom_Etp"  maxlength="50" placeholder="Etablissement" required="required"  value="{{$nomEtp}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
             

@@ -21,7 +21,7 @@
                                 <form action="{{ route('find') }}" method="GET">
                                     @csrf
                                 <div class="input-group">
-                                <input class="form-control" type="text" name="query" value="" placeholder="Nom,Prenom ou Adresse..." value="{{ request()->input('query') }}">
+                                <input class="form-control" type="text" name="query" placeholder="Nom,Prenom ou Adresse..." value="{{ request()->input('query') }}">
                                         <button type="submit" class="btn-default"><i class="font-icon icon-search"></i></button>
                                 </div>  
                                 </form>                              

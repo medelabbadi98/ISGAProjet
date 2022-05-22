@@ -35,7 +35,7 @@
                                 </div>
             
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control" name="niveau" placeholder="niveau" required="required" value="{{$langue->Niveau}}">
+                                    <input type="text" class="input form-control" name="niveau"  maxlength="20" placeholder="niveau" required="required" value="{{$langue->Niveau}}">
                                     <div class="help-block with-errors"></div>
                                 </div>                    
                                
