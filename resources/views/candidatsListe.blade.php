@@ -23,7 +23,7 @@
                                 <div class="input-group">
                                     
                                     
-                                    <input class="form-control" type="text" name="query" value="" placeholder="Intitulé du poste,Secteur..." value="{{ request()->input('query') }}">
+                                    <input class="form-control" type="text" name="query" value="" placeholder="Nom,Prenom ou mot clé" value="{{ request()->input('query') }}">
                                         <button type="submit" class="btn-default"><i class="font-icon icon-search"></i></button>
                                         
                                 </div>
@@ -32,7 +32,7 @@
                                     <h3 class="title title--h4">Recherche par Secteurs</h3>
                                     <form action="{{ route('findSec') }}" method="GET">
                                         <select name="Sec" onchange="this.form.submit()"> 
-                                        <option disabled selected value >------------Secteurs------------</option>                                                                              -->
+                                        <option disabled selected value >------------Secteurs------------</option>
                                         @foreach($secteurs as $sec)
                                             <option value="{{$sec->Nom_Sec}}" @if(isset( $_GET['Sec'] )) @if($_GET['Sec']==($sec->Nom_Sec)) selected @endif @endif>{{$sec->Nom_Sec}}</option>
                                         @endforeach
