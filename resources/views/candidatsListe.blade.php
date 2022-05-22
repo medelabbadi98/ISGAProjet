@@ -31,9 +31,10 @@
                                 <div class="list-group mt-5">
                                     <h3 class="title title--h4">Recherche par Secteurs</h3>
                                     <form action="{{ route('findSec') }}" method="GET">
-                                        <select name="Sec" onchange="this.form.submit()">                                                                              
+                                        <select name="Sec" onchange="this.form.submit()"> 
+                                        <option disabled selected value >------------Secteurs------------</option>                                                                              -->
                                         @foreach($secteurs as $sec)
-                                            <option value="{{$sec->Nom_Sec}}">{{$sec->Nom_Sec}}</option>
+                                            <option value="{{$sec->Nom_Sec}}" @if(isset( $_GET['Sec'] )) @if($_GET['Sec']==($sec->Nom_Sec)) selected @endif @endif>{{$sec->Nom_Sec}}</option>
                                         @endforeach
                                         </select>                                    
                                     </form> 
@@ -51,11 +52,9 @@
                                 @foreach($candidats as $candidat)
                                 <div class="case-item box box__second">
                                     <div class="text-center case-item-image">
-                                    <img src="{{$candidat->Photo_C}}" class="rec-image">
-                                        
+                                    <img src="{{$candidat->Photo_C}}" class="rec-image">                                        
 						            </div>
-                                    <div>
-                                    <!-- <a href="#" ><h5 class="title title--tone">{{$candidat->Nom }} {{$candidat->Prenom}}</h5></a> -->
+                                    <div>                                    
                                     <a href="candidat-page/{{$candidat->CIN}}" style="text-decoration: none; color: inherit; "><h4 class="title title--h4 mt-0">{{$candidat->Nom }}
                                             <span class="weight--500">{{$candidat->Prenom}}</span></h4>
                                     </a>
