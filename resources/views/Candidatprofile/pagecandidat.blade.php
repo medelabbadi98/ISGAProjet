@@ -32,6 +32,7 @@
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
+
 							        <i class="font-icon icon-location"></i>{{$candidat->Adresse}}
 							    </li>
 							    </li>
@@ -57,7 +58,11 @@
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
 						    <p>
-								{{ $about }}
+								@if(isset($about) and $about!="")
+									{{$about}}
+									@else									
+									<h5 class="title title--h5" style="text-align:center">Aucune description!</h5>							
+								@endif
 							</p>
 					    </div>
 						<div class="pb-3">
@@ -68,29 +73,35 @@
 							<div class="row">
 							    <div class="col-12 col-lg-6">
 								    <h2 class="title title--h3"> Diplômes et Formations <a href="ajouterdiplome" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
-									@foreach($diplome as $dip)
-									<?php
-										$anneeObt= preg_split("/[-]/","$dip->Annee_obtention");										
-									?>				
-									<article class="timeline__item">
-											<div class="btn-edit-del">
-											<a href="delete/Dip/{{$dip->ID_Dip}}" onclick="return confirm('Voulez vous le supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
-										<a href="editdiplome/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-tool"></i></a>	
-											</div>
-									        <h5 class="title title--h5 timeline__title">Type: {{$dip->Type_Dip}}</h5>
-											<h6 class="title title--h6">Annee d'obtention : <span class="timeline__period"><?php echo $anneeObt[0] ?></span></h6>	
-											<h6 class="title title--h6">Etablissement : <span >{{$dip->Etablissement}}</span></h6>
-											<h6 class="title title--h6">Spetialite : <span>{{$dip->Specialites}}</span></h6>
-											<h6 class="title title--h6">Option : <span>{{$dip->_Option}}</span></h6>											
+									@if(count($diplome)>0)
+										@foreach($diplome as $dip)
+										<?php
+											$anneeObt= preg_split("/[-]/","$dip->Annee_obtention");										
+										?>				
+										<article class="timeline__item">
+												<div class="btn-edit-del">
+												<a href="delete/Dip/{{$dip->ID_Dip}}" onclick="return confirm('Voulez vous le supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
+											<a href="editdiplome/{{$dip->ID_Dip}}" role="button"><i class="font-icon icon-tool"></i></a>	
+												</div>
+												<h5 class="title title--h5 timeline__title">Type: {{$dip->Type_Dip}}</h5>
+												<h6 class="title title--h6">Spetialite : <span>{{$dip->Specialites}}</span></h6>
+												<h6 class="title title--h6">Annee d'obtention : <span class="timeline__period"><?php echo $anneeObt[0] ?></span></h6>	
+												<h6 class="title title--h6">Etablissement : <span >{{$dip->Etablissement}}</span></h6>
+												
+												<h6 class="title title--h6">Option : <span>{{$dip->_Option}}</span></h6>											
+											</article>
+										@endforeach
+									@else
+										<article>																																
+											<h5 class="title title--h5" style="text-align:center">Aucun diplôme et formation <br> n'a été ajouté </span></h5>
 										</article>
-									@endforeach
-									
+									@endif
 								</div>
 								
 							    <div class="col-12 col-lg-6">
 								    <h2 class="title title--h3">Expériences professionnelles <a href="ajouterexperience" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="timeline">
-									   
+									@if(count($experience)>0)
 										@foreach($experience as $exp)
 										<?php
 										$dateD= preg_split("/[-]/",$exp->Date_Debut);
@@ -106,8 +117,13 @@
 												<span class="timeline__etp">{{ $exp->Nom_Etp }}<br>												
 												</span>
 												<p class="timeline__description">{{ $exp->Description_Ex }}</p>
-											</article>
+											</article>									
 										@endforeach
+									@else
+										<article>																																
+											<h5 class="title title--h5" style="text-align:center">Aucune expérience professionnelle  <br> n'a été ajouté </span></h5>
+										</article>
+									@endif
 									</div>
 								</div>
 							</div>
@@ -118,9 +134,9 @@
 						    <div class="row">
 							    <div class="col-12 col-lg-6">
 						            <h2 class="title title--h3" style="width: fit-content;">Competances <a href="ajoutercompetence" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
-									<div class="box box__second">
+									<div class="box box__second">								
 										<div class="timeline">
-											
+										@if(count($competence)>0)									
 											@foreach($competence as $cp)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
@@ -130,7 +146,13 @@
 													<h5 class="title title--h5 timeline__title">{{ $cp->Libelle }}</h5>
 													<p class="timeline__description">{{ $cp->Description }}</p>
 												</article>
+												
 											@endforeach
+										@else
+										<article>																																
+											<h5 class="title title--h5" style="text-align:center">Aucune Competance <br> n'a été ajouté </span></h5>
+										</article>
+										@endif
 										</div>
 									</div>
                                 </div>
@@ -139,6 +161,7 @@
 						            <h2 class="title title--h3">Langues <a href="ajouterlangue" role="button"><i class="btn-add font-icon icon-add"></i></a></h2>
 									<div class="box box__second">
 										<div class="timeline">
+										@if(count($langue)>0)	
 											@foreach($langue as $lg)
 												<article class="timeline__item">
 													<div class="btn-edit-del">
@@ -148,9 +171,14 @@
 
 													<h5 class="title title--h5 timeline__title">{{ $lg->Nom_Lg }}</h5>
 													<p class="timeline__description">{{ $lg->Niveau }}</p>
-												</article>											
+												</article>
+																							
 											@endforeach
-
+										@else
+										<article>																																
+											<h5 class="title title--h5" style="text-align:center">Aucune langue <br> n'a été ajouté </span></h5>
+										</article>
+										@endif
 										</div>
 									</div>
                                 </div>
@@ -173,6 +201,17 @@
              <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"/>
         </clipPath>		
     </svg>
-
-	
+	@isset($CIN)
+	@if(session()->get('Cin')!=$CIN)
+<script>
+		const btns = Array.from(
+			document.querySelectorAll('.btn-add, .btn-edit-del')
+		) 
+		btns.forEach(btn=>{
+			btn.style.display = 'none';
+		})
+		
+	</script>
+	@endif
+	@endisset
 @endsection
