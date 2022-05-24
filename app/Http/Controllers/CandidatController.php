@@ -164,6 +164,50 @@ class CandidatController extends Controller
 
       return redirect()->back()->with("success","les changements a été effectuée avec succès!");
     }
+    public function list(){
+        $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->paginate(8);
+        $secteurs = DB::table('secteurs')->get();
+        return view("candidatsListe",compact('secteurs','candidats'));
+    }
 
+    public function getcandidatPage($CIN){
+        $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->join('users','candidats.IDuser','=','users.id')->get();
+        foreach($candidats as $candidat){
+            if($candidat->CIN == $CIN){
+                
+                $diplome=DB::table('diplomes')->select('*')->where('Cin','=',$CIN)->get();
+                $experience=DB::table('experiences')->select('*')->where('Cin','=',$CIN)->get();
+                $competence=DB::table('competences')->select('*')->where('Cin','=',$CIN)->get();
+                $langue=DB::table('maitrisers')->leftJoin('langues', 'maitrisers.ID_Lg', '=', 'langues.Id_LG')->where('Cin','=',$CIN)->get();
+                $about=DB::table('candidats')->where('Cin',$CIN)->value('About');
+                return view('Candidatprofile.pagecandidat',compact('candidat','diplome','experience','langue','about','competence','CIN')); 
+            }
+       }
+    }
+
+    function findM(Request $request){
+        
+       $secteurs = DB::table('secteurs')->get();
+       $search_text = $request->input('query');
+      
+       $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')
+                  ->where('Nom','LIKE','%'.$search_text.'%')
+                  ->orWhere('Prenom','LIKE','%'.$search_text.'%')
+                  ->orWhere('Adresse','LIKE','%'.$search_text.'%')
+                  ->orWhere('Nom_Sec','LIKE','%'.$search_text.'%')
+                  ->paginate(8);
+                  return view("candidatsListe",compact('secteurs','candidats'));
+
+    }
+
+    function findS(Request $request){
+       $secteurs = DB::table('secteurs')->get();
+       $search_text = $request->Sec;             
+        $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')
+                    ->where('Nom_Sec','LIKE',''.$search_text.'')                  
+                    ->paginate(8);
+        return view("candidatsListe",compact('secteurs','candidats'));
+
+    }
    
 }

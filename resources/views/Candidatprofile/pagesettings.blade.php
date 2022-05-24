@@ -146,29 +146,46 @@
 				<h1 class="title title--h1 first-title title__separate">Changer le mot de passe</h1>
 			</div>
 			<div class="container">
+			
 			<div class="row">
 					<div class="form-group col-3 col-md-3">
-					<input type="text" class="input form-control" hidden   name="cin" value="{{session()->get('Cin')}}" >
+					<input type="text" class="input form-control" hidden  name="cin" value="{{session()->get('Cin')}}" >
 
 					</div>
 					<div class="form-group col-6 col-md-6">
 					<input type="password" class="input form-control @error('currentPass') is-invalid @enderror" placeholder="l'ancien mot de passe" name="currentPass" required>
 					</div>
 				</div>	
+				
 				<div class="row">
 					<div class="form-group col-3 col-md-3">
 					</div>
 					<div class="form-group col-6 col-md-6">
-					<input type="password" class="input form-control" placeholder="le nouveau mot de passe" name="newPass" required>
+					<input type="password" class="input form-control" placeholder="le nouveau mot de passe" id="newPass" name="newPass" required>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-3 col-md-3">
 					</div>
 					<div class="form-group col-6 col-md-6">
-						<input type="password" class="input form-control" placeholder="confirmer mot de passe" name="ConfirmPass" required> 
+						<input type="password" class="input form-control" placeholder="confirmer mot de passe" id="ConfirmPass" name="ConfirmPass" required> 
 					</div>
 				</div>
+				<script>
+					document.getElementById("newPass").addEventListener("keyup", testpassword);
+					document.getElementById("ConfirmPass").addEventListener("keyup", testpassword);
+					function testpassword() {
+						var text1 = document.getElementById("newPass");
+						var text2 = document.getElementById("ConfirmPass");
+						//var btn = document.getElementById("sub"); 
+						if (text1.value == text2.value)
+							text2.style.borderColor = "#2EFE2E";
+							//btn.removeAttribute('disabled');
+						else
+						   // btn.setAttribute("disabled", true);
+							text2.style.borderColor = "red";	
+					}
+					</script>
 				<div class="row">
 					
 				</div>
@@ -180,8 +197,9 @@
 						<button type="button" onclick="document.getElementById('popup').style.display='none'" class="cancelbtn ">Cancel</button>
 					</div>
 					<div class="form-group col-3 col-sm-3">		
-						<button type="submit" class='btn '>Changer</button>
+						<button type="submit" id="sub" class='btn '>Changer</button>
 					</div>
+					
 			    </div>
 			</div>
 		</form>
@@ -201,9 +219,9 @@
 		$("#image_upload").change(function(){
     		fasterPreview( this );
 		});
-
 		
-		 
+		
+		
 		var modal = document.getElementById('popup');
 		window.onclick = function(event) {
 			if (event.target == modal) {

@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Cin
  * @property int $Id_offre
  * @property Carbon|null $Date_post
- * @property string|null $Etat
  *
  * @package App\Models
  */
@@ -27,7 +26,6 @@ class Postuler extends Model
 
 	protected $casts = [
 		'Id_offre' => 'int',
-		'Etat' => 'binary'
 	];
 
 	protected $dates = [
@@ -36,6 +34,5 @@ class Postuler extends Model
 
 	protected $fillable = [
 		'Date_post',
-		'Etat'
 	];
 }

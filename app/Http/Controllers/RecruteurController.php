@@ -170,4 +170,30 @@ class RecruteurController extends Controller
     {
         //
     }
+    public function list(){
+        $recruteurs = recruteur::paginate(8);
+        return view("recruteursListe",compact('recruteurs'));
+    }
+    
+    public function getrecruteurPage($CIN){
+        $recruteurs = recruteur::join('users','recruteurs.IDuser','=','users.id')->get();
+        foreach($recruteurs as $recruteur){
+            if($recruteur->CIN == $CIN){                
+                return view('Recruteurprofile.pagerecruteur',compact('recruteur','CIN')); 
+            }
+       }
+    }
+
+    function find(Request $request){
+             
+        $search_text = $request->input('query');
+       
+        $recruteurs = recruteur::join('users','recruteurs.IDuser','=','users.id')
+                   ->where('Nom','LIKE','%'.$search_text.'%')
+                   ->orWhere('Prenom','LIKE','%'.$search_text.'%')
+                   ->orWhere('Adresse','LIKE','%'.$search_text.'%')                   
+                   ->paginate(8);
+                   return view("recruteursListe",compact('recruteurs'));
+ 
+     }
 }

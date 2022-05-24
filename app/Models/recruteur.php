@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Recruteur
  * 
- * @property string $CIN
+ * @property int $CIN
  * @property string|null $About
  * @property string|null $Nom
  * @property string|null $Prenom
@@ -26,18 +26,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Recruteur extends Model
 {
+
+	
 	protected $table = 'recruteurs';
 	protected $primaryKey = 'CIN';
 	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
+		'CIN' => 'string',
 		'IDuser' => 'int'
 	];
 
 	protected $fillable = [
-		'About',
 		'Nom',
+		'About',
 		'Prenom',
 		'photo_rec',
 		'telephone_rec',

@@ -7,22 +7,47 @@ use Illuminate\Http\Request;
 
 class OffreController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        $offres = $this->show();
+        $secteurs = DB::table('secteurs')->get();
+        return view("offre_d'emploi",compact('secteurs','offres'));
     }
-    public function ajouteroffre()
+    public function ajouterOffre()
     {
-        return view('Recruteurprofile.ajouteroffre');
+        $secteurs = DB::table('secteurs')->get();
+        $contrats = DB::table('contrats')->get();
+        //dd($secteurs[1]->Id_Sec);
+        return view('Recruteurprofile.ajouteroffre',compact('secteurs','contrats'));
     }
-    public function editoffre()
+    public function editOffre()
     {
         return view('Recruteurprofile.editoffre');
+    }
+
+    public function getOffrePage($id)
+    {
+        $offres = $this->show();
+        foreach($offres as $offre){
+             if($offre->Id_Offre == $id){
+                  return view('offre-emploi-page',(['offre'=>$offre]));
+             }
+        }
+        
+    }
+
+    public function postuler($id){
+
+        $postuler = new postuler();
+        
+        $postuler->Cin = session()->get('Cin');
+        $postuler->Id_offre = $id;
+        $postuler->Date_Post = Carbon::now()->toDateTimeString(); 
+        $postuler->save();
+        return redirect()->back();
+
+
     }
     /**
      * Show the form for creating a new resource.
@@ -64,7 +89,9 @@ class OffreController extends Controller
      */
     public function show(offre $offre)
     {
-        //
+        $offre = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
+        ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->get();
+        return $offre;
     }
 
     /**
