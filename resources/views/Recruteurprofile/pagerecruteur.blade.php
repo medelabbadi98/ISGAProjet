@@ -23,20 +23,20 @@
                             </g>
                         </svg>
 						<div class="text-center">
-                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">Nom</span> Prenom</h3>
-							<div class="badge badge--gray">Exemple</div>
+                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{$recruteur->Nom }}</span> {{$recruteur->Prenom}}
+							<div class="badge badge--gray">{{$recruteur->Nom_Sec}}</div>
 						</div>
 						
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
-							        <i class="font-icon icon-location"></i>Location
+							        <i class="font-icon icon-location"></i>{{$recruteur->Adresse}}
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>example@mail.com</a>
+							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{$recruteur->email}}</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
-							        <i class="font-icon icon-phone"></i>+212 64470xxxxxx
+							        <i class="font-icon icon-phone"></i>{{$recruteur->telephone_rec}}
 							    </li>
 					        </ul>
 						</div>
@@ -50,8 +50,11 @@
                             <div class="btn-edit-del">			
 								<a href="#" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
-						    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, dolores modi quos placeat et rem sequi ducimus dolore officiis nemo saepe illo minus. Omnis illum alias dolore quia porro atque.</p>
-                        </div>
+                            @if(isset($about) and $about!="")
+									{{$about}}
+									@else									
+									<h5 class="title title--h5" style="text-align:center">Aucune description!</h5>							
+								@endif                        </div>
 
                         <div class="pb-0 box-inner">
 		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="{{route('ajouteroffre')}}" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
