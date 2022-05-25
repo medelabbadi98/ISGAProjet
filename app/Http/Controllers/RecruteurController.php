@@ -15,12 +15,24 @@ class RecruteurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getIdRecruteur(){
+        $recruteur=DB::table('recruteurs')->where('Cin',session()->get('Cin'))->value('IDuser'); 
+        return $recruteur;
+    }
     public function index()
     {
+        $secteurs = DB::table('secteurs')->get();
+        
         $recruteur = $this->show();
-        return view('Recruteurprofile.pagerecruteur',compact('recruteur'));
+        $id=RecruteurController::getIdRecruteur();
+        $about=DB::table('recruteurs')->where('Cin',session()->get('Cin'))->value('About');
+        $offre=DB::table('offres')->where('Id_rec',$id)->value('Id_Offre');
+        // $poste=DB::table('postulers')->where('Cin',session()->get('Cin'))->value('Id_');
+        return view('Recruteurprofile.pagerecruteur',compact('recruteur','about','secteurs','offre')); 
+           
     }
 
+    
     public function getsettings(){
 
         $secteurs = DB::table('secteurs')->get();
@@ -62,7 +74,6 @@ class RecruteurController extends Controller
             $request->Photo->move(public_path('/assets/img'),$imageurl);
             $recruteur->photo_rec = $imageurl;
         }
-
         $recruteur->CIN=$request->cin;
         $recruteur->Nom=$request->nom;
         $recruteur->Prenom=$request->prenom;
@@ -70,11 +81,7 @@ class RecruteurController extends Controller
         $recruteur->telephone_rec=$request->tel;
         $recruteur->IDuser=recruteur()->id;
         session()->put('Cin',$request->cin);
-
         $recruteur->save();
-
-
-
     }
 
     /**
@@ -170,4 +177,30 @@ class RecruteurController extends Controller
     {
         //
     }
+    public function list(){
+        $recruteurs = recruteur::paginate(8);
+        return view("recruteursListe",compact('recruteurs'));
+    }
+    
+    public function getrecruteurPage($CIN){
+        $recruteurs = recruteur::join('users','recruteurs.IDuser','=','users.id')->get();
+        foreach($recruteurs as $recruteur){
+            if($recruteur->CIN == $CIN){                
+                return view('Recruteurprofile.pagerecruteur',compact('recruteur','CIN')); 
+            }
+       }
+    }
+
+    function find(Request $request){
+             
+        $search_text = $request->input('query');
+       
+        $recruteurs = recruteur::join('users','recruteurs.IDuser','=','users.id')
+                   ->where('Nom','LIKE','%'.$search_text.'%')
+                   ->orWhere('Prenom','LIKE','%'.$search_text.'%')
+                   ->orWhere('Adresse','LIKE','%'.$search_text.'%')                   
+                   ->paginate(8);
+                   return view("recruteursListe",compact('recruteurs'));
+ 
+     }
 }

@@ -56,10 +56,12 @@ class AuthController extends Controller
             if(candidat()){
                 $candidat = DB::table('candidats')->where('IDuser','=',candidat()->id)->get()->first();
                session()->put('Cin',$candidat->CIN);
+               return redirect("pagecandidat");
             }
             else{
                 $recruteur = DB::table('recruteurs')->where('IDuser','=',recruteur()->id)->get()->first();
                 session()->put('Cin',$recruteur->CIN);
+                return redirect("pagecrecruteur");
             }
             // if($candidat->count()!=0){
             //    // $request->session()->put('CIN', ((Array)$candidat[0])['CIN']);
@@ -111,15 +113,6 @@ class AuthController extends Controller
 
           return view('Ajoutertype',(['secteurs'=>$secteurs]));
 
-        //   if(candidat()){
-        //       return redirect()->route('ajouterCandidat.get');
-        //   }
-        //   else
-        //   {
-        //     return redirect()->route('ajouterRecruteur.get');
-        //   }
-          
-        //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**

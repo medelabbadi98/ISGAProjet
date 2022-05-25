@@ -13,14 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * Class Candidat
  * 
  * @property string $CIN
+ * @property string|null $About
  * @property string|null $Photo_C
  * @property string|null $Nom
  * @property string|null $Prenom
  * @property string|null $Adresse
  * @property string|null $Tel_C
  * @property int $IDuser
- * @property string|null $about
+ * @property int|null $Id_sect
  * 
+ * @property Secteur|null $secteur
  * @property User $user
  * @property Collection|Competence[] $competences
  * @property Collection|Diplome[] $diplomes
@@ -36,19 +38,25 @@ class Candidat extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'IDuser' => 'int'
+		'IDuser' => 'int',
+		'Id_sect' => 'int'
 	];
 
 	protected $fillable = [
+		'About',
 		'Photo_C',
 		'Nom',
 		'Prenom',
 		'Adresse',
 		'Tel_C',
 		'IDuser',
-		'about',
-		'ID_Sec'
+		'Id_sect'
 	];
+
+	public function secteur()
+	{
+		return $this->belongsTo(Secteur::class, 'Id_sect');
+	}
 
 	public function user()
 	{

@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $Id_Sec
  * @property string|null $Nom_Sec
+ * 
+ * @property Collection|Candidat[] $candidats
  *
  * @package App\Models
  */
@@ -30,4 +33,9 @@ class Secteur extends Model
 	protected $fillable = [
 		'Nom_Sec'
 	];
+
+	public function candidats()
+	{
+		return $this->hasMany(Candidat::class, 'Id_sect');
+	}
 }

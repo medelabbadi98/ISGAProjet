@@ -18,7 +18,8 @@ use App\Http\Controllers\SecteurController;
 use App\Http\Controllers\AboutController;
 
 
-
+Route::post('updateCandidat', [HomeController::class, 'updatePasswordCandidat'])->name('updatePasswordCandidat.post');
+Route::post('updateRecruteur', [HomeController::class, 'updatePasswordRecruteur'])->name('updatePasswordRecruteur.post');
 
 Route::get('candidatSettings', [CandidatController::class, 'getsettings'])->name('candidatSettings');
 Route::post('candidatSettings', [CandidatController::class, 'update'])->name('editCandidat.post');
@@ -36,6 +37,9 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+///offres
+Route::get('offre-emploi', [OffreController::class, 'index'])->name('offre');
+Route::get('offre-emploi-page/{Id_Offre}', [OffreController::class, 'getOffrePage'])->name('offre-page');
 
 ///////////////////////////ajouter routes
 //Route::get('ajouterabout', [AboutController::class, 'ajouterabout'])->name('ajouterabout');
@@ -49,6 +53,26 @@ Route::post('ajouter/recruteur',[RecruteurController::class, 'store'])->name('aj
 Route::post('addsettings', [HomeController::class, 'store'])->name('ajoutersettings.post');
 Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajoutersettings');
 
+//postuler
+Route::get('offre-emploi-page/postuler/{Id_offre}',[OffreController::class,'postuler']);
+
+Route::match(['get', 'post'],'offre-emploi/{Id_sec}',[OffreController::class,'ChercherOffre'])->name('ChercherOffre');
+
+
+//ListeCandidats
+Route::get('lesCandidats', [CandidatController::class, 'list']);
+Route::get('candidat-page/{CIN}', [CandidatController::class, 'getcandidatPage']);
+
+//ListeRecruteurs
+Route::get('lesRecruteurs', [RecruteurController::class, 'list']);
+Route::get('recruteur-page/{CIN}', [RecruteurController::class, 'getrecruteurPage']);
+
+//Find Candidats
+Route::get('/findMot',[CandidatController::class, 'findM'])->name('findMot');
+Route::get('/findSec',[CandidatController::class, 'findS'])->name('findSec');
+
+//Find Recruteurs
+Route::get('/find',[RecruteurController::class, 'find'])->name('find');
 //offre
 Route::get('ajouteroffre', [OffreController::class, 'ajouteroffre'])->name('ajouteroffre');
 Route::post('addoffre', [OffreController::class, 'store'])->name('ajouteroffre.post');

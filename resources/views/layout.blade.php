@@ -9,6 +9,10 @@
     
 	<link href="font-awesome/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href=" {{URL::asset('assets/styles/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href=" {{URL::asset('assets/styles/popup.css')}}"/>
+    <script src="{{ URL::asset('assets/js/jquery-3.4.1.js')}} "></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/plugins.min.js')}}"></script>
+<script src="{{ URL::asset('assets/js/common.js')}}"></script>  
 	<style type="text/css">
 	
       
@@ -53,8 +57,6 @@
 </nav>
   
 @yield('content')
-<script src="{{ URL::asset('assets/js/jquery-3.4.1.js')}} "></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/plugins.min.js')}}"></script>
-<script src="{{ URL::asset('assets/js/common.js')}}"></script>  
+
 </body>
 </html>

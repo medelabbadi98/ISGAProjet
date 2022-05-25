@@ -72,27 +72,9 @@
 
                                 <div class="form-group col-12 col-md-6"> 
 									<div class="row">
-										<div class="form-group col-12 col-md-10">
-											<input type="password" class="input form-control @error('currentPass') is-invalid @enderror"  name="currentPass"  placeholder="Mot de passe" required >	
-											<div class="help-block with-errors"><strong>{{ session('error') }}</strong></div>
-											@if (session('error'))
-											<div class="help-block with-errors"><strong>{{ session('error') }}</strong></div>
-											@endif	
-											@if ($errors->has('newPass'))
-                                    		<span class="help-block with-errors"><strong>{{ $errors->first('newPass') }}</strong></span>
-                               				 @endif	
-										</div>	
-										<div class="form-group col-12 col-md-1">
-											<a id="changepass"  >Changer</a>
-										</div>
-										<div class="passContainer" style="display:none;">
-											<div class="form-group col-12 col-md-10">
-												<input type="password" class="input form-control "  name="newPass"  placeholder="Nouveau Mot de passe" >	
-											</div>	
-											<div class="form-group col-12 col-md-10">
-												<input type="password" class="input form-control "  name="newPass_confirmation"  placeholder="Confirmer Mot de passe" >	
-											</div>
-										</div>
+										
+										
+
 									</div>
 				                </div>
 
@@ -102,7 +84,7 @@
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user->telephone_rec }} @endif" placeholder="Telphone" required="required">
+                                    <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user->telephone_rec }} @endif" placeholder="Telephone" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
@@ -124,10 +106,21 @@
                                 </div>
                             </div>
 		                </form>
+						<div class="row">
+										<div class="form-group col-12 col-md-10">
+										<button  onclick="document.getElementById('popup').style.display='block'" class="btn">Modifier Mot de passe</button>
+
+										</div>	
+										<div class="form-group col-12 col-md-1">
+										</div>
+										
+
+									</div>
 					</div>
 					
 					<!-- Footer -->
 					<footer class="footer">© 2022</footer>
+					
 		        </div>
 			</div>
 		</div>	
@@ -141,6 +134,76 @@
              <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"/>
         </clipPath>		
     </svg>
+	
+	<div id="popup" class="modal">
+	@if(candidat())
+	    <form class="modal-content animate" action="{{route('updatePasswordCandidat.post')}}" method="POST">  
+	@else
+		<form class="modal-content animate" action="{{route('updatePasswordRecruteur.post')}}" method="POST">  
+	@endif 
+			@csrf
+		<div class="pb-2">
+				<h1 class="title title--h1 first-title title__separate">Changer le mot de passe</h1>
+			</div>
+			<div class="container">
+			
+			<div class="row">
+					<div class="form-group col-3 col-md-3">
+					<input type="text" class="input form-control" hidden  name="cin" value="{{session()->get('Cin')}}" >
+
+					</div>
+					<div class="form-group col-6 col-md-6">
+					<input type="password" class="input form-control @error('currentPass') is-invalid @enderror" placeholder="l'ancien mot de passe" name="currentPass" required>
+					</div>
+				</div>	
+				
+				<div class="row">
+					<div class="form-group col-3 col-md-3">
+					</div>
+					<div class="form-group col-6 col-md-6">
+					<input type="password" class="input form-control" placeholder="le nouveau mot de passe" id="newPass" name="newPass" required>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-3 col-md-3">
+					</div>
+					<div class="form-group col-6 col-md-6">
+						<input type="password" class="input form-control" placeholder="confirmer mot de passe" id="ConfirmPass" name="ConfirmPass" required> 
+					</div>
+				</div>
+				<script>
+					document.getElementById("newPass").addEventListener("keyup", testpassword);
+					document.getElementById("ConfirmPass").addEventListener("keyup", testpassword);
+					function testpassword() {
+						var text1 = document.getElementById("newPass");
+						var text2 = document.getElementById("ConfirmPass");
+						//var btn = document.getElementById("sub"); 
+						if (text1.value == text2.value)
+							text2.style.borderColor = "#2EFE2E";
+							//btn.removeAttribute('disabled');
+						else
+						   // btn.setAttribute("disabled", true);
+							text2.style.borderColor = "red";	
+					}
+					</script>
+				<div class="row">
+					
+				</div>
+				 
+				</div>
+				<div class="container" style="background-color:#f1f1f1">
+				<div class="row">
+					<div class="form-group col-3">	
+						<button type="button" onclick="document.getElementById('popup').style.display='none'" class="cancelbtn ">Cancel</button>
+					</div>
+					<div class="form-group col-3 col-sm-3">		
+						<button type="submit" id="sub" class='btn '>Changer</button>
+					</div>
+					
+			    </div>
+			</div>
+		</form>
+	</div>
 
 	<script>
 		$('#profil_image').on('click', function() {
@@ -156,12 +219,15 @@
 		$("#image_upload").change(function(){
     		fasterPreview( this );
 		});
-
-		$(document).ready(function(){
-  			$("#changepass").click(function(){
-    			$(".passContainer").toggle();
-  		});
-});
+		
+		
+		
+		var modal = document.getElementById('popup');
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
 	</script>
 
 @endsection
