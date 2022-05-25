@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="pb-0 box-inner">
-		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="./Ajouter_offre.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
+		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="{{route('ajouteroffre')}}" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
 
                             <div class="row">
                                 <!--case-item-->

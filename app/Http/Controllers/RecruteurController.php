@@ -21,6 +21,10 @@ class RecruteurController extends Controller
         return view('Recruteurprofile.pagerecruteur',compact('recruteur'));
     }
 
+    public function getIdRecruteur(){
+        $recruteur=DB::table('recruteurs')->where('Cin',session()->get('Cin'))->value('IDuser'); 
+        return $recruteur;
+    }
     public function getsettings(){
 
         $secteurs = DB::table('secteurs')->get();

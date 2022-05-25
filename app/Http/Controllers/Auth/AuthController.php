@@ -113,15 +113,6 @@ class AuthController extends Controller
 
           return view('Ajoutertype',(['secteurs'=>$secteurs]));
 
-        //   if(candidat()){
-        //       return redirect()->route('ajouterCandidat.get');
-        //   }
-        //   else
-        //   {
-        //     return redirect()->route('ajouterRecruteur.get');
-        //   }
-          
-        //return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**

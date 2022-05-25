@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\offre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\RecruteurController;
+
 
 class OffreController extends Controller
 {
@@ -68,16 +71,17 @@ class OffreController extends Controller
     public function store(Request $request)
     {
         $Offre = new offre();
-        
-        $Offre -> Id_CT=$request->Id_CT;  
-        $Offre -> ID_Sec=$request->ID_Sec;  
-        $Offre -> Id_rec=$request->Id_rec;  
+        $id= RecruteurController::getIdRecruteur();
+        $Offre -> Id_CT=$request->contrat;  
+        $Offre -> ID_Sec=$request->secteur;  
+        $Offre -> Id_rec=$id;  
         $Offre -> Intitule=$request->Intitule;  
-        $Offre -> Date_Exp=$request->Date_Exp;
-        $Offre -> Description_offre=$request->Description_offre;  
-        $Offre -> Date_pub=$request->Date_pub;  
+        $Offre -> Date_Exp=$request->date_exp;
+        $Offre -> Description_offre=$request->Description;  
+        $Offre -> Date_pub=$request->date_pub;  
         $Offre->save();
-        return redirect("Recruteurprofile.pagerecruteur");
+        return redirect("pagerecruteur");
+        // return gettype(RecruteurController::getIdRecruteur()) ;
     
     }
 
