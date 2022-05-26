@@ -51,14 +51,18 @@
 		        <div class="col-12 col-md-12 col-xl-9">
 				    <div class="box shadow pb-0">
 					    <!-- About -->
-						<div class="pb-0 pb-sm-2 position-relative">
+						<div class="pb-0 pb-sm-2 position-relative" >
 		                    <h1 class="title title--h1 first-title title__separate">À propos de moi</h1>
 							<div class="btn-edit-del ">
 								
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
-							</div>
-						    <p>
-								{{ $about }}
+							</div >							
+						    <p >
+								@if(isset($about) and $about!="")
+									{{$about}}
+									@else									
+									<h5 class="title title--h5" style="text-align:center">Aucune description!</h5>							
+								@endif
 							</p>
 					    </div>
 						<div class="pb-3">

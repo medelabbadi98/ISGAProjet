@@ -93,7 +93,9 @@ class CandidatController extends Controller
 		$candidat -> Tel_C =$request->tel;
         $candidat -> IDuser = auth()->user()->id;
         $candidat -> Id_sect = $request->secteur;
+        $user= DB::table('users')->where('id','=',$candidat -> IDuser)->get()->first();
         session()->put('Cin',$request->cin);
+        session()->put('type',$user->type);
      
         $candidat->save();
         return redirect('pagecandidat');

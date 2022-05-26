@@ -1,6 +1,7 @@
 @extends('layout')
   
 @section('content')
+@if(session()->get('type')=="Recruteur")
     <!-- Preloader -->
     <div class="preloader">
 	    <div class="preloader__wrap">
@@ -66,8 +67,9 @@
                                 @endforeach
                                 @else
                                     <div style="text-align:center; padding-bottom:20px">
-                                    <h3 class="title title--h2 first-title ">Oups !</h3>
-                                    <h5 class="title title--h5">Aucun résultat n été trouve pour votre recherche <br> <span class="case-item__text"><a href="/lesCandidats"> veuillez essayer de nouveau </a></span></h5>
+                                        <h3 class="title title--h2 first-title ">Oups !</h3>
+                                        <h5 class="title title--h5">Aucun résultat n été trouve pour votre recherche <br> <span class="case-item__text"><a href="/lesCandidats"> veuillez essayer de nouveau </a></span></h5>
+                                    </div>
                                 @endif
                                 <div class="pagination-block">
                                     {{$candidats->links('paginationLinks')}}
@@ -79,4 +81,10 @@
             </div>
         </div>
     </div>
+@else
+<div style="text-align:center; padding-bottom:20px">
+    <h3 class="title title--h2 first-title ">Oups !</h3>
+    <h5 class="title title--h5">Pour acceder a cette page,vous devez etre <strong>RECRUTEUR </strong> <br> <span class="case-item__text"><a href="{{route('login')}}">Connectez Vous!</a></h5>
+</div>
+@endif
 @endsection    

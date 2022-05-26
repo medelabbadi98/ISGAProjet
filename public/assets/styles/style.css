@@ -1051,7 +1051,7 @@ button:focus {
   margin-bottom: 0.6875rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 .contacts-block__item > * {
   min-width: 0;

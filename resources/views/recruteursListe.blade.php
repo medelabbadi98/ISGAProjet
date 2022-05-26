@@ -1,6 +1,7 @@
 @extends('layout')
   
 @section('content')
+@if(session()->get('type')!=null)
     <!-- Preloader -->
     <div class="preloader">
 	    <div class="preloader__wrap">
@@ -67,4 +68,10 @@
             </div>
         </div>
     </div>
+@else
+<div style="text-align:center; padding-bottom:20px">
+    <h3 class="title title--h2 first-title ">Oups !</h3>
+    <h5 class="title title--h5">Vous n'ete pas deja connecter!<br> <span class="case-item__text"><a href="{{route('login')}}">Connectez vous !</a></h5>
+</div>
+@endif
 @endsection    

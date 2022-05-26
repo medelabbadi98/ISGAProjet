@@ -69,7 +69,9 @@ class RecruteurController extends Controller
         $recruteur->Adresse=$request->adresse;
         $recruteur->telephone_rec=$request->tel;
         $recruteur->IDuser=recruteur()->id;
+        $user= DB::table('users')->where('id','=',$recruteur->IDuser)->get()->first();
         session()->put('Cin',$request->cin);
+        session()->put('type',$user->type);
 
         $recruteur->save();
 
