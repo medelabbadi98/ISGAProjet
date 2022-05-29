@@ -2743,6 +2743,7 @@ button:focus {
 }
 .timeline__description {
   margin-top: 0.5rem;
+  overflow-wrap: break-word;
 }
 @media only screen and (max-width: 580px) {
   .timeline__description {

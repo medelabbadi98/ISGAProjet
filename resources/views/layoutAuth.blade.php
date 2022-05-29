@@ -23,8 +23,8 @@
        
     </style>
 </head>
-<body>
-    
+<body style="position:relative">
+   
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="#">Logo</a>
@@ -34,16 +34,16 @@
    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                @guest
+            @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('login') }}">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                        <a class="nav-link" href="{{ route('logout') }}">Se déconnecter</a>
                     </li>
                 @endguest
             </ul>
@@ -53,6 +53,11 @@
 </nav>
   
 @yield('content')
-     
+<!-- <footer class="bg-dark text-center text-lg-start text-white" style="background-color: rgba(251, 251, 251, 0.2); bottom:-10rem;position:relative">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="{{route('register')}}">M2Y2.com</a>
+  </div>
+</footer> -->
 </body>
 </html>
