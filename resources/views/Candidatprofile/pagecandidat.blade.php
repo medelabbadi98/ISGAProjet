@@ -51,13 +51,13 @@
 		        <div class="col-12 col-md-12 col-xl-9">
 				    <div class="box shadow pb-0">
 					    <!-- About -->
-						<div class="pb-0 pb-sm-2 position-relative">
+						<div class="pb-0 pb-sm-2 position-relative" >
 		                    <h1 class="title title--h1 first-title title__separate">À propos de moi</h1>
 							<div class="btn-edit-del ">
 								
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
-							</div>
-						    <p>
+							</div >							
+						    <p style="overflow-wrap: break-word;" >
 								@if(isset($about) and $about!="")
 									{{$about}}
 									@else									
@@ -115,7 +115,7 @@
 												<h5 class="title title--h5 timeline__title">{{ $exp->Intitule_Poste }}</h5>
 												<span class="timeline__period"><?php echo $dateD[0] ?> — <?php echo $dateF[0] ?></span><br>													
 												<span class="timeline__etp">{{ $exp->Nom_Etp }}<br>												
-												</span>
+												</span>												
 												<p class="timeline__description">{{ $exp->Description_Ex }}</p>
 											</article>									
 										@endforeach

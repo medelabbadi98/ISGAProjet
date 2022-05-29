@@ -94,6 +94,9 @@ Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajout
 //about
 Route::get('editabout', [AboutController::class, 'get']);
 Route::post('editabout', [AboutController::class, 'edit']);
+//offre
+Route::get('modifieroffre', [OffreController::class, 'modifieroffre'])->name('modifieroffre');
+Route::post('editoffre', [OffreController::class, 'update'])->name('modifieroffre.post');
 //competence
 Route::get('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
 Route::post('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'update'])->name('editcompetence.post');

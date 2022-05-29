@@ -48,10 +48,11 @@
                         <div class="pb-0 pb-sm-2 position-relative">
 		                    <h1 class="title title--h1 first-title title__separate">À propos de Nous</h1>
                             <div class="btn-edit-del">			
-								<a href="#" role="button"><i class="font-icon icon-tool"></i></a>
+                                <a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
+
 							</div>
                             @if(isset($about) and $about!="")
-									{{$about}}
+									<p style="overflow-wrap: break-word;">{{$about}}</p>
 									@else									
 									<h5 class="title title--h5" style="text-align:center">Aucune description!</h5>							
 								@endif                        </div>
@@ -60,35 +61,31 @@
 		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="{{route('ajouteroffre')}}" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
 
                             <div class="row">
-                                <!--case-item-->
-                                <div class="case-item box box__second">
-                                    
-                                    <div class="position-relative">
-                                        <div class="btn-edit-del">
-                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
+                                @if(count($offre)>0)
+									@foreach($offre as $offr)
+                                        <div class="case-item box box__second">
+                                            <div class="position-relative">
+                                                <div class="btn-edit-del">
+                                                    <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                                                    <a href="{{ route('modifieroffre')}}" role="button"><i class="font-icon icon-tool"></i></a>
+                                                </div>
+                                                <h3 class="title title--h5">{{$offr -> Intitule}}</h3>
+                                                <span class="case-item__secteur">{{$offr -> Nom_Sec}}</span>
+                                                <h6 class="title title--h6">Date Publication :<span class="timeline__period">{{$offr -> Date_pub}}</span></h6>
+                                                <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">{{$offr -> Date_Exp}}</span></h6>
+                                                <p class="case-item__caption"> {{$offr -> Description_offre}} </p>
+                                            </div>	
                                         </div>
-                                        <h3 class="title title--h5">Poste</h3>
-                                        <span class="case-item__secteur">Secteur</span>
-                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
-                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
-                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
-                                    </div>	
-                                </div>
-                                <!--case-item-->
-                                <div class="case-item box box__second">
-                                    <div class="position-relative">
-                                        <div class="btn-edit-del">
-                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
-                                        </div>
-                                        <h3 class="title title--h5">Poste</h3>
-                                        <span class="case-item__secteur">Secteur</span>
-                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
-                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
-                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
-                                    </div>	
-                                </div>
+                                    @endforeach
+								@else
+                                    <div class="case-item box box__second">
+                                        <div class="position-relative">
+                                        <h5 class="title title--h5" style="text-align:center">Aucune offre  <br> n'a été ajouté </span></h5>
+
+                                        </div>	
+                                    </div>
+                                @endif
+                                
                             </div>
 					    </div>
                     </div>
