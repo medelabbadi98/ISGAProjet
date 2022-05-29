@@ -38,7 +38,11 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3 order-1 order-md-2 d-flex justify-content-between">
                                     <button type="submit" class="btn disabled">Modifier</button>
+                                    @if(candidat())
                                     <a href="{{ route('pagecandidat') }}" class="btn btn-secondary ">Annuler</a>
+                                    @else
+                                    <a href="{{ route('pagerecruteur') }}" class="btn btn-secondary ">Annuler</a>
+                                    @endif
                                 </div>
                             </div>
                         </form>

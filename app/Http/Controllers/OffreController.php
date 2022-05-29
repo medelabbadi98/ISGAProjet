@@ -24,7 +24,7 @@ class OffreController extends Controller
         //dd($secteurs[1]->Id_Sec);
         return view('Recruteurprofile.ajouteroffre',compact('secteurs','contrats'));
     }
-    public function editOffre()
+    public function modifieroffre()
     {
         return view('Recruteurprofile.editoffre');
     }
@@ -74,7 +74,7 @@ class OffreController extends Controller
         $id= RecruteurController::getIdRecruteur();
         $Offre -> Id_CT=$request->contrat;  
         $Offre -> ID_Sec=$request->secteur;  
-        $Offre -> Id_rec=$id;  
+        $Offre -> CIN_rec=session()->get('Cin');  
         $Offre -> Intitule=$request->Intitule;  
         $Offre -> Date_Exp=$request->date_exp;
         $Offre -> Description_offre=$request->Description;  
@@ -120,8 +120,7 @@ class OffreController extends Controller
     {
         $Offre = offre::find($id);
         $Offre -> Id_CT=$request->Id_CT;  
-        $Offre -> ID_Sec=$request->ID_Sec;  
-        $Offre -> Id_rec=$request->Id_rec;  
+        $Offre -> ID_Sec=$request->ID_Sec;   
         $Offre -> Intitule=$request->Intitule;  
         $Offre -> Date_Exp=$request->Date_Exp;
         $Offre -> Description_offre=$request->Description_offre;  

@@ -113,11 +113,8 @@
 										</div>	
 										<div class="form-group col-12 col-md-1">
 										</div>
-										
-
 									</div>
 					</div>
-					
 					<!-- Footer -->
 					<footer class="footer">© 2022</footer>
 					
@@ -177,12 +174,9 @@
 					function testpassword() {
 						var text1 = document.getElementById("newPass");
 						var text2 = document.getElementById("ConfirmPass");
-						//var btn = document.getElementById("sub"); 
 						if (text1.value == text2.value)
 							text2.style.borderColor = "#2EFE2E";
-							//btn.removeAttribute('disabled');
 						else
-						   // btn.setAttribute("disabled", true);
 							text2.style.borderColor = "red";	
 					}
 					</script>

@@ -21,8 +21,9 @@
                         <div class="pb-2">
                             <h1 class="title title--h1 first-title title__separate">Ajouter Offre</h1>
                         </div>
-            
+                 
                         <form id="contact-form" method="POST" action="{{ route('ajouteroffre.post') }}" class="contact-form" data-toggle="validator" novalidate="true">
+       
                         @csrf
                             <div class="row">
                                 <div class="form-group col-12 col-md-6">

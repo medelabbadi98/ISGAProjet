@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\recruteur;
 use Illuminate\Http\Request;
+use App\Models\offre;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Hash;
@@ -19,6 +20,7 @@ class RecruteurController extends Controller
         $recruteur=DB::table('recruteurs')->where('Cin',session()->get('Cin'))->value('IDuser'); 
         return $recruteur;
     }
+
     public function index()
     {
         $secteurs = DB::table('secteurs')->get();
@@ -26,9 +28,13 @@ class RecruteurController extends Controller
         $recruteur = $this->show();
         $id=RecruteurController::getIdRecruteur();
         $about=DB::table('recruteurs')->where('Cin',session()->get('Cin'))->value('About');
-        $offre=DB::table('offres')->where('Id_rec',$id)->value('Id_Offre');
-        // $poste=DB::table('postulers')->where('Cin',session()->get('Cin'))->value('Id_');
+        
+        $offre = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
+        ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->get();
+        // $secteur = DB::table('secteurs')->where('Id_Sec',((Array)$offre[0])['ID_Sec'])->first();
+        //$poste=DB::table('postulers')->where('Cin',session()->get('Cin'))->value('Id_');
         return view('Recruteurprofile.pagerecruteur',compact('recruteur','about','secteurs','offre')); 
+        // return $offre;
            
     }
 
@@ -74,14 +80,21 @@ class RecruteurController extends Controller
             $request->Photo->move(public_path('/assets/img'),$imageurl);
             $recruteur->photo_rec = $imageurl;
         }
+
         $recruteur->CIN=$request->cin;
         $recruteur->Nom=$request->nom;
         $recruteur->Prenom=$request->prenom;
         $recruteur->Adresse=$request->adresse;
         $recruteur->telephone_rec=$request->tel;
         $recruteur->IDuser=recruteur()->id;
+        $user= DB::table('users')->where('id','=',$recruteur->IDuser)->get()->first();
         session()->put('Cin',$request->cin);
+        session()->put('type',$user->type);
+
         $recruteur->save();
+
+        return redirect('pagerecruteur');
+
     }
 
     /**
