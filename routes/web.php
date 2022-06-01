@@ -40,7 +40,7 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 ///offres
 Route::get('offre-emploi', [OffreController::class, 'index'])->name('offre');
 Route::get('offre-emploi-page/{Id_Offre}', [OffreController::class, 'getOffrePage'])->name('offre-page');
-
+Route::match(['get', 'post'],'offre-emploi/{Id_sec}',[OffreController::class,'ChercherOffre'])->name('ChercherOffre');
 //ListeCandidats
 Route::get('lesCandidats', [CandidatController::class, 'list']);
 Route::get('candidat-page/{CIN}', [CandidatController::class, 'getcandidatPage']);
@@ -72,6 +72,11 @@ Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajouterse
 //offre
 Route::get('Ajouter-offre', [OffreController::class, 'ajouterOffre']);
 Route::post('Ajouter-offre', [OffreController::class, 'store'])->name('ajouterOffre.post');
+
+//postuler
+Route::get('offre-emploi-page/postuler/{Id_offre}',[OffreController::class,'postuler']);
+Route::get('offre-emploi-page/postuler/delete/{Id_offre}',[OffreController::class,'deletePostulation']);
+
 //competence
 Route::get('ajoutercompetence', [CompetenceController::class, 'index'])->name('ajoutercompetence');
 Route::post('ajoutercompetence', [CompetenceController::class, 'store'])->name('ajoutercompetence.post');

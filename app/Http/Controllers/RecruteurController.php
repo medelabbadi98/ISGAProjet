@@ -18,7 +18,9 @@ class RecruteurController extends Controller
     public function index()
     {
         $recruteur = $this->show();
+      
         return view('Recruteurprofile.pagerecruteur',compact('recruteur'));
+        
     }
 
     public function getsettings(){
@@ -87,9 +89,10 @@ class RecruteurController extends Controller
      */
     public function show()
     {
-        $user = recruteur::join('users','recruteurs.IDuser',"=",'users.id')->where('id',recruteur()->id)->get()->first();
+        $user = recruteur::leftJoin('users','recruteurs.IDuser',"=",'users.id')->leftJoin('offres','offres.CIN_rec','=','recruteurs.CIN')->leftJoin('secteurs','offres.ID_Sec', '=' ,'secteurs.Id_Sec')->leftJoin('contrats','offres.Id_CT','=','contrats.Id_CT')->where('id',recruteur()->id)->get();        
         return $user;
     }
+    
 
     /**
      * Show the form for editing the specified resource.

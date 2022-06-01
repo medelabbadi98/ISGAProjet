@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\offre;
+use App\Models\postuler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class OffreController extends Controller
 {
@@ -13,9 +15,12 @@ class OffreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $offres = $this->show();
+        //dd($offres);
         $secteurs = DB::table('secteurs')->get();
         return view("offre_d'emploi",compact('secteurs','offres'));
     }
@@ -23,22 +28,72 @@ class OffreController extends Controller
     {
         $secteurs = DB::table('secteurs')->get();
         $contrats = DB::table('contrats')->get();
-        //dd($secteurs[1]->Id_Sec);
         return view('Recruteurprofile.ajouteroffre',compact('secteurs','contrats'));
     }
-    public function editOffre()
+    public function ModifierOffre($id)
     {
-        return view('Recruteurprofile.editoffre');
+        $secteurs = DB::table('secteurs')->get();
+        $contrats = DB::table('contrats')->get();
+        $offres=$this->show();
+        foreach($offres as $offre){
+            if($offre->Id_Offre==$id){
+                return view('Recruteurprofile.Ajouteroffre',compact('secteurs','contrats','offre'));
+            }
+        }
+        
     }
 
     public function getOffrePage($id)
     {
         $offres = $this->show();
+        $postulation = postuler::join('candidats','postulers.Cin',"=",'candidats.Cin')->where('candidats.Cin',session()->get('Cin'))->get();
+        $postuler=null;
+        //dd($postuler);
+        foreach($postulation as $post){
+            if($post->Id_offre == $id){
+                $postuler = $post;
+            }
+       }
+       
         foreach($offres as $offre){
              if($offre->Id_Offre == $id){
-                  return view('offre-emploi-page',(['offre'=>$offre]));
+                  return view('offre-emploi-page',compact('offre','postuler'));
              }
         }
+        
+    }
+
+    public function postuler($id){
+
+        $postuler = new postuler();
+        
+        $postuler->Cin = session()->get('Cin');
+        $postuler->Id_offre = $id;
+        $postuler->Date_Post = Carbon::now()->toDateTimeString(); 
+        $postuler->save();
+        return redirect()->back();
+
+
+    }
+
+    public function deletePostulation($id){
+        postuler::where('Cin', '=',session()->get('Cin'))->where('Id_offre', '=', $id)->delete();
+        return redirect()->back();
+    }
+
+    public function ChercherOffre(Request $request,$id){
+
+        $query = $this->show();
+        $secteurs = DB::table('secteurs')->get();
+
+        if($id > 0){
+            $offres=$query->where("ID_Sec",$id);
+        }
+        else{
+            $offres=$query->where("Intitule",$request->keyword);
+        }
+        return view("offre_d'emploi",compact('secteurs','offres'));
+
         
     }
 

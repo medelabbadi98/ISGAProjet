@@ -44,7 +44,7 @@
             
                                 <div class="form-group col-12 col-md-6">
                                     <label for="date_fin" class="form_label">Date Fin :</label>
-                                    <input type="date" class="input form-control" name="Date_Fin" required="required" value="{{$dateFin}}">
+                                    <input type="date" class="input form-control" name="Date_Fin" min="{{$dateDeb}}" required="required" value="{{$dateFin}}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 

@@ -40,9 +40,22 @@
                                 </div>
                                 @guest
                                 <div class="box box__second d-flex justify-content-center mb-4">
-                                    <button type="button" onclick="" class="btn-postuler">Postuler</button>
+                                    <button type="button" onclick="location.href='/login' " class="btn-postuler">Postuler</button>
                                 </div>
+                                @else
+                                @if(candidat())
+                                @if(isset($postuler))
+                                <div class="box box__second d-flex justify-content-center mb-4">
+                                    <button type="button" onclick="location.href='postuler/delete/{{$offre->Id_Offre}}' " class="btn-postuler">Annuler la postulation</button>
+                                </div>
+                                @else
+                                <div class="box box__second d-flex justify-content-center mb-4">
+                                    <button type="button" onclick="location.href='postuler/{{$offre->Id_Offre}}' " class="btn-postuler">Postuler</button>
+                                </div>
+                                @endif
+                                @endif
                                 @endguest
+
                             </div>
                         </div>
                     </div>

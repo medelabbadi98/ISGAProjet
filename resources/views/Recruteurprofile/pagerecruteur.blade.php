@@ -19,24 +19,24 @@
 				    <div class="sidebar box shadow pb-0 sticky-column">
 						<svg class="avatar avatar--180" viewBox="0 0 188 188">
                             <g class="avatar__box">
-                                <image xlink:href="{{$recruteur->photo_rec}}"  height="100%" width="100%" />
+                                <image xlink:href="{{$recruteur[0]->photo_rec}}"  height="100%" width="100%" />
                             </g>
                         </svg>
 						<div class="text-center">
-                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{$recruteur->Nom}}</span> {{$recruteur->Prenom}}</h3>
+                        <h3 class="title title--h3 sidebar__user-name"><span class="weight--500">{{$recruteur[0]->Nom}}</span> {{$recruteur[0]->Prenom}}</h3>
 							<!-- <div class="badge badge--gray">Exemple</div> -->
 						</div>
 						
 						<div class="sidebar__info box-inner box-inner--rounded">
 		                    <ul class="contacts-block">
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Address">
-							        <i class="font-icon icon-location"></i>{{$recruteur->Adresse}}
+							        <i class="font-icon icon-location"></i>{{$recruteur[0]->Adresse}}
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="E-mail">
-							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{$recruteur->email}}</a>
+							        <a href="mailto:example@mail.com"><i class="font-icon icon-envelop"></i>{{$recruteur[0]->email}}</a>
 							    </li>
 						        <li class="contacts-block__item" data-toggle="tooltip" data-placement="top" title="Phone">
-							        <i class="font-icon icon-phone"></i>{{$recruteur->telephone_rec}}
+							        <i class="font-icon icon-phone"></i>{{$recruteur[0]->telephone_rec}}
 							    </li>
 					        </ul>
 						</div>
@@ -50,43 +50,41 @@
                             <div class="btn-edit-del">			
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
-						    <p>{{$recruteur->About}}</p>
+						    <p>{{$recruteur[0]->About}}</p>
                         </div>
 
                         <div class="pb-0 box-inner">
-		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="./Ajouter_offre.html" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
+		                    <h1 class="title title--h1 first-title title__separate">Offres <a title="ajouter Offre" href="Ajouter-offre" role="button"><i class="btn-add font-icon icon-add"></i></a></h1>
 
                             <div class="row">
-                                <!--case-item-->
+                                <!--case-item-->   
+                                @if(!empty($recruteur[0]->Id_Offre))                                                                                         
+                                @foreach($recruteur as $rec)
+                                
                                 <div class="case-item box box__second">
                                     
                                     <div class="position-relative">
                                         <div class="btn-edit-del">
                                             <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
+                                            <a href="Modifier-offre/{{$rec->Id_Offre}}" role="button"><i class="font-icon icon-tool"></i></a>
                                         </div>
-                                        <h3 class="title title--h5">Poste</h3>
-                                        <span class="case-item__secteur">Secteur</span>
-                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
-                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
-                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
+                                        <a href="offre-emploi-page/{{$rec->Id_Offre}}"><h3 class="title title--tone">{{$rec->Intitule}}</h3></a>
+                                        <h6 class="title title--h6">Secteur d'activité :<span class="case-item__text">{{$rec->Nom_Sec}}</span></h6>
+                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">{{$rec->Date_pub}}</span></h6>
+                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">{{$rec->Date_Exp}}</span></h6>
+                                        <h6 class="title title--h6">Type de Contart :<span class="case-item__text">{{$rec->Type_CT}}</span></h6>
                                     </div>	
                                 </div>
-                                <!--case-item-->
-                                <div class="case-item box box__second">
-                                    <div class="position-relative">
-                                        <div class="btn-edit-del">
-                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                            <a href="./edit_offre.html" role="button"><i class="font-icon icon-tool"></i></a>
-                                        </div>
-                                        <h3 class="title title--h5">Poste</h3>
-                                        <span class="case-item__secteur">Secteur</span>
-                                        <h6 class="title title--h6">Date Publication :<span class="timeline__period">18-04-2022</span></h6>
-                                        <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">18-05-2022</span></h6>
-                                        <p class="case-item__caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nobis amet molestias quaerat iure neque cupiditate, possimus, quia fuga aperiam inventore optio quisquam officiis ratione quos adipisci magnam deserunt repellendus?</p>
-                                    </div>	
-                                </div>
+                                @endforeach                                
+                                  @else
+                                  <article>																																
+                                    <h5 class="title title--h5" style="text-align:center">Aucune Offre  n'a été ajouté </span></h5>
+                                </article>
+                                @endif  
                             </div>
+					    </div>
+                            
+
 					    </div>
                     </div>
                 </div>    
