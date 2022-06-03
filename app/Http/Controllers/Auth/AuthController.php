@@ -52,6 +52,7 @@ class AuthController extends Controller
                 $user= DB::table('users')->where('id','=',candidat()->id)->get()->first();
                session()->put('Cin',$candidat->CIN);  
                session()->put('type',$user->type);
+               session()->put('img',$candidat->Photo_C);
             return redirect('pagecandidat');
             }
             else{
@@ -59,6 +60,7 @@ class AuthController extends Controller
                 $user= DB::table('users')->where('id','=',recruteur()->id)->get()->first();
                 session()->put('Cin',$recruteur->CIN);
                 session()->put('type',$user->type);
+                session()->put('img',$recruteur->photo_rec);
                 return redirect('pagerecruteur');
             }
         }

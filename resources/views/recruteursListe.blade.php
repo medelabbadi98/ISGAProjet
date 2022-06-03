@@ -13,7 +13,7 @@
 		</div>
 	</div>
     <div class="main">
-        <div class="container gt-5">
+        <div class="container ">
             <div class="row sticky-parent ">
                 <!-- Sidebar -->
                 <aside class="col-12 col-md-12 col-xl-3">

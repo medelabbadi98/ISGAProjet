@@ -14,7 +14,7 @@
 
     <main class="main">
 		@csrf
-	    <div class="container gutter-top">
+	    <div class="container">
 		    <div class="row sticky-parent">
 			    <!-- Sidebar -->
 				<aside class="col-12 col-md-12 col-xl-3">

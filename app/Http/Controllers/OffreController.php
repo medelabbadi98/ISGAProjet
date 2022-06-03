@@ -90,7 +90,7 @@ class OffreController extends Controller
             $offres=$query->where("ID_Sec",$id);
         }
         else{
-            $offres=$query->where("Intitule",$request->keyword);
+            $offres=$query->where('Intitule','LIKE','%'.$request->keyword.'%');
         }
         return view("offre_d'emploi",compact('secteurs','offres'));
 

@@ -12,7 +12,7 @@
 	</div>
 
     <main class="main">
-	    <div class="container gutter-top ">
+	    <div class="container ">
 		    <div class="row ">
 				<!-- Content -->
 		        <div class="col-12 col-md-12 col-xl-12">

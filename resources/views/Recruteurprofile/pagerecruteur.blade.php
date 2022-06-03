@@ -12,7 +12,7 @@
 		</div>
 	</div>
     <div class="main">
-        <div class="container gutter-top">
+        <div class="container">
             <div class="row sticky-parent ">
                 <!-- Sidebar -->
                 <aside class="col-12 col-md-12 col-xl-3">
@@ -68,7 +68,7 @@
                                             <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
                                             <a href="Modifier-offre/{{$rec->Id_Offre}}" role="button"><i class="font-icon icon-tool"></i></a>
                                         </div>
-                                        <a href="offre-emploi-page/{{$rec->Id_Offre}}"><h3 class="title title--tone">{{$rec->Intitule}}</h3></a>
+                                        <a href="/offre-emploi-page/{{$rec->Id_Offre}}"><h3 class="title title--tone">{{$rec->Intitule}}</h3></a>
                                         <h6 class="title title--h6">Secteur d'activité :<span class="case-item__text">{{$rec->Nom_Sec}}</span></h6>
                                         <h6 class="title title--h6">Date Publication :<span class="timeline__period">{{$rec->Date_pub}}</span></h6>
                                         <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">{{$rec->Date_Exp}}</span></h6>
