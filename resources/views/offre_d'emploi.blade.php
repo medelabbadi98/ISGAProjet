@@ -16,20 +16,20 @@
             <div class="row sticky-parent ">
                 <!-- Sidebar -->
                 <aside class="col-12 col-md-12 col-xl-3">
-				    <div class="sidebar box shadow pb-5 sticky-column">
+				    <div class="sidebar box shadow pb-5 sticky-column" style="z-index:1;">
                                 <h3 class="title title--h4">Recherche par mots clés</h3>
                                 <div class="input-group">
                                     <input class="form-control" type="text" name="keyword" value="" placeholder="Intitulé du poste,Secteur...">
                                         <button type="submit" class="btn-default"><i class="font-icon icon-search"></i></button>
                                 </div>
                                
-                                <div class="list-group mt-5">
+                                <div class="list-group mt-5" >
                                     <h3 class="title title--h4">Recherche par Secteurs</h3>
                                     <ul class="list-group list-group-flush">
                                         @foreach($secteurs as $sec)
-                                        <li class="list-group-item"><a href="#">{{$sec->Nom_Sec}}</a></li>
+                                           <li class="list-group-item"><a href="#">{{$sec->Nom_Sec}}</a></li>
                                         @endforeach
-                                      </ul>
+                                    </ul>
                                       
                                 </div>
                             </div>

@@ -65,12 +65,22 @@
 									@foreach($offre as $offr)
                                         <div class="case-item box box__second">
                                             <div class="position-relative">
-                                                <div class="btn-edit-del">
-                                                    <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                                    <a href="{{ route('modifieroffre')}}" role="button"><i class="font-icon icon-tool"></i></a>
-                                                </div>
+                                                   <div class="btn-edit-del">
+                                                       
+                                                            <input name="sect" hidden value="{{$offr -> Nom_Sec}}">
+                                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                                                            <a href="woffre/<?php                                                             
+                                                             foreach($secteurs as $sec){
+                                                                 if($sec->Nom_Sec == $offr -> Nom_Sec){
+                                                                    echo($sec -> Id_Sec);
+                                                                    break;
+                                                                 }
+                                                             } 
+                                                            ?>" role="button" ><i class="font-icon icon-tool"></i></a>
+                                                        
+                                                    </div>
                                                 <h3 class="title title--h5">{{$offr -> Intitule}}</h3>
-                                                <span class="case-item__secteur">{{$offr -> Nom_Sec}}</span>
+                                                <span class="case-item__secteur" >{{$offr -> Nom_Sec}}</span>
                                                 <h6 class="title title--h6">Date Publication :<span class="timeline__period">{{$offr -> Date_pub}}</span></h6>
                                                 <h6 class="title title--h6">Date d'Experation :<span class="timeline__period">{{$offr -> Date_Exp}}</span></h6>
                                                 <p class="case-item__caption"> {{$offr -> Description_offre}} </p>
