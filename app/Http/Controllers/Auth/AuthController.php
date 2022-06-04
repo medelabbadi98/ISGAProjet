@@ -90,7 +90,7 @@ class AuthController extends Controller
             'type' =>$request['select']
           ]);
 
-          auth()->login($user);
+          auth()->login($user);          
 
           $secteurs = DB::table('secteurs')->get();
 

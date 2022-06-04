@@ -189,8 +189,9 @@ class OffreController extends Controller
      * @param  \App\Models\offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(offre $offre)
+    public function destroy($ID)
     {
-        //
+        offre::find($ID)->delete();
+        return redirect("/pagerecruteur");
     }
 }

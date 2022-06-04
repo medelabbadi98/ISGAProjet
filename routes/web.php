@@ -127,6 +127,8 @@ Route::get('delete/Dip/{ID_Dip}',[DiplomeController::class, 'destroy']);
 Route::get('delete/lang/{Id_LG}',[MaitriserController::class, 'destroy']);
 //competence
 Route::get('delete/cmp/{Id_Cmp}',[CompetenceController::class, 'destroy']);
+//offre
+Route::get('delete/offre/{ID_Offre}',[OffreController::class, 'destroy']);
 
 
 

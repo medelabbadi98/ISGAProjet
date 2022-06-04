@@ -77,7 +77,11 @@ class RecruteurController extends Controller
         $user= DB::table('users')->where('id','=',$recruteur->IDuser)->get()->first();
         session()->put('Cin',$request->cin);
         session()->put('type',$user->type);
-
+        if($request->Photo==null){
+            session()->put('img','/assets/img/profile-picture.jpg');
+        }else
+        session()->put('img',$recruteur->photo_rec);
+        
         $recruteur->save();
 
         return redirect('pagerecruteur');

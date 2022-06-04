@@ -50,7 +50,11 @@
                             <div class="btn-edit-del">			
 								<a href="editabout" role="button"><i class="font-icon icon-tool"></i></a>
 							</div>
+                            @if($recruteur[0]->About==null)
+                            <h5 class="title title--h5" style="text-align:center">Aucune description!</h5>
+                            @else
 						    <p>{{$recruteur[0]->About}}</p>
+                            @endif
                         </div>
 
                         <div class="pb-0 box-inner">
@@ -65,7 +69,7 @@
                                     
                                     <div class="position-relative">
                                         <div class="btn-edit-del">
-                                            <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
+                                            <a href="delete/offre/{{$rec->Id_Offre}}" onclick="return confirm('Voulez vous la supprimer !')" role="button"><i class="font-icon icon-trashcan"></i></a>
                                             <a href="woffre/<?php                                                             
                                                              foreach($secteurs as $sec){
                                                                  if($sec->Nom_Sec == $rec->Nom_Sec){

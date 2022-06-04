@@ -95,7 +95,12 @@ class CandidatController extends Controller
         $candidat -> Id_sect = $request->secteur;
         $user= DB::table('users')->where('id','=',$candidat -> IDuser)->get()->first();
         session()->put('Cin',$request->cin);
-        session()->put('type',$user->type);
+        session()->put('type',$user->type);       
+        if($request->Photo==null){
+            session()->put('img','/assets/img/profile-picture.jpg');
+        }else
+        session()->put('img',$candidat-> Photo_C);
+     
      
         $candidat->save();
         return redirect('pagecandidat');

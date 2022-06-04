@@ -221,6 +221,6 @@
      
   <div class="gutter-top"></div>
 @yield('content')
-
+<div class="gutter-top"></div>
 </body>
 </html>
