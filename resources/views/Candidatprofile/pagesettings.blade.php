@@ -37,7 +37,7 @@
 								<div class="form-group col-12 col-md-2"> 
 									<svg class="avatar avatar--180"  viewBox="0 0 188 188">
 										<g class="avatar__box">
-											<image id="profil_image" xlink:href="@if(isset($user->Photo_C) ) {{$user->Photo_C }} @else {{$user->photo_rec}}   @endif"  height="100%" width="100%" />
+											<image id="profil_image" xlink:href="@if(isset($user->Photo_C) ) {{$user->Photo_C }} @else {{$user[0]->photo_rec}}   @endif"  height="100%" width="100%" />
 										</g>
 									</svg>
 									<input type="file" hidden id="image_upload" name="Photo_C" class="input form-control" >
@@ -51,22 +51,22 @@
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="user" value="@if(isset($user->name)) {{$user->name  }} @endif " placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control"  name="user" value="@if(isset($user->name)) {{$user->name  }} @else {{$user[0]->name}}  @endif " placeholder="Nom d'utilisateur" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 				                <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="nom" value="@if(isset($user->Nom)) {{$user->Nom}} @endif" placeholder="Nom" required="required" autocomplete="on" >
+                                    <input type="text" class="input form-control"  name="nom" value="@if(isset($user->Nom)) {{$user->Nom}} @else {{$user[0]->Nom}} @endif" placeholder="Nom" required="required" autocomplete="on" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
                                 <div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="prenom" value="@if(isset($user->Prenom)) {{$user->Prenom}} @endif" placeholder="Prénom" required="required" >
+                                    <input type="text" class="input form-control"  name="prenom" value="@if(isset($user->Prenom)) {{$user->Prenom}} @else {{$user[0]->Prenom}} @endif" placeholder="Prénom" required="required" >
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="email" class="input form-control"  name="email" value="@if(isset($user->email)) {{$user->email}} @endif" placeholder="Email" required="required">
+                                    <input type="email" class="input form-control"  name="email" value="@if(isset($user->email)) {{$user->email}} @else {{$user[0]->email}} @endif" placeholder="Email" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
@@ -97,12 +97,12 @@
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="text" class="input form-control"  name="adresse" value="@if(isset($user->Adresse)) {{$user->Adresse}} @endif" placeholder="Adresse" required="required">
+                                    <input type="text" class="input form-control"  name="adresse" value="@if(isset($user->Adresse)) {{$user->Adresse}} @else {{$user[0]->Adresse}} @endif" placeholder="Adresse" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 
 								<div class="form-group col-12 col-md-6">
-                                    <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user->telephone_rec }} @endif" placeholder="Telphone" required="required">
+                                    <input type="tel" class="input form-control"  name="telephone" value="@if(isset($user->Tel_C)) {{$user->Tel_C }} @else {{ $user[0]->telephone_rec }} @endif" placeholder="Telphone" required="required">
 								    <div class="help-block with-errors"></div>
 				                </div>
 								@if(candidat())

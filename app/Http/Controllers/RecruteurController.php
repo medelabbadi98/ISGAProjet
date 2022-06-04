@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\recruteur;
+use App\Models\offre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +19,10 @@ class RecruteurController extends Controller
     public function index()
     {
         $recruteur = $this->show();
-      
-        return view('Recruteurprofile.pagerecruteur',compact('recruteur'));
+        $secteurs = DB::table('secteurs')->get();
+        // $offre = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
+        // ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->get();
+        return view('Recruteurprofile.pagerecruteur',compact('recruteur','secteurs'));
         
     }
 

@@ -66,7 +66,14 @@
                                     <div class="position-relative">
                                         <div class="btn-edit-del">
                                             <a href="#" role="button"><i class="font-icon icon-trashcan"></i></a>
-                                            <a href="Modifier-offre/{{$rec->Id_Offre}}" role="button"><i class="font-icon icon-tool"></i></a>
+                                            <a href="woffre/<?php                                                             
+                                                             foreach($secteurs as $sec){
+                                                                 if($sec->Nom_Sec == $rec->Nom_Sec){
+                                                                    echo($sec -> Id_Sec);
+                                                                    break;
+                                                                 }
+                                                             } 
+                                                            ?>" role="button" ><i class="font-icon icon-tool"></i></a>
                                         </div>
                                         <a href="/offre-emploi-page/{{$rec->Id_Offre}}"><h3 class="title title--tone">{{$rec->Intitule}}</h3></a>
                                         <h6 class="title title--h6">Secteur d'activité :<span class="case-item__text">{{$rec->Nom_Sec}}</span></h6>

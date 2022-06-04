@@ -70,8 +70,8 @@ Route::post('addsettings', [HomeController::class, 'store'])->name('ajoutersetti
 Route::get('ajoutersettings', [HomeController::class, 'index'])->name('ajoutersettings');
 
 //offre
-Route::get('Ajouter-offre', [OffreController::class, 'ajouterOffre']);
-Route::post('Ajouter-offre', [OffreController::class, 'store'])->name('ajouterOffre.post');
+Route::get('Ajouter-offre', [OffreController::class, 'ajouteroffre']);
+Route::post('Ajouter-offre', [OffreController::class, 'store'])->name('ajouteroffre.post');
 
 //postuler
 Route::get('offre-emploi-page/postuler/{Id_offre}',[OffreController::class,'postuler']);
@@ -95,6 +95,14 @@ Route::post('ajouterlangue', [MaitriserController::class, 'store'])->name('ajout
 //about
 Route::get('editabout', [AboutController::class, 'get']);
 Route::post('editabout', [AboutController::class, 'edit']);
+
+
+//offre
+Route::get('modifieroffre', [OffreController::class, 'modifieroffre'])->name('modifieroffre');
+Route::post('editoffre', [OffreController::class, 'update'])->name('modifieroffre.post');
+Route::get('woffre/{Nom_Sec}', [OffreController::class, 'edit'])->name('woffre');
+
+
 //competence
 Route::get('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'editcompetence'])->name('editcompetence');
 Route::post('editcompetence/{ID_Cmp?}', [CompetenceController::class, 'update'])->name('editcompetence.post');
