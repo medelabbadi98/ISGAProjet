@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\offre;
+use App\Models\candidat;
+use App\Models\postuler;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +19,27 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(session()->get('type')=='Candidat'){
+            $candidat=candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->where('CIN','=',session()->get('Cin'))->first();
+            
+            $offres = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
+            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->where('secteurs.Nom_Sec','=',$candidat->Nom_Sec)->take(3)->get();
+            if(empty($offres->Nom_Sec)){
+                $offres = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
+            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->take(3)->get();
+            }
+            return view('index',compact('offres'));
 
-        return 'cc';
+        }
+        else if(session()->get('type')=='Recruteur'){
+
+            $candidats = candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->join('users','candidats.IDuser','=','users.id')->take(3)->get();
+            
+            return view('index',compact('candidats'));
+
+        }
+        else
+            return view('index');
 
     }
 

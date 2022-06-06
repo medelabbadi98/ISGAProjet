@@ -20,7 +20,12 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('Auth.login');
+        if(session()->get('type')=='Candidat')
+            return redirect('pagecandidat') ;
+        else if(session()->get('type')=='Recruteur')
+            return redirect('pagerecruteur');
+        else
+            return view('Auth.login');
     }  
       
     /**
@@ -30,7 +35,12 @@ class AuthController extends Controller
      */
     public function registration()
     {
-        return view('Auth.registration');
+        if(session()->get('type')=='Candidat')
+            return redirect('pagecandidat') ;
+        else if(session()->get('type')=='Recruteur')
+            return redirect('pagerecruteur');
+        else
+            return view('Auth.registration');
     }
       
     /**
@@ -131,6 +141,6 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect('/');
     }
 }

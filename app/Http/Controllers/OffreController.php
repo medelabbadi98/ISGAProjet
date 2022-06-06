@@ -19,7 +19,7 @@ class OffreController extends Controller
 
     public function index()
     {
-        $offres = $this->show();
+        $offres = $this->show()->get();
         //dd($offres);
         $secteurs = DB::table('secteurs')->get();
         return view("offre_d'emploi",compact('secteurs','offres'));
@@ -46,7 +46,7 @@ class OffreController extends Controller
 
     public function getOffrePage($id)
     {
-        $offres = $this->show();
+        $offres = $this->show()->get();
         $postulation = postuler::join('candidats','postulers.Cin',"=",'candidats.Cin')->where('candidats.Cin',session()->get('Cin'))->get();
         $postuler=null;
         //dd($postuler);
@@ -91,7 +91,7 @@ class OffreController extends Controller
             $offres=$query->where("ID_Sec",$id);
         }
         else{
-            $offres=$query->where('Intitule','LIKE','%'.$request->keyword.'%');
+            $offres=$query->where('Intitule','LIKE','%'.$request->keyword.'%')->get();
         }
         return view("offre_d'emploi",compact('secteurs','offres'));
 
@@ -126,8 +126,13 @@ class OffreController extends Controller
         $Offre -> Date_pub=$request->date_pub;   
         $Offre -> Date_Exp=$request->date_exp;
         $Offre -> Description_offre=$request->Description;  
-        $Offre->save();
-        return redirect('/pagerecruteur');
+        if($Offre -> Date_pub<$Offre -> Date_Exp){
+            $Offre->save();
+            return redirect('/pagerecruteur');
+        }
+        else
+        return redirect()->back()->with("err","la date de publication est supperieur a la date d'expidation !");
+        
     
     }
 
@@ -139,8 +144,11 @@ class OffreController extends Controller
      */
     public function show()
     {
+        //dd(date('Y-m-d'));
         $offre = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
-        ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->get();
+        ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->where('Date_pub','<=',date('Y-m-d'))->where('Date_Exp','>=',date('Y-m-d'));
+        //dd($offre[0]->Date_pub);
+        //dd($offre[0]->Date_pub<=date('Y-m-d')&&$offre[0]->Date_Exp>=date('Y-m-d'));
         return $offre;
     }
 

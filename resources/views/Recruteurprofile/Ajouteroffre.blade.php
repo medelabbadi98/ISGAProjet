@@ -14,6 +14,11 @@
     <div class="main">
         <div class="container">
             <div class="row">
+            @if (session('err'))
+                <div class="alert alert-danger">
+                {{ session('err') }}
+                </div>
+            @endif
                 <div class="col-12 col-md-12 col-xl-12">
                     <div class="box shadow">
             

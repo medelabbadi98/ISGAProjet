@@ -46,7 +46,7 @@
                                 @if(candidat())
                                 @if(isset($postuler))
                                 <div class="box box__second d-flex justify-content-center mb-4">
-                                    <button type="button" onclick="location.href='postuler/delete/{{$offre->Id_Offre}}' " class="btn-postuler">Annuler la postulation</button>
+                                    <button type="button" onclick="location.href='postuler/delete/{{$offre->Id_Offre}}' " class="btn-postuler">Annuler la demande</button>
                                 </div>
                                 @else
                                 <div class="box box__second d-flex justify-content-center mb-4">

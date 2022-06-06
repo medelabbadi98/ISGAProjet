@@ -30,7 +30,7 @@
 				font-size: 24px;		
 			}
 			.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-				color: #090b57;
+				color: inherit;
 			}
 			.navbar .navbar-brand i {
 				font-size: 25px;
@@ -174,7 +174,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-			<a href="/" class="navbar-brand">E-<b>JOB</b></a>  		
+			<a href="/" class="navbar-brand" style="text-decoration:none">E-<b>JOB</b></a>  		
 			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -184,7 +184,7 @@
 					<a href="/" class="nav-item nav-link active"><span>Accueil</span></a>
 					@if(candidat())
 					<a href="/lesRecruteurs" class="nav-item nav-link"><span>Les Recruteurs</span></a>
-					<a href="#" class="nav-item nav-link"><span>Mes postulations</span></a>
+					<a href="#" class="nav-item nav-link"><span>Mes demandes</span></a>
 					@else
 					<a href="/lesCandidats" class="nav-item nav-link"><span>Les Candidats</span></a>
 					@endif

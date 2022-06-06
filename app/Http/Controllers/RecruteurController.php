@@ -190,13 +190,14 @@ class RecruteurController extends Controller
     
     public function getrecruteurPage($CIN){
         $recruteurs = recruteur::join('users','recruteurs.IDuser',"=",'users.id')->leftJoin('offres','offres.CIN_rec','=','recruteurs.CIN')->leftJoin('secteurs','offres.ID_Sec', '=' ,'secteurs.Id_Sec')->leftJoin('contrats','offres.Id_CT','=','contrats.Id_CT')->get();
+        $secteurs = DB::table('secteurs')->get();
         //$recruteurs = recruteur::join('users','recruteurs.IDuser','=','users.id')->get();       
         foreach($recruteurs as $recruteur){
             if($recruteur->CIN == $CIN){ 
                 $arr[0]=$recruteur;
                 $recruteur=$arr;
                 //return $recruteur;            
-                return view('Recruteurprofile.pagerecruteur',compact('recruteur','CIN')); 
+                return view('Recruteurprofile.pagerecruteur',compact('recruteur','CIN','secteurs')); 
             }
        }
     }
