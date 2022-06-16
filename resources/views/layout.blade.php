@@ -205,7 +205,7 @@
                         <a href="{{ route('recruteurSettings') }}" class="dropdown-item">Paramètre</a>
                         @endif
 						<div class="divider dropdown-divider"></div>
-						<a href="{{ route('logout') }}" class="dropdown-item">Déconnexion</a>
+						<a href="{{ route('logout') }}" class="dropdown-item" onclick="return confirm('Voulez-vous se deconnecter ?')">Déconnexion</a>
 					</div>
 				</div>
 			</div>

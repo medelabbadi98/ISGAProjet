@@ -23,10 +23,10 @@ class HomeController extends Controller
             $candidat=candidat::join('secteurs','candidats.Id_sect','=','secteurs.Id_Sec')->where('CIN','=',session()->get('Cin'))->first();
             
             $offres = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
-            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->where('secteurs.Nom_Sec','=',$candidat->Nom_Sec)->take(3)->get();
+            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->where('secteurs.Nom_Sec','=',$candidat->Nom_Sec)->where('Date_pub','<=',date('Y-m-d'))->where('Date_Exp','>=',date('Y-m-d'))->take(3)->get();
             if(empty($offres->Nom_Sec)){
                 $offres = offre::join('recruteurs','recruteurs.CIN','=','offres.CIN_rec')->join('secteurs','offres.ID_Sec','=','secteurs.Id_Sec')
-            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->take(3)->get();
+            ->join('contrats','offres.Id_CT','=','contrats.Id_CT')->where('Date_pub','<=',date('Y-m-d'))->where('Date_Exp','>=',date('Y-m-d'))->take(3)->get();
             }
             return view('index',compact('offres'));
 

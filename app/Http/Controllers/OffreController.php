@@ -61,6 +61,7 @@ class OffreController extends Controller
                   return view('offre-emploi-page',compact('offre','postuler'));
              }
         }
+        dd($id." ==? ".$offres[0]->Id_Offre);
         
     }
 

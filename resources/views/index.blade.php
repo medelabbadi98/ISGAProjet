@@ -107,7 +107,7 @@
 							
 							<div class="content">
 								<div class="inner">
-									<h2><h2>Notre site aide <i>les recruteurs</i> a : </h2>
+									<h2><h2>Notre site aide <i>les recruteurs</i> à : </h2>
 									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
 									
 								</div>
@@ -117,7 +117,7 @@
 							
 							<div class="content">
 								<div class="inner">
-									<h2><h2>Notre site aide <i>les candidats</i> a :</h2>
+									<h2><h2>Notre site aide <i>les candidats</i> à :</h2>
 									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
 									
 								</div>
